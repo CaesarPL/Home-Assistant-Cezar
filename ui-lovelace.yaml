@@ -1,0 +1,1248 @@
+animated_background:
+  default_url: "https://cdn.flixel.com/flixel/ypy8bw9fgw1zv2b4htp2.hd.mp4"
+  included_users:
+    - Cezar
+  # This entity is just an example, use whatever entity you would like
+  entity: "weather.home"
+  state_url:
+    'sunny':
+      - "https://cdn.flixel.com/flixel/hlhff0h8md4ev0kju5be.hd.mp4"
+      - "https://cdn.flixel.com/flixel/zjqsoc6ecqhntpl5vacs.hd.mp4"
+      - "https://cdn.flixel.com/flixel/jvw1avupguhfbo11betq.hd.mp4"
+      - "https://cdn.flixel.com/flixel/8cmeusxf3pkanai43djs.hd.mp4"
+      - "https://cdn.flixel.com/flixel/guwb10mfddctfvwioaex.hd.mp4"
+
+    'partlycloudy':
+      - "https://cdn.flixel.com/flixel/13e0s6coh6ayapvdyqnv.hd.mp4"
+      - "https://cdn.flixel.com/flixel/aorl3skmssy7udwopk22.hd.mp4"
+      - "https://cdn.flixel.com/flixel/qed6wvf2igukiioykg3r.hd.mp4"
+      - "https://cdn.flixel.com/flixel/3rd72eezaj6d23ahlo7y.hd.mp4"
+      - "https://cdn.flixel.com/flixel/9m11gd43m6qn3y93ntzp.hd.mp4"
+      - "https://cdn.flixel.com/flixel/hrkw2m8eofib9sk7t1v2.hd.mp4"
+
+    'cloudy':
+      - "https://cdn.flixel.com/flixel/13e0s6coh6ayapvdyqnv.hd.mp4"
+      - "https://cdn.flixel.com/flixel/aorl3skmssy7udwopk22.hd.mp4"
+      - "https://cdn.flixel.com/flixel/qed6wvf2igukiioykg3r.hd.mp4"
+      - "https://cdn.flixel.com/flixel/3rd72eezaj6d23ahlo7y.hd.mp4"
+      - "https://cdn.flixel.com/flixel/9m11gd43m6qn3y93ntzp.hd.mp4"
+      - "https://cdn.flixel.com/flixel/hrkw2m8eofib9sk7t1v2.hd.mp4"
+
+    'mostlycloudy':
+      - "https://cdn.flixel.com/flixel/e95h5cqyvhnrk4ytqt4q.hd.mp4"
+      - "https://cdn.flixel.com/flixel/l2bjw34wnusyf5q2qq3p.hd.mp4"
+      - "https://cdn.flixel.com/flixel/rrgta099ulami3zb9fd2.hd.mp4"
+
+    'clear-night':
+      - "https://cdn.flixel.com/flixel/x9dr8caygivq5secll7i.hd.mp4"
+      - "https://cdn.flixel.com/flixel/v26zyfd6yf0r33s46vpe.hd.mp4"
+      - "https://cdn.flixel.com/flixel/ypy8bw9fgw1zv2b4htp2.hd.mp4"
+      - "https://cdn.flixel.com/flixel/rosz2gi676xhkiw1ut6i.hd.mp4"
+
+    'fog':
+      - "https://cdn.flixel.com/flixel/vwqzlk4turo2449be9uf.hd.mp4"
+      - "https://cdn.flixel.com/flixel/5363uhabodwwrzgnq6vx.hd.mp4"
+
+    'rainy': "https://cdn.flixel.com/flixel/f0w23bd0enxur5ff0bxz.hd.mp4"
+
+custom_header:
+  compact_mode: false
+  header_text: '{{ hours24 }}:{{ minutesLZ }} {{ dayNameLong }} {{ dayNum }} {{ monthNameLong }} {{ year4d }}'  
+  button_text:
+    menu: '{{ dayNameShort }}. {{ monthNameShort }}. {{ dayNum }} {{ year4d }}'
+
+title: Sobczaki
+views:
+  - badges:
+      - binary_sensor.motion_sensor_158d00016d5ddd
+      - binary_sensor.door_window_sensor_158d00019e275f
+      - binary_sensor.water_leak_sensor_158d0001bb93e7
+      - binary_sensor.switch_158d00016d7744
+      - sensor.yr_symbol
+      - sensor.disk_use_percent_home
+      - sensor.memory_free
+      - sensor.processor_use
+      - sensor.transmission_status
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.illumination_34ce00812981
+      - sensor.temperature_158d0002239fbb
+      - sensor.temperature_158d0001ab2855
+      - sensor.temperature_158d0001b95f89
+      - sensor.temperature_158d00022723b2
+      - sensor.temperature_158d00019c915b
+      - sensor.pressure_158d0001ab2855
+      - person.cezar
+      - person.dorota
+    cards:
+      - aspect_ratio: 0%
+        camera_image: camera.salon
+        entities: []
+        title: Salon
+        type: picture-glance
+      - aspect_ratio: 0%
+        camera_image: camera.przeddomem
+        entities: []
+        title: Przed domem
+        type: picture-glance
+      - type: 'custom:home-feed-card'
+        title: Home Feed
+        card_id: main_feed
+        show_empty: true
+        calendars:
+          - calendar.domowy
+        id_filter: ^home_feed_.*
+        more_info_on_tap: true
+        state_color: true
+        entities:
+        - entity: binary_sensor.motion_sensor_158d00016d5ddd
+          name: Movement
+          more_info_on_tap: false
+      - entities:
+          - switch.wall_switch_right_158d0001dbe288
+          - switch.wall_switch_left_158d0001dbe288
+          - switch.wall_switch_left_158d0001dbe17b
+          - switch.wall_switch_right_158d0001dbe17b
+        title: Światła
+        type: entities
+      - type: 'custom:google-keep-card'
+        entity: sensor.googlekeep_d4fa36d9fe
+#        theme: dark
+#        alpha: 0.7
+        show:
+#          - checked
+          - unchecked    
+        hide_if_empty: false
+      - type: "custom:config-template-card"
+        variables:
+          - states['binary_sensor.person_cezar_url'].attributes.url
+        entities:
+          - binary_sensor.person_cezar_url
+        card:
+          type: iframe
+          url: "${ vars[0] }"        
+    path: default_view
+    title: Home
+  - title: Rooms
+    badges: []
+    cards: 
+    - type: vertical-stack
+      in_card: true
+      cards:
+        - type: glance
+          no_card: true
+          title: "Salon"
+          show_name: false
+          entities:
+            - sensor.mitemp_bt_temperature
+            - sensor.humidity_158d000163e802
+            - sensor.mitemp_bt_humidity
+#            - sensor.salon_flora_moisture
+        - type: entities
+          no_card: true
+          show_header_toggle: false
+          state_color: true
+          entities:
+            - person.cezar
+            - switch.wall_switch_right_158d0001dbe288
+            - switch.wall_switch_left_158d0001dbe288
+            - switch.wall_switch_left_158d0001dbe17b
+            - switch.wall_switch_right_158d0001dbe17b            
+            - input_select.light_scenes_salon
+            - input_select.light_scenes_tv
+            - switch.ledzatv
+            - switch.ledzatvwhite
+            - switch.ledzatvblue
+            - switch.ledzatvfade
+            - switch.sonoff_gniazdko
+            - switch.projektor
+            - script.projector_on
+            - script.projector_off
+            - type: custom:mini-media-player
+              entity: media_player.denon_2
+              hide:
+                controls: false
+                power_state: true
+                progress: true
+              info: scroll
+              group: true
+            - type: custom:mini-media-player
+              entity: media_player.playstation_4
+              hide:
+                controls: true
+                volume: true
+                power_state: true
+                progress: true
+                source: true
+              info: scroll
+              group: true
+            - switch.ekran
+            - type: button
+              name: Screen Down
+              tap_action:
+                action: call-service
+                service: script.turn_on
+                service_data:
+                  entity_id: script.screen_down
+            - type: button
+              name: Screen Up
+              tap_action:
+                action: call-service
+                service: script.turn_on
+                service_data:
+                  entity_id: script.screen_up
+            - type: button
+              name: Screen Stop
+              tap_action:
+                action: call-service
+                service: script.turn_on
+                service_data:
+                  entity_id: script.screen_stop
+            - type: button
+              name: Screen Down and Stop
+              tap_action:
+                action: call-service
+                service: script.turn_on
+                service_data:
+                  entity_id: script.screen_down_and_stop
+    - aspect_ratio: 50%
+      entity: camera.salon
+      type: picture-entity
+    - type: vertical-stack
+      in_card: true
+      cards:
+        - type: glance
+          no_card: true
+          title: "Łazienka dół"
+          show_name: false
+          entities:
+            - sensor.temperature_158d0002239fbb
+            - sensor.humidity_158d0002239fbb
+            - binary_sensor.water_leak_sensor_158d0001bb93e7
+        - type: entities
+          no_card: true
+          show_header_toggle: false
+          state_color: true
+          entities:
+            - switch.sonoff_sauna
+        - type: media-control
+          entity: media_player.sauna
+    - type: vertical-stack
+      in_card: true
+      cards:
+        - type: glance
+          no_card: true
+          title: "Łazienka góra"
+          show_name: false
+          entities:
+            - sensor.temperature_158d00022723b2
+            - sensor.humidity_158d00022723b2  
+            - sensor.pralka
+            - sensor.pralka_power
+    - type: vertical-stack
+      in_card: true
+      cards:
+        - type: glance
+          no_card: true
+          title: "Staszek"
+          show_name: false
+          entities:
+            - sensor.temperatura_staszek
+            - sensor.temperature_158d000163e802
+        - type: entities
+          no_card: true
+          show_header_toggle: false
+          state_color: true
+          entities:
+            - switch.alarm_staszek
+    - type: vertical-stack
+      in_card: true
+      cards:
+        - type: glance
+          no_card: true
+          title: "Zosia"
+          show_name: false
+          entities:
+            - sensor.temperature_158d00019c915b
+            - sensor.humidity_158d00019c915b
+        - type: entities
+          no_card: true
+          show_header_toggle: false
+          state_color: true
+          entities:
+            - switch.alarm_zosia
+    - type: vertical-stack
+      in_card: true
+      cards:
+        - type: glance
+          no_card: true
+          title: "Kuchnia"
+          show_name: false
+          entities:
+            - sensor.temperature_158d0001ab2855
+            - sensor.humidity_158d0001ab2855
+            - sensor.illumination_34ce00812981
+            - sensor.zmywarka
+            - sensor.zmywarka_power
+        - type: entities
+          no_card: true
+          show_header_toggle: false
+          state_color: true
+          entities:
+            - switch.alarm_zosia
+    - type: vertical-stack
+      in_card: true
+      cards:
+        - type: glance
+          no_card: true
+          title: "Taras"
+          show_name: false
+          entities:
+            - sensor.temperatura_ogrod
+        - type: entities
+          no_card: true
+          show_header_toggle: false
+          state_color: true
+          entities:
+            - binary_sensor.door_window_sensor_158d00019e275f
+        - entities:
+            - light.gateway_light_34ce00812981
+            - light.yeelight_color1_7811dc682b4d
+            - light.yeelight_color1_34ce0084c619
+            - light.yeelight_color1_34ce008cf7de
+            - switch.sonoff_power
+          title: Light
+          type: entities
+    - type: vertical-stack
+      in_card: true
+      cards:
+        - type: glance
+          no_card: true
+          title: "Sypialnia"
+          show_name: false
+          entities:
+            - sensor.temperature_158d0001b95f89
+            - sensor.humidity_158d0001b95f89
+
+  - badges: []
+    cards:
+      - type: vertical-stack
+        in_card: true
+        cards:
+          - entity: weather.dark_sky
+            type: weather-forecast
+#            title: Dark Sky
+          - entity: weather.home
+            type: weather-forecast
+          - entities:
+              - binary_sensor.burze_dzis_net_frost_warning
+              - binary_sensor.burze_dzis_net_heat_warning
+              - binary_sensor.burze_dzis_net_precipitation_warning
+              - binary_sensor.burze_dzis_net_storm_warning
+              - binary_sensor.burze_dzis_net_storms_nearby
+              - binary_sensor.burze_dzis_net_tornado_warning
+              - binary_sensor.burze_dzis_net_wind_warning
+              - sensor.rain_precipitation
+            type: entities
+            title: Burze
+          - entities:
+            - sensor.blitzortung_lightning_azimuth
+            - sensor.blitzortung_lightning_counter
+            - sensor.blitzortung_lightning_distance  
+            type: entities
+            title: Błyskawice
+      - type: iframe
+        url: https://embed.windy.com/embed2.html?lat=50.335733&lon=19.562571&zoom=11&location=coordinates&metricWind=m%2Fs
+        aspect_ratio: 61%
+      - entity: camera.weather
+        type: picture-entity
+      - type: vertical-stack
+        in_card: true
+        cards:
+          - aspect_ratio: 50%
+            entity: camera.boleslaw_na_katowice
+            title: Bolesław na Olkusz
+            type: picture-entity
+          - aspect_ratio: 50%
+            entity: camera.boleslaw_na_olkusz
+            title: Bolesław na Katowice
+            type: picture-entity
+      - entities:
+          - entity: fan.xiaomi_miio_device
+          - entity: sensor.mi_aqi
+          - entity: sensor.mi_humidity
+          - entity: sensor.mi_temperature
+        show_header_toggle: false
+        title: Powietrze
+        type: entities
+        
+      - type: 'custom:lovelace-darksky-card'
+        entity_current_conditions: sensor.dark_sky_icon
+        entity_temperature: sensor.dark_sky_temperature
+        entity_forecast_high_temp_1: sensor.dark_sky_daytime_high_temperature_1d
+        entity_forecast_high_temp_2: sensor.dark_sky_daytime_high_temperature_2d
+        entity_forecast_high_temp_3: sensor.dark_sky_daytime_high_temperature_3d
+        entity_forecast_high_temp_4: sensor.dark_sky_daytime_high_temperature_4d
+        entity_forecast_high_temp_5: sensor.dark_sky_daytime_high_temperature_5d
+        entity_forecast_icon_1: sensor.dark_sky_icon_1d
+        entity_forecast_icon_2: sensor.dark_sky_icon_2d
+        entity_forecast_icon_3: sensor.dark_sky_icon_3d
+        entity_forecast_icon_4: sensor.dark_sky_icon_4d
+        entity_forecast_icon_5: sensor.dark_sky_icon_5d
+        entity_forecast_low_temp_1: sensor.dark_sky_overnight_low_temperature_0d
+        entity_forecast_low_temp_2: sensor.dark_sky_overnight_low_temperature_1d
+        entity_forecast_low_temp_3: sensor.dark_sky_overnight_low_temperature_2d
+        entity_forecast_low_temp_4: sensor.dark_sky_overnight_low_temperature_3d
+        entity_forecast_low_temp_5: sensor.dark_sky_overnight_low_temperature_4d
+        entity_summary_1: sensor.dark_sky_summary_1d
+        entity_summary_2: sensor.dark_sky_summary_2d
+        entity_summary_3: sensor.dark_sky_summary_3d
+        entity_summary_4: sensor.dark_sky_summary_4d
+        entity_summary_5: sensor.dark_sky_summary_5d    
+        tooltips: true
+        entity_current_text: sensor.dark_sky_current_text
+        alt_wind: sensor.dark_sky_alt_wind
+    path: weather
+    title: Weather
+  - badges: []
+    cards:
+      - entity: media_player.mibox3
+        type: media-control
+      - entity: media_player.playstation_4
+        type: media-control
+      - entity: media_player.denon_2
+        type: media-control
+      - entities:
+        - script.denon_favourite_pr3
+        - script.denon_favourite_ebm
+        - script.denon_favourite_ps4
+        - script.denon_nowy_swiat
+        - script.denon_favourite_deathfm
+        - script.denon_favourite_darkwave
+        - script.denon_favourite_antyradio
+        title: Denon Ulubione
+        type: entities
+      - entities:
+        - script.samsung_tv_netflix
+        - script.samsung_tv_hbogo
+        - script.samsung_tv_hdmi
+        title: Samsung TV
+        type: entities
+ #     - entity: media_player.tv_samsung_8_series_65
+ #       type: media-control
+      - type: media-control
+        entity: media_player.sauna
+      - type: media-control
+        entity: media_player.adam_s_echo_dot
+      - type: media-control
+        entity: media_player.samsungtvsmart
+#      - type: custom:mini-media-player
+#        entity: media_player.playstation_4
+#        hide:
+#          controls: true
+#          volume: true
+#          power_state: false
+#          progress: true
+#        info: scroll
+#        group: true
+# zwykły button #
+#      - type: vertical-stack
+#        cards:
+#        - cards:
+#          - color_type: icon
+#            icon: 'mdi:power-standby'
+#            tap_action:
+#              action: call-service
+#              service: adb_service.press
+#            type: button
+#          type: horizontal-stack
+      - type: vertical-stack
+        cards:
+        - cards:
+          - color_type: icon
+            icon: 'mdi:power-standby'
+            tap_action:
+              action: call-service
+              service: adb_service.press
+            type: 'custom:button-card'
+          - color_type: icon
+            icon: 'mdi:volume-plus'
+            tap_action:
+              action: call-service
+              service: adb_service.press
+              service_data:
+                key: VolumeUp
+            type: 'custom:button-card'
+          - color_type: icon
+            icon: 'mdi:volume-minus'
+            tap_action:
+              action: call-service
+              service: adb_service.press
+              service_data:
+                key: VolumeDown
+            type: 'custom:button-card'
+          type: horizontal-stack
+
+        - cards:
+            - color_type: icon
+              icon: 'mdi:information-variant'
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Info
+              type: 'custom:button-card'
+            - color_type: icon
+              icon: 'mdi:arrow-up-bold-box'
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Up
+              type: 'custom:button-card'
+            - color_type: icon
+              icon: 'mdi:plus-box-outline'
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: ProgramUp
+              type: 'custom:button-card'
+          type: horizontal-stack
+        - cards:
+            - color_type: icon
+              icon: 'mdi:arrow-left-bold-box'
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Left
+              type: 'custom:button-card'
+            - color_type: icon
+              name: OK
+              aspect_ratio: 2/1
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Ok
+              type: 'custom:button-card'
+            - color_type: icon
+              icon: 'mdi:arrow-right-bold-box'
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Right
+              type: 'custom:button-card'
+          type: horizontal-stack
+        - cards:
+            - color_type: icon
+              icon: 'mdi:keyboard-return'
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Back
+              type: 'custom:button-card'
+            - color_type: icon
+              icon: 'mdi:arrow-down-bold-box'
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Down
+              type: 'custom:button-card'
+            - color_type: icon
+              icon: 'mdi:minus-box-outline'
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: ProgramDown
+              type: 'custom:button-card'
+          type: horizontal-stack
+        - cards:
+            - color_type: icon
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Rewind
+              icon: 'mdi:rewind'
+              type: 'custom:button-card'
+            - color_type: icon
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Play
+              icon: 'mdi:play'
+              type: 'custom:button-card'
+            - color_type: icon
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Pause
+              icon: 'mdi:pause'
+              type: 'custom:button-card'
+            - color_type: icon
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: FForward
+              icon: 'mdi:fast-forward'
+              type: 'custom:button-card'
+          type: horizontal-stack
+        - cards:
+            - color_type: icon
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: One
+              icon: 'mdi:numeric-1-box-outline'
+              type: 'custom:button-card'
+            - color_type: icon
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Two
+              icon: 'mdi:numeric-2-box-outline'
+              type: 'custom:button-card'
+            - color_type: icon
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Three
+              icon: 'mdi:numeric-3-box-outline'
+              type: 'custom:button-card'
+          type: horizontal-stack
+        - cards:
+            - color_type: icon
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Four
+              icon: 'mdi:numeric-4-box-outline'
+              type: 'custom:button-card'
+            - color_type: icon
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Five
+              icon: 'mdi:numeric-5-box-outline'
+              type: 'custom:button-card'
+            - color_type: icon
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Six
+              icon: 'mdi:numeric-6-box-outline'
+              type: 'custom:button-card'
+          type: horizontal-stack
+        - cards:
+            - color_type: icon
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Seven
+              icon: 'mdi:numeric-7-box-outline'
+              type: 'custom:button-card'
+            - color_type: icon
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Eight
+              icon: 'mdi:numeric-8-box-outline'
+              type: 'custom:button-card'
+            - color_type: icon
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Nine
+              icon: 'mdi:numeric-9-box-outline'
+              type: 'custom:button-card'
+          type: horizontal-stack
+        - cards:
+            - type: 'custom:button-card'
+              color_type: blank-card
+            - color_type: icon
+              tap_action:
+                action: call-service
+                service: adb_service.press
+                service_data:
+                  key: Zero
+              icon: 'mdi:numeric-0-box-outline'
+              type: 'custom:button-card'
+            - type: 'custom:button-card'
+              color_type: blank-card
+          type: horizontal-stack
+    path: multimedia
+    title: Multimedia
+  - badges: []
+    cards:
+      - entities:
+          - sensor.disk_use_percent_home
+          - sensor.last_boot
+          - sensor.load_15m
+          - sensor.memory_free
+          - sensor.processor_use
+          - sensor.ad_version_current
+          - sensor.ha_version_current
+          - sensor.raspberry_cpu_temp
+          - sensor.last_ha_restart
+        show_header_toggle: false
+        title: System
+        type: entities
+      - type: vertical-stack
+        in_card: true
+        cards:
+          - type: entities
+            no_card: true
+            title: "UPS"
+            show_header_toggle: false
+            entities:
+              - sensor.apc350_battery_runtime
+              - sensor.apc350_input_voltage
+              - sensor.apc350_load
+              - sensor.apc350_nominal_real_power
+              - sensor.apc350_beeper_status
+              - sensor.apc350_load_restart_delay
+              - sensor.apc350_low_battery_runtime
+              - sensor.apc350_low_battery_setpoint
+              - sensor.apc350_status
+              - sensor.apc350_ups_shutdown_delay
+              - sensor.apc350_warning_battery_setpoint
+          - type: horizontal-stack
+            no_cards: true
+            cards:
+              - type: custom:mini-graph-card
+                no_card: true
+                hour24: true
+                decimals: 0
+                points_per_hour: 1
+                show:
+                  fill: fade
+                entities:
+                  - sensor.apc350_input_voltage
+                line_color: "#ef5350"
+              - type: custom:mini-graph-card
+                no_card: true
+                hour24: true
+                decimals: 0
+                points_per_hour: 1
+                show:
+                  fill: fade
+                entities:
+                  - sensor.apc350_battery_runtime
+                line_color: "#36a2eb"
+                lower_bound: 0
+      - type: vertical-stack
+        in_card: true
+        cards:
+          - type: entities
+            no_card: true
+            title: "Energia"
+            show_header_toggle: false
+            entities:
+#              - sensor.owl_waty
+              - sensor.sonoff_pow_power
+              - sensor.nas_power_sensor
+              - sensor.roomba_power_sensor
+              - sensor.pralka_power
+              - sensor.zmywarka_power
+#              - sensor.owl_energy
+#              - sensor.hourly_home_energy
+#              - sensor.daily_home_energy
+#              - sensor.monthly_home_energy
+#              - sensor.hourly_home_input
+#              - sensor.daily_home_input
+#              - sensor.monthly_home_input
+#              - sensor.hourly_home_output
+#              - sensor.daily_home_output
+#              - sensor.monthly_home_output
+              - sensor.power_generation
+#              - sensor.power_consumption
+              - sensor.energy_generation
+#              - sensor.energy_consumption
+#              - sensor.daily_energy_nas
+#          - type: horizontal-stack
+#            no_cards: true
+#            cards:
+#              - type: custom:mini-graph-card
+#                no_card: true
+#                hour24: true
+#                decimals: 0
+#                points_per_hour: 1
+#                show:
+#                  fill: fade
+#                  extrema: true
+#                  icon: false
+#                  labels: false
+#                  name: true
+#                  state: true                
+#                entities:
+#                  - sensor.owl_waty
+#                line_color: "#ef5350"
+      - entities:
+          - sensor.transmission_status
+          - sensor.transmission_active_torrents
+          - sensor.transmission_paused_torrents
+          - sensor.transmission_total_torrents
+          - sensor.transmission_started_torrents
+          - sensor.transmission_down_speed
+          - sensor.transmission_up_speed
+        show_header_toggle: false
+        title: Transmission
+        type: entities
+      - type: entities
+        entities:
+          - sensor.active_time
+          - sensor.active_kilocalories
+          - sensor.daily_step_goal
+          - sensor.floors_ascended
+          - sensor.total_steps
+        title: Garmin
+      - type: custom:battery-state-card        
+        title: "Baterie sensorów temperatury 1"
+        entities:      
+          - sensor.temperature_158d00019c915b
+          - sensor.temperature_158d0001ab2855
+          - sensor.temperature_158d0002239fbb
+          - sensor.temperature_158d00022723b2
+          - sensor.temperature_158d0001b95f89
+          - sensor.temperature_158d000163e802
+
+          - binary_sensor.motion_sensor_158d00016d5ddd
+          - binary_sensor.water_leak_sensor_158d0001bb93e7
+          - binary_sensor.switch_158d00016d7744
+          - binary_sensor.door_window_sensor_158d00019e275f
+          - sensor.mitemp_bt_battery
+    path: system
+    title: System
+  - badges: []
+    cards:
+      - entities:
+          - entity: binary_sensor.workday_sensor
+          - entity: binary_sensor.sonoffswiatloprzeddomem_status
+          - entity: binary_sensor.ipad_status
+          - entity: binary_sensor.xiaomirepeater_status
+          - entity: binary_sensor.dlink480_status
+          - entity: binary_sensor.dlink720_status
+          - entity: binary_sensor.kindle_status
+          - entity: binary_sensor.alexa_status
+          - entity: binary_sensor.sonoffczujniksmogu_status
+          - entity: binary_sensor.xiaomigateway_status
+          - entity: binary_sensor.laptopdoroty_status
+          - entity: binary_sensor.laptopfirmowywifi_status
+          - entity: binary_sensor.xiaomiairpurifier_status
+          - entity: binary_sensor.picoresauna_status
+          - entity: binary_sensor.sonoffsauna_status
+          - entity: binary_sensor.sonoffth16_status
+          - entity: binary_sensor.sonoffpow_status
+          - entity: binary_sensor.sonoffgniazdko_status
+          - entity: binary_sensor.solisinverter_status
+        show_header_toggle: false
+        title: WiFi
+        type: entities
+      - entities:
+          - entity: binary_sensor.playstation_status
+          - entity: binary_sensor.retropie_status
+          - entity: binary_sensor.wii_status
+          - entity: binary_sensor.3ds_status
+        show_header_toggle: false
+        title: Konsole do gier
+        type: entities
+      - entities:
+          - entity: binary_sensor.denon_status
+          - entity: binary_sensor.laptopstasia_status
+          - entity: binary_sensor.laptopfirmowyeth_status
+          - entity: binary_sensor.lms_status
+          - entity: binary_sensor.raspberry_status
+          - entity: binary_sensor.nas_status
+          - entity: binary_sensor.tv_status
+        show_header_toggle: false
+        title: Kablowe
+        type: entities
+      - entities:
+#          - entity: sensor.iphone_adam_battery_level
+          - entity: sensor.battery_level
+          - entity: sensor.geocoded_location
+          - entity: sensor.iphone_adam_storage
+          - entity: sensor.iphone_adam_cellular_provider
+          - entity: sensor.last_update_trigger
+          - entity: sensor.sim_1
+          - entity: device_tracker.iphone_adam
+          - entity: sensor.ssid
+          - entity: sensor.connection_type
+        title: Komórka
+        type: entities
+      - entities:
+          - entity: sensor.hp_deskjet_5000_series
+          - entity: sensor.hp_deskjet_5000_series_black_ink
+          - entity: sensor.hp_deskjet_5000_series_tri_color_ink
+        show_header_toggle: false
+        title: Drukarka
+        type: entities
+    path: network
+    title: Network
+  - badges: []
+    cards:
+      - entities:
+          - entity: sensor.raspberry_cpu_temp
+        hours_to_show: 24
+        refresh_interval: 0
+        title: Temperatura CPU
+        type: history-graph
+#      - entities:
+#          - entity: sensor.owl_waty
+#        hours_to_show: 48
+#        refresh_interval: 0
+#        title: Energia w domu
+#        type: history-graph
+      - entities:
+          - entity: sensor.daily_home_energy
+        hours_to_show: 48
+        refresh_interval: 0
+        title: Dzienna energia
+        type: history-graph
+      - entities:
+          - entity: sensor.speedtest_download
+          - entity: sensor.speedtest_upload
+        hours_to_show: 24
+        refresh_interval: 0
+        title: Internet
+        type: history-graph
+      - entities:
+          - entity: sensor.temperature_158d0001ab2855
+        hours_to_show: 48
+        refresh_interval: 0
+        title: Temperatura kuchnia
+        type: history-graph
+      - entities:
+          - entity: sensor.worldwide_coronavirus_confirmed
+          - entity: sensor.worldwide_coronavirus_current
+          - entity: sensor.worldwide_coronavirus_deaths
+          - entity: sensor.worldwide_coronavirus_recovered
+        title: Korona
+        type: entities
+      - type: custom:mini-graph-card
+#        <<: *CLIMATE_GRAPH_PARAMS
+        entities:
+          - sensor.pressure_158d0001ab2855
+        line_color: "#4bc0c0"
+        decimals: 1
+    path: graphs
+    title: Graphs
+  - badges: []
+    cards:
+      - entity: light.salonled
+        title: Salon LED
+        type: light
+      - entities:
+          - light.gateway_light_34ce00812981
+          - light.yeelight_color1_7811dc682b4d
+          - light.yeelight_color1_34ce0084c619
+          - light.yeelight_color1_34ce008cf7de
+          - switch.wall_switch_right_158d0001dbe288
+          - switch.wall_switch_left_158d0001dbe288
+          - switch.wall_switch_left_158d0001dbe17b
+          - switch.wall_switch_right_158d0001dbe17b
+        title: Światła
+        type: entities
+      - entity: light.gateway_light_34ce00812981
+        type: light
+      - type: entities
+        title: Taras
+        show_header_toggle: false
+        entities:
+          - entity: light.yeelight_color1_7811dc682b4d
+            type: custom:light-brightness-preset-row
+            name: Światło 1
+            customTheme: false
+          - entity: light.yeelight_color1_34ce0084c619
+            type: custom:light-brightness-preset-row
+            name: Światło 2
+            customTheme: false
+          - entity: light.yeelight_color1_34ce008cf7de
+            type: custom:light-brightness-preset-row
+            name: Światło 3
+            customTheme: false
+            customTheme: true
+            customSetpoints: true
+            LowBrightness: 30
+            MedBrightness: 100
+            HiBrightness: 225
+      - type: vertical-stack
+        title: Kolory
+        in_card: true
+        cards:
+        - type: custom:light-entity-card
+          name: Salon LED
+          entity: light.salonled
+        - type: custom:light-entity-card
+          entity: light.yeelight_color1_7811dc682b4d
+        - type: custom:light-entity-card
+          entity: light.yeelight_color1_34ce0084c619
+        - type: custom:light-entity-card
+          entity: light.yeelight_color1_34ce008cf7de
+#      - type: custom:more-info-card
+#        entity: light.yeelight_color1_34ce008cf7de
+#        title: Yeelight RGB
+    path: light
+    title: Light
+  - badges: []
+    cards:
+      - type: vertical-stack
+        in_card: true
+        cards:
+          - entities:
+              - entity: sensor.ps4_today_time
+              - entity: sensor.next_launch
+              - entity: sensor.moon
+              - entity: sensor.season
+              - entity: sensor.time
+              - entity: sensor.date
+              - entity: sensor.rocznica_slubu
+            type: entities
+          - entities:
+              - entity: sensor.adam
+              - entity: sensor.dorota
+            show_header_toggle: false
+            title: Do pracy
+            type: entities
+          - entity: sensor.dorota
+            max: 100
+            min: 0
+            name: Dorota do pracy
+            severity:
+              green: 1
+              red: 60
+              yellow: 50
+            theme: default
+            type: gauge
+          - type: custom:ha-card-waze-travel-time
+            header: false
+            name: "Droga do pracy"
+            unit: km
+            columns:
+              - from
+              - to
+              - duration
+              - distance
+              - icon
+            destinations:
+              - entity: sensor.adam
+                from: !secret adam_from
+                to: !secret adam_to
+              - entity: sensor.dorota
+                to: !secret dorota_to
+      - type: vertical-stack
+        in_card: true
+        cards:
+          - type: custom:calendar-card
+            title: "My Calendar"
+            progressBar: true
+            entities:
+              - calendar.domowy
+
+          - type: custom:atomic-calendar
+            title: "Calendar"
+            entities:
+              - entity: calendar.domowy
+                type: holiday
+            
+          - type: custom:quote-of-the-day-card               
+            entity: sensor.quote_of_the_day
+            feed_attribute: entries # Required if using FeedParser v0.0.8 or later
+      - type: custom:list-card
+        entity: sensor.wiadomosci_kraj
+        feed_attribute: entries # Required if using FeedParser v0.0.8 or later
+        columns:
+          - title: Description
+            field: summary
+            add_link: link
+    path: ourday
+    title: Our Day
+  - badges: []
+    cards:
+      - entities:
+          - entity: switch.wall_switch_right_158d0001dbe288
+          - entity: switch.wall_switch_left_158d0001dbe288
+          - entity: switch.wall_switch_left_158d0001dbe17b
+          - entity: switch.wall_switch_right_158d0001dbe17b
+          - entity: switch.plug_158d0002330853
+          - entity: switch.plug_158d00016ff1a4
+          - entity: switch.sonoff_power
+          - entity: switch.sonoff_pow
+          - entity: switch.sonoff_sauna
+          - entity: switch.sonoff_th16
+          - entity: switch.sonoff_gniazdko
+          - entity: switch.altana
+          - entity: switch.zmywarka
+          - entity: switch.pralka
+        title: Switch
+        type: entities
+      - entities:
+          - entity: switch.sonoff_pow
+          - entity: sensor.sonoff_pow_current
+          - entity: sensor.sonoff_pow_power
+          - entity: sensor.sonoff_pow_today_energy
+          - entity: sensor.sonoff_pow_yesterday_energy
+          - entity: sensor.sonoff_temperature
+        show_header_toggle: false
+        title: Sonoff POW - konsole
+        type: entities
+    path: switches
+    title: Switches
+  - badges: []
+    cards:
+      - entities:
+        - entity: input_boolean.wakacje
+        title: Ustawienia systemu
+        type: entities
+        
+      - type: custom:ha-card-weather-conditions
+        name: "Cezar"
+        language: en
+        animation: true
+        camera: camera.przeddomem
+        pollen:
+          tree:
+            entity: sensor.cc_test_pollen_tree
+            min: 0
+            max: 5
+            low: 1
+            high: 3
+          weed:
+            entity: sensor.cc_test_pollen_weed
+            min: 0
+            max: 5
+            low: 1
+            high: 3
+          grass:
+            entity: sensor.cc_test_pollen_grass
+            min: 0
+            max: 5
+            low: 1
+            high: 3
+        air_quality:
+          pm25: sensor.cc_test_pm25
+          pm10: sensor.cc_test_pm10
+          o3: sensor.cc_test_o3
+          no2: sensor.cc_test_no2
+          co: sensor.cc_test_co
+          so2: sensor.cc_test_so2
+          epa_aqi: sensor.cc_test_epa_aqi
+          epa_health_concern: sensor.cc_test_epa_health_concern
+        weather:
+          icons_model: climacell
+          current:
+            sun: sun.sun
+            current_conditions: sensor.cc_test_weather_condition
+            humidity: sensor.cc_test_humidity_percentage
+            pressure: sensor.cc_test_barometric_pressure
+            temperature: sensor.cc_test_temperature
+            visibility: sensor.cc_test_visibility
+            wind_bearing: sensor.cc_test_wind_direction
+            wind_speed: sensor.cc_test_wind_speed
+            precipitation: sensor.cc_test_precipitation
+            forecast: true
+          forecast:
+            meteogram: camera.weather
+            icons:
+              day_1: sensor.cc_test_weather_condition_0d
+              day_2: sensor.cc_test_weather_condition_1d
+              day_3: sensor.cc_test_weather_condition_2d
+              day_4: sensor.cc_test_weather_condition_3d
+              day_5: sensor.cc_test_weather_condition_4d
+            temperature_high:
+              day_1: sensor.cc_test_temperature_max_0d
+              day_2: sensor.cc_test_temperature_max_1d
+              day_3: sensor.cc_test_temperature_max_2d
+              day_4: sensor.cc_test_temperature_max_3d
+              day_5: sensor.cc_test_temperature_max_4d
+            temperature_low:
+              day_1: sensor.cc_test_temperature_min_0d
+              day_2: sensor.cc_test_temperature_min_1d
+              day_3: sensor.cc_test_temperature_min_2d
+              day_4: sensor.cc_test_temperature_min_3d
+              day_5: sensor.cc_test_temperature_min_4d
+            precipitation_probability:
+              day_1: sensor.cc_test_precipitation_probability_0d
+              day_2: sensor.cc_test_precipitation_probability_1d
+              day_3: sensor.cc_test_precipitation_probability_2d
+              day_4: sensor.cc_test_precipitation_probability_3d
+              day_5: sensor.cc_test_precipitation_probability_4d
+            precipitation_intensity:
+              day_1: sensor.cc_test_precipitation_max_0d
+              day_2: sensor.cc_test_precipitation_max_1d
+              day_3: sensor.cc_test_precipitation_max_2d
+              day_4: sensor.cc_test_precipitation_max_3d
+              day_5: sensor.cc_test_precipitation_max_4d  
+              
+    path: setting
+    title: Settings
+  - badges: []
+    cards: 
+      - type: vertical-stack
+        in_card: true
+        cards:
+          - type: entities
+            no_card: true
+            show_header_toggle: false
+            state_color: true
+            entities:
+              - entity: binary_sensor.motion_sensor_158d00016d5ddd
+                secondary_info: last-changed
+              - switch.alarm_zosia
+              - switch.alarm_staszek
+              - sensor.rain_precipitation
+
+              - sensor.zmywarka_energy_today
+              - sensor.zmywarka_energy_total
+              - sensor.zmywarka_power
+              - sensor.zmywarka_voltage
+              - sensor.zmywarka_power_factor   
+
+              - sensor.pralka_energy_today
+              - sensor.pralka_energy_total
+              - sensor.pralka_power
+              - sensor.pralka_voltage
+              - sensor.pralka_power_factor   
+              - switch.pralka
+                           
+              - sensor.salon_flora_temperature
+              - sensor.salon_flora_moisture
+              - sensor.salon_flora_battery
+              - sensor.salon_flora_light_intensity
+              - sensor.salon_flora_conductivity
+              - sensor.pralka
+      - type: 'custom:google-keep-card'
+        entity: sensor.googlekeep_d4fa36d9fe
+#        theme: dark
+#        alpha: 0.7
+        show:
+#          - checked
+          - unchecked    
+        hide_if_empty: false
+      - type: "custom:config-template-card"
+        variables:
+          - states['binary_sensor.person_cezar_url'].attributes.url
+        entities:
+          - binary_sensor.person_cezar_url
+        card:
+          type: iframe
+          url: "${ vars[0] }"        
+    title: Temp

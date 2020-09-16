@@ -1,0 +1,92 @@
+- id: film
+  name: film
+  entities:
+    light.salonled:
+      state: "on"
+      transition: 5
+      brightness: 50
+      rgb_color: [255,255,255]
+    switch.wall_switch_right_158d0001dbe288: off
+    switch.wall_switch_left_158d0001dbe288: off
+    switch.wall_switch_left_158d0001dbe17b: off
+    switch.ledzatv: off
+
+- id: jasny
+  name: jasny
+  entities:
+    switch.wall_switch_right_158d0001dbe288: on
+    switch.wall_switch_left_158d0001dbe288: on
+    switch.wall_switch_left_158d0001dbe17b: on
+    light.salonled:
+      state: "off"
+    switch.ledzatv: off
+
+- id: dobranoc
+  name: dobranoc
+  entities:
+    switch.wall_switch_right_158d0001dbe288: off
+    switch.wall_switch_left_158d0001dbe288: off
+    switch.wall_switch_left_158d0001dbe17b: off
+    light.salonled:
+      state: "off"
+    switch.ledzatv: off
+
+- id: dyskoteka
+  name: dyskoteka
+  entities:
+    switch.wall_switch_right_158d0001dbe288: off
+    switch.wall_switch_left_158d0001dbe288: off
+    switch.wall_switch_left_158d0001dbe17b: off
+    light.salonled:
+      state: "on"
+      effect: "colorloop"
+    switch.ledzatv: off
+      
+- id: czytanie
+  name: czytanie
+  entities:
+    switch.wall_switch_right_158d0001dbe288: off
+    switch.wall_switch_left_158d0001dbe288: off
+    switch.wall_switch_left_158d0001dbe17b: on
+    light.salonled:
+      state: "off"
+    switch.ledzatv: off
+      
+- id: tv
+  name: tv
+  entities:
+    switch.wall_switch_right_158d0001dbe288: off
+    switch.wall_switch_left_158d0001dbe288: off
+    switch.wall_switch_left_158d0001dbe17b: on
+    light.salonled:
+      state: "off"
+    switch.ledzatv: on
+
+- id: ledzatvonwhite
+  name: LED za TV white
+  entities:
+    switch.ledzatv: on
+    switch.ledzatvwhite: on
+    
+- id: ledzatvonblue
+  name: LED za TV blue
+  entities:
+    switch.ledzatv: on
+    switch.ledzatvblue: on
+    
+- id: ledzatvonfade
+  name: LED za TV fade
+  entities:
+    switch.ledzatv: on
+    switch.ledzatvfade: on
+    
+- id: ledzatvoff
+  name: LED za TV Off
+  entities:
+    switch.ledzatv: off
+
+- id: ledsufitoff
+  name: LED sufit Off
+  entities:
+    light.salonled:
+      state: "off"

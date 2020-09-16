@@ -1,0 +1,477 @@
+- id: AQI_BAD
+  alias: Powietrze - Sąsiedzi smrodzą
+  trigger:
+  - above: '12'
+    entity_id: fan.xiaomi_miio_device
+    for: 0:05:00
+    platform: numeric_state
+    value_template: '{{ state.attributes.aqi }}'
+  condition:
+  - condition: and
+    conditions:
+    - after: '10:00:00'
+      before: '23:00:00'
+      condition: time
+  action:
+  - data:
+      message: Sąsiedzi smrodzą, włączam oczyszczacz!
+      title: Kiepskie powietrze
+    service: notify.cezar
+  - entity_id: fan.xiaomi_miio_device
+    service: fan.turn_on
+  - data:
+      speed: auto
+    entity_id: fan.xiaomi_miio_device
+    service: fan.set_speed
+- id: AQI_OK
+  alias: Powietrze - OK
+  trigger:
+  - below: '23'
+    entity_id: fan.xiaomi_miio_device
+    for: 0:10:00
+    platform: numeric_state
+    value_template: '{{ state.attributes.aqi }}'
+  condition:
+  - condition: state
+    entity_id: fan.xiaomi_miio_device
+    state: 'on'
+  action:
+  - data:
+      message: Świeże powietrze, wyłączam oczyszczacz.
+      title: Powietrze ok, wyłączam oczyszczacz.
+    service: notify.cezar
+  - entity_id: fan.xiaomi_miio_device
+    service: fan.turn_off
+- id: AQI_BAD_NIGHT
+  alias: Powietrze - Oczyszczacz w nocy
+  trigger:
+  - above: '28'
+    entity_id: fan.xiaomi_miio_device
+    for: 0:03:00
+    platform: numeric_state
+    value_template: '{{ state.attributes.aqi }}'
+  condition:
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: fan.xiaomi_miio_device
+      state: 'off'
+    - after: '23:00:00'
+      before: '10:00:00'
+      condition: time
+  action:
+  - entity_id: fan.xiaomi_miio_device
+    service: fan.turn_on
+  - data:
+      speed: silent
+    entity_id: fan.xiaomi_miio_device
+    service: fan.set_speed
+- id: AQI_VERY_BAD
+  alias: Powietrze - Bardzo zła jakość powietrza
+  trigger:
+  - above: '15'
+    entity_id: fan.xiaomi_miio_device
+    for: 0:05:00
+    platform: numeric_state
+    value_template: '{{ state.attributes.aqi }}'
+  - above: '20'
+    entity_id: fan.xiaomi_miio_device
+    for: 0:05:00
+    platform: numeric_state
+    value_template: '{{ state.attributes.aqi }}'
+  condition:
+  - condition: and
+    conditions:
+    - after: '10:00:00'
+      before: '23:00:00'
+      condition: time
+  action:
+  - data:
+      message: Bardzo smrodzą {{ state_attr('fan.xiaomi_miio_device', 'aqi') }}, włączam
+        oczyszczacz!
+      title: Jakość powietrza bardzo zła!
+    service: notify.cezar
+  - entity_id: fan.xiaomi_miio_device
+    service: fan.turn_on
+  - data:
+      speed: favorite
+    entity_id: fan.xiaomi_miio_device
+    service: fan.set_speed
+  - data_template:
+      entity_id: fan.xiaomi_miio_device
+      level: '{% if state_attr(''fan.xiaomi_miio_device'', ''aqi'') | int > 30 %}
+        15 {% elif state_attr(''fan.xiaomi_miio_device'', ''aqi'') | int > 25 %} 12
+        {% elif state_attr(''fan.xiaomi_miio_device'', ''aqi'') | int > 20 %} 10 {%
+        elif state_attr(''fan.xiaomi_miio_device'', ''aqi'') | int > 15 %} 8 {% else
+        %} 5 {% endif %} '
+    service: fan.xiaomi_miio_set_favorite_level
+- id: light_turn_on_lights_outside
+  alias: Światła - Włącz godzinę po zachodzie słońca
+  description: Włącz światło przed domem godzinę po zachodzie słońca i powiadom mnie
+  trigger:
+  - event: sunset
+    offset: +01:00
+    platform: sun
+  condition:
+  - condition: state
+    entity_id: switch.sonoff_power
+    state: 'off'
+  action:
+  - entity_id: switch.sonoff_power
+    service: switch.turn_on
+  - data:
+      message: HA - światła przed domem włączone
+    service: notify.cezar
+  - data:
+      data:
+        method: all
+        type: announce
+      message: Lights outside are on
+      title: Lights outside
+    service: notify.alexa_media_adam_s_echo_dot
+- id: '1587673559006'
+  alias: Jasno
+  description: ''
+  trigger:
+  - entity_id: input_select.light_scenes_salon
+    platform: state
+    to: jasny
+  condition: []
+  action:
+  - scene: scene.jasny
+- id: '1587674368856'
+  alias: Film
+  description: ''
+  trigger:
+  - entity_id: input_select.light_scenes_salon
+    platform: state
+    to: film
+  condition: []
+  action:
+  - scene: scene.film
+- id: '1587851167532'
+  alias: Dobranoc
+  description: ''
+  trigger:
+  - entity_id: input_select.light_scenes_salon
+    platform: state
+    to: dobranoc
+  condition: []
+  action:
+  - scene: scene.dobranoc
+- id: '1587851233478'
+  alias: Dyskoteka
+  description: ''
+  trigger:
+  - entity_id: input_select.light_scenes_salon
+    platform: state
+    to: dyskoteka
+  condition: []
+  action:
+  - scene: scene.dyskoteka
+- id: '1587851316068'
+  alias: Czytanie
+  description: ''
+  trigger:
+  - entity_id: input_select.light_scenes_salon
+    platform: state
+    to: czytanie
+  condition: []
+  action:
+  - scene: scene.czytanie
+- id: '1587932666999'
+  alias: TV
+  description: ''
+  trigger:
+  - entity_id: input_select.light_scenes_salon
+    platform: state
+    to: tv
+  condition: []
+  action:
+  - scene: scene.tv
+- id: '1588278306126'
+  alias: Światła - Wyłącz przed domem o 22
+  description: ''
+  trigger:
+  - at: '22:00'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: switch.sonoff_power
+    state: 'on'
+  action:
+  - data: {}
+    entity_id: switch.sonoff_power
+    service: switch.turn_off
+  - data:
+      message: HA - wyłączyłem światła przed domem
+    service: notify.cezar
+  - data:
+      data:
+        method: all
+        type: announce
+      message: <amazon:effect name='whispered'>Lights outside are off</amazon:effect>
+      title: Lights outside
+    service: notify.alexa_media_adam_s_echo_dot
+- id: '1588281346963'
+  alias: AleJaja
+  description: ''
+  trigger:
+  - entity_id: switch.wall_switch_right_158d0001dbe288
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data: {}
+    service: script.roar_alexa
+- alias: Set Night theme at startup
+  initial_state: 'on'
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition:
+    condition: sun
+    after: sunset
+  action:
+  - service: frontend.set_theme
+    data:
+      name: darkblue
+  id: c342998073644805bc2f1d63a4a2b62c
+- id: '1588675313820'
+  alias: Motyw - Ustawienie motywu na starcie HA
+  description: ''
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition:
+  - after: sunrise
+    after_offset: +00:30:00
+    condition: sun
+  action:
+  - data:
+      name: default
+    service: frontend.set_theme
+- id: '1588675552870'
+  alias: Motyw - Ciemny po zachodzie słońca
+  description: ''
+  trigger:
+  - event: sunset
+    platform: sun
+  condition: []
+  action:
+  - data:
+      name: blue_night
+    service: frontend.set_theme
+- id: '1588675771948'
+  alias: Motyw - Jasny po wschodzie słońca
+  description: ''
+  trigger:
+  - event: sunrise
+    offset: +00:30:00
+    platform: sun
+  condition: []
+  action:
+  - data:
+      name: default
+    service: frontend.set_theme
+- id: '1588675991329'
+  alias: Motyw - Ciemny po starcie HA
+  description: ''
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition:
+  - after: sunset
+    condition: sun
+  action:
+  - data:
+      name: blue_night
+    service: frontend.set_theme
+- id: '1589838898697'
+  alias: LED za TV white
+  description: ''
+  trigger:
+  - entity_id: input_select.light_scenes_tv
+    platform: state
+    to: ledzatvonwhite
+  condition: []
+  action:
+  - scene: scene.led_za_tv_white
+- id: '1589838999194'
+  alias: LED za TV off
+  description: ''
+  trigger:
+  - entity_id: input_select.light_scenes_tv
+    platform: state
+    to: ledzatvoff
+  condition: []
+  action:
+  - scene: scene.led_za_tv_off
+- id: '1589839425099'
+  alias: LED za TV blue
+  description: ''
+  trigger:
+  - entity_id: input_select.light_scenes_tv
+    platform: state
+    to: ledzatvonblue
+  condition: []
+  action:
+  - scene: scene.led_za_tv_blue
+- id: '1589839512873'
+  alias: LED za TV fade
+  description: ''
+  trigger:
+  - entity_id: input_select.light_scenes_tv
+    platform: state
+    to: ledzatvonfade
+  condition: []
+  action:
+  - scene: scene.led_za_tv_fade
+- id: '1593637434248'
+  alias: Xiaomi Switch LED
+  description: ''
+  trigger:
+  - entity_id: switch.wall_switch_right_158d0001dbe17b
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - scene: scene.film
+- id: '1593637896060'
+  alias: Xiaomi Switch LED Off
+  description: ''
+  trigger:
+  - entity_id: switch.wall_switch_right_158d0001dbe17b
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - scene: scene.led_sufit_off
+- id: '1594577774682'
+  alias: Cieknie!
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.water_leak_sensor_158d0001bb93e7
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: Czujnik zalania w łazience na dole aktywowany!
+    service: notify.cezar
+- id: '1594720203727'
+  alias: Status domu
+  description: ''
+  trigger:
+  - event: sunrise
+    platform: sun
+  condition: []
+  action:
+  - data:
+      message: 'HA - temperatura w salonie: {{ states(''sensor.temperature_158d0001b95f89'')
+        }} , w ogrodzie: {{ states(''sensor.temperatura_ogrod'') }}, u Zosi: {{ states(''sensor.temperature_158d00019c915b'')
+        }}, u Stasia {{ states(''sensor.temperatura_staszek'') }}. Prognoza mówi:
+        {{ states(''sensor.dark_sky_summary_1d'') }} Moja kochana żona pojedzie do
+        pracy {{ states(''sensor.dorota'') }} minut.'
+    service: notify.cezar
+  - data:
+      message: 'HA - temperatura w salonie: {{ states(''sensor.temperature_158d0001b95f89'')
+        }} , w ogrodzie: {{ states(''sensor.temperatura_ogrod'') }}, u Zosi: {{ states(''sensor.temperature_158d00019c915b'')
+        }}, u Stasia {{ states(''sensor.temperatura_staszek'') }}. Prognoza mówi:
+        {{ states(''sensor.dark_sky_summary_1d'') }} Kochana żono - pojedziesz do
+        pracy {{ states(''sensor.dorota'') }} minut.'
+    service: notify.dorota
+  mode: single
+- id: '1596984381234'
+  alias: Altana on
+  description: ''
+  trigger:
+  - event: sunset
+    platform: sun
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.altana
+    service: switch.turn_on
+  mode: single
+- id: '1596984422659'
+  alias: Altana off
+  description: ''
+  trigger:
+  - at: '22:40'
+    platform: time
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.altana
+    service: switch.turn_off
+  mode: single
+- id: '1597760065479'
+  alias: Burza - ostrzeżenie
+  description: ''
+  trigger:
+  - entity_id: binary_sensor.burze_dzis_net_storm_warning
+    from: 'Off'
+    platform: state
+    to: 'On'
+  condition: []
+  action:
+  - data:
+      message: Oj, będzie burza
+    service: notify.cezar
+  mode: single
+- id: '1598439820253'
+  alias: Subwoofer off after three hours
+  description: ''
+  trigger:
+  - entity_id: switch.sonoff_gniazdko
+    for: 03:00:00
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - entity_id: switch.sonoff_gniazdko
+    service: switch.turn_off
+  mode: single
+- id: '1599813679318'
+  alias: Pralka - koniec prania
+  description: ''
+  trigger:
+  - entity_id: sensor.pralka
+    for: 00:03:00
+    from: pranie
+    platform: state
+    to: wyłączona
+  condition: []
+  action:
+  - data:
+      message: HA - pralka skończyła pranie
+    service: notify.cezar
+  - data:
+      data:
+        method: all
+        type: announce
+      message: Washing machine has finished job
+      title: Washing machine off
+    service: notify.alexa_media_adam_s_echo_dot
+  mode: single
+- id: '1599814760507'
+  alias: Blitzwolf 1 off after one minute
+  description: ''
+  trigger:
+  - entity_id: switch.blitzwolf
+    for: 00:01:00
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.blitzwolf
+    service: switch.turn_off
+  mode: single

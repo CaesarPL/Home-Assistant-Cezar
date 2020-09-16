@@ -1,0 +1,31 @@
+#utility_meter:
+  daily_home_energy:
+    source: sensor.owl_energy
+    cycle: daily
+  hourly_home_energy:
+    source: sensor.owl_energy
+    cycle: hourly
+  monthly_home_energy:
+    source: sensor.owl_energy
+    cycle: monthly
+  daily_home_output:
+    source: sensor.owl_waty
+    cycle: daily
+  hourly_home_output:
+    source: sensor.owl_waty
+    cycle: hourly
+  monthly_home_output:
+    source: sensor.owl_waty
+    cycle: monthly
+  daily_home_input:
+    source: sensor.power_generation
+    cycle: daily
+  hourly_home_input:
+    source: sensor.power_generation
+    cycle: hourly
+  monthly_home_input:
+    source: sensor.power_generation
+    cycle: monthly
+  daily_energy_nas:
+    source: sensor.nas_energy
+    cycle: daily

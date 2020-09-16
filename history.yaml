@@ -1,0 +1,13 @@
+# What entities should go to history
+include:
+  entities:
+    - sensor.speedtest_download
+#    - sensor.speedtest_ping
+#    - sensor.speedtest_upload
+    - person.Cezar
+    - sensor.temperature_158d0001ab2855
+    - sensor.temperatura_ogrod
+    - binary_sensor.playstation_status
+    - sensor.power_generation
+    - sensor.energy_generation
+    - sensor.daily_home_energy

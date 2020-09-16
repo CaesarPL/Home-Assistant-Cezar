@@ -1,0 +1,129 @@
+# Ping RaspberryPi
+- platform: ping
+  host: !secret malina3_ip
+  name: raspberry_status
+  count: 2
+  scan_interval: 180
+
+# Is it weekend?
+- platform: workday
+  country: "PL"
+
+# Change names of sensors that are tracked
+- platform: template
+  sensors:
+    playstation_status:
+      value_template: "{{ is_state('device_tracker.PS4', 'home') }}"
+      friendly_name: "PlayStation 4"
+    retropie_status:
+      value_template: "{{ is_state('device_tracker.RetroPieCezar', 'home') }}"
+      friendly_name: "RetroPie"
+    3ds_status:
+      value_template: "{{ is_state('device_tracker.Nintendo3DS', 'home') }}"
+      friendly_name: "Nintendo 3DS"
+    wii_status:
+      value_template: "{{ is_state('device_tracker.Wii', 'home') }}"
+      friendly_name: "Nintendo Wii"
+    tv_status:
+      value_template: "{{ is_state('device_tracker.SamsungTV', 'home') }}"
+      friendly_name: "Telewizor"
+    nas_status:
+      value_template: "{{ is_state('device_tracker.OMVCezar', 'home') }}"
+      friendly_name: "NAS"
+    denon_status:
+      value_template: "{{ is_state('device_tracker.Denon', 'home') }}"
+      friendly_name: "Denon"
+    ipad_status:
+      value_template: "{{ is_state('device_tracker.iPad', 'home') }}"
+      friendly_name: "iPad"
+    oldipad_status:
+      value_template: "{{ is_state('device_tracker.OldiPad', 'home') }}"
+      friendly_name: "Stary iPad"
+    xiaomirepeater_status:
+      value_template: "{{ is_state('device_tracker.XiaomiRepeater', 'home') }}"
+      friendly_name: "Xiaomi Repeater"
+    sonoffswiatloprzeddomem_status:
+      value_template: "{{ is_state('device_tracker.SonoffSwiatloPrzedDomem', 'home') }}"
+      friendly_name: "Światło przed domem"
+    sonoffczujniksmogu_status:
+      value_template: "{{ is_state('device_tracker.SonoffCzujnikSmogu', 'home') }}"
+      friendly_name: "Czujnik smogu"
+    laptopstasia_status:
+      value_template: "{{ is_state('device_tracker.LaptopStasia', 'home') }}"
+      friendly_name: "Laptop Stasia"
+    kindle_status:
+      value_template: "{{ is_state('device_tracker.Kindle', 'home') }}"
+      friendly_name: "Kindle"
+    dlink720_status:
+      value_template: "{{ is_state('device_tracker.Dlink720', 'home') }}"
+      friendly_name: "Dlink 720"
+    dlink480_status:
+      value_template: "{{ is_state('device_tracker.Dlink480', 'home') }}"
+      friendly_name: "Dlink 480"
+    alexa_status:
+      value_template: "{{ is_state('device_tracker.Alexa', 'home') }}"
+      friendly_name: "Alexa"
+    xiaomigateway_status:
+      value_template: "{{ is_state('device_tracker.XiaomiGateway', 'home') }}"
+      friendly_name: "Xiaomi Gateway"
+    laptopdoroty_status:
+      value_template: "{{ is_state('device_tracker.LaptopDoroty', 'home') }}"
+      friendly_name: "Laptop Doroty"
+    laptopfirmowywifi_status:
+      value_template: "{{ is_state('device_tracker.LaptopFirmowy', 'home') }}"
+      friendly_name: "Laptop Firmowy"
+    laptopfirmowyeth_status:
+      value_template: "{{ is_state('device_tracker.LaptopFirmowyETH', 'home') }}"
+      friendly_name: "Laptop Firmowy ETH"
+    xiaomiairpurifier_status:
+      value_template: "{{ is_state('device_tracker.XiaomiAirPurifier', 'home') }}"
+      friendly_name: "Oczyszczacz powietrza"      
+    lms_status:
+      value_template: "{{ is_state('device_tracker.LMSCezar', 'home') }}"
+      friendly_name: "Old Logitech Media Server"      
+    sonoffpow_status:
+      value_template: "{{ is_state('device_tracker.SonoffPOW', 'home') }}"
+      friendly_name: "Sonoff POW"      
+    sonoffth16_status:
+      value_template: "{{ is_state('device_tracker.SonoffTH16', 'home') }}"
+      friendly_name: "Sonoff TH16"      
+    sonoffsauna_status:
+      value_template: "{{ is_state('device_tracker.SonoffSauna', 'home') }}"
+      friendly_name: "Sonoff Sauna"      
+    sonoffgniazdko_status:
+      value_template: "{{ is_state('device_tracker.SonoffGniazdko', 'home') }}"
+      friendly_name: "Sonoff Sauna"      
+    picoresauna_status:
+      value_template: "{{ is_state('device_tracker.PiCoreSauna', 'home') }}"
+      friendly_name: "piCore Player Sauna"      
+    solisinverter_status:
+      value_template: "{{ is_state('device_tracker.SolisInverter', 'home') }}"
+      friendly_name: "Inwerter Solis"      
+
+# Severe weather conditions warnings
+- platform: burze_dzis_net
+  api_key: !secret burze_dzis_net.api_key
+  warnings:
+    - frost_warning
+    - heat_warning
+    - wind_warning
+    - precipitation_warning
+    - storm_warning
+    - tornado_warning
+  storms_nearby:
+    radius: 30
+
+- platform: mqtt
+  state_topic: dummy/floorplan/sensor
+  name: Floorplan
+  
+- platform: template
+  sensors:
+    person_cezar_url:
+      value_template: "{{ state_attr('zone.home', 'latitude') and state_attr('zone.home', 'longitude') }}"
+      attribute_templates:
+        url: >
+          {% set lat = state_attr('zone.home', 'latitude') %}
+          {% set lon = state_attr('zone.home', 'longitude') %}
+          {% set zoom = 20 %}
+          https://embed.waze.com/pl/iframe?zoom={{ zoom }}&lat={{ lat }}&lon={{ lon }}&pin=1&desc=1"   

@@ -1,0 +1,196 @@
+projector_on:
+  alias: "Włącz/Wyłącz projektor"
+  sequence:
+    - service: broadlink.send
+      data:
+        host: !secret broadlink_ip
+        packet: JgBYAAABKZEVEBUQFREUERQRFBEVEBUQFRAVEBUQFRAVNRU1FRAVEBURFDUVERQRFBEVEBUQFRAVNRURFDUVNRU1FjQVNRU1FQAF7wABKUcWAAxMAAEpRxUADQU=
+
+projector_off:
+  alias: "Wyłącz projektor"
+  sequence:
+    - service: broadlink.send
+      data:
+        host: !secret broadlink_ip
+        packet: JgBYAAABKZEVEBUQFREUERQRFBEVEBUQFRAVEBUQFRAVNRU1FRAVEBURFDUVERQRFBEVEBUQFRAVNRURFDUVNRU1FjQVNRU1FQAF7wABKUcWAAxMAAEpRxUADQU=
+    - delay: "00:00:06"
+    - service: broadlink.send
+      data:
+        host: !secret broadlink_ip
+        packet: JgBYAAABKZEVEBUQFREUERQRFBEVEBUQFRAVEBUQFRAVNRU1FRAVEBURFDUVERQRFBEVEBUQFRAVNRURFDUVNRU1FjQVNRU1FQAF7wABKUcWAAxMAAEpRxUADQU=
+
+roar_alexa:
+  sequence:
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.adam_s_echo_dot
+        media_content_type: sound
+        media_content_id: amzn_sfx_rooster_crow_01
+        
+denon_nowy_swiat:
+  alias: Radio Nowy Świat
+  icon: "mdi:party-popper"
+  sequence:
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.denon_2
+        media_content_type: "url"
+        media_content_id: "https://n12.rcs.revma.com/ypqt40u0x1zuv?rj-ttl=5&rj-tok=AAABdFWv_vkACx_nkCiIkdEQwQ"
+
+denon_favourite_pr3:
+  alias: Radio Trójka
+  icon: "mdi:music"
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.denon_2
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon_2
+      source: PR3 Trójka
+
+denon_favourite_ebm:
+  alias: Radio EBM
+  icon: "mdi:music"
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.denon_2
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon_2
+      source: (((EBM Radio)))
+  - delay: "00:00:05"
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon_2
+      source: (((EBM Radio)))
+
+denon_favourite_deathfm:
+  alias: Radio Death.FM
+  icon: "mdi:music"
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.denon_2
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon_2
+      source: Death.FM
+  - delay: "00:00:05"
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon_2
+      source: Death.FM
+
+denon_favourite_darkwave:
+  alias: Radio Darkwave
+  icon: "mdi:music"
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.denon_2
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon_2
+      source: Darkwave Radio
+  - delay: "00:00:05"
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon_2
+      source: Darkwave Radio
+
+denon_favourite_antyradio:
+  alias: Antyradio
+  icon: "mdi:music"
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.denon_2
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon_2
+      source: Anty Radio
+  - delay: "00:00:05"
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon_2
+      source: Anty Radio
+
+denon_favourite_ps4:
+  alias: Playstation 4
+  icon: "mdi:gamepad-variant"
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.denon_2
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon_2
+      source: Denon - PS4
+  - delay: "00:00:15"
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon_2
+      source: Denon - PS4
+
+samsung_tv_netflix:
+  alias: Netflix
+  icon: "mdi:netflix"
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.samsungtvsmart
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.samsungtvsmart
+      source: Netflix
+
+samsung_tv_hbogo:
+  alias: HBO GO
+  icon: "mdi:netflix"
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.samsungtvsmart
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.samsungtvsmart
+      source: HBO GO
+
+samsung_tv_hdmi:
+  alias: HDMI
+  icon: "mdi:video-input-hdmi"
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.samsungtvsmart
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.samsungtvsmart
+      source: HDMI
+
+screen_down:
+  sequence:
+    - service: rflink.send_command
+      data:
+        command: 'down'
+        device_id: dooya_12b75900_01  
+
+screen_up:
+  sequence:
+    - service: rflink.send_command
+      data:
+        command: 'up'
+        device_id: dooya_12b75900_01  
+
+screen_stop:
+  sequence:
+    - service: rflink.send_command
+      data:
+        command: 'stop'
+        device_id: dooya_12b75900_01
+
+screen_down_and_stop:
+  sequence:
+    - service: rflink.send_command
+      data:
+        command: 'down'
+        device_id: dooya_12b75900_01  
+    - delay: '00:00:50'
+    - service: rflink.send_command
+      data:
+        command: 'stop'
+        device_id: dooya_12b75900_01
+    

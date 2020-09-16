@@ -1,0 +1,10 @@
+small_door:
+  name: Małe drzwi tarasowe otwarte
+  done_message: Małe drzwi tarasowe zamknięte
+  entity_id: binary_sensor.door_window_sensor_158d00019e275f
+  state: 'on'
+  repeat: 10
+  can_acknowledge: true
+  skip_first: true
+  notifiers:
+    - cezar

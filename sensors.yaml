@@ -1,0 +1,465 @@
+# Weather prediction
+  - platform: yr
+
+# Google keep
+  - platform: google_keep
+    username: !secret email_cezar
+    password: !secret google_keep_token_password
+    pinned: true
+    name: GoogleKeep
+
+# System monitored_conditions    
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /home
+      - type: memory_free
+      - type: load_15m
+      - type: processor_use
+      - type: last_boot
+
+# Moon phases      
+  - platform: moon  
+
+# Anniversary      
+  - platform: anniversaries
+    name: Rocznica
+    date: !secret rocznica
+
+# Waze travel time
+  - platform: waze_travel_time
+    name: "Dorota"
+    origin: !secret waze_origin
+    destination: !secret waze_dest_dorota
+    region: 'EU'
+
+  - platform: waze_travel_time
+    name: "Adam"
+    origin: !secret waze_origin
+    destination: !secret waze_dest_adam
+    region: 'EU'
+
+# Spaceships launch
+  - platform: launch_library
+  
+# Time and date
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+
+# Seasons
+  - platform: season
+    type: astronomical
+
+# Definition of some command line queries
+  - platform: command_line
+    name: "Raspberry CPU Temp"
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    unit_of_measurement: "°C"
+    value_template: "{{ (value | multiply(0.001)) | round(1) }}"
+    scan_interval: 300
+
+  - platform: command_line
+    name: "Last HA restart"
+    command: "systemctl status home-assistant.service | head -3 | awk '{print $6}' | tail -1"
+    scan_interval: 1800
+
+  - platform: command_line
+    command: python3 -c "import requests; print(requests.get('https://pypi.org/pypi/homeassistant/json').json()['info']['version'])"
+    name: "HA Version Current"
+    scan_interval: 1800
+
+  - platform: command_line
+    command: python3 -c "import requests; print(requests.get('https://pypi.org/pypi/appdaemon/json').json()['info']['version'])"
+    name: "AD Version Current"
+    scan_interval: 1800
+    
+# DarkSky weather
+  - platform: darksky
+    api_key: !secret dark_sky_api
+    scan_interval:
+      minutes: 15
+    language: "pl"
+    forecast:
+      - 0  
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+    monitored_conditions:
+      - icon
+      - summary
+      - temperature_high
+      - temperature_low
+      - apparent_temperature
+      - wind_speed
+      - wind_bearing
+      - precip_probability
+      - daily_summary
+      - visibility
+      - uv_index
+      - nearest_storm_distance
+      - nearest_storm_bearing
+      - humidity
+      - temperature
+      - temperature_high
+      - temperature_low
+      - apparent_temperature_high
+      - apparent_temperature_low
+      - precip_type
+      - precip_accumulation
+      - precip_intensity
+      - precip_intensity_max
+      - pressure
+
+  - platform: template
+    sensors:
+      dark_sky_current_text:
+        value_template:  >-
+                         {% if is_state("sensor.dark_sky_icon","clear-day") %} Clear 
+                         {% elif is_state("sensor.dark_sky_icon","clear-night") %} Clear 
+                         {% elif is_state("sensor.dark_sky_icon","rain") %} Rain
+                         {% elif is_state("sensor.dark_sky_icon","snow") %} Snowy
+                         {% elif is_state("sensor.dark_sky_icon","fog") %} Foggy
+                         {% elif is_state("sensor.dark_sky_icon","sleet") %} Sleet
+                         {% elif is_state("sensor.dark_sky_icon","wind") %} Windy
+                         {% elif is_state("sensor.dark_sky_icon","cloudy") %} Cloudy
+                         {% elif is_state("sensor.dark_sky_icon","partly-cloudy-day") %} Partly Cloudy
+                         {% elif is_state("sensor.dark_sky_icon","partly-cloudy-night") %} Partly Cloudy
+                         {% elif is_state("sensor.dark_sky_icon","hail") %} Hailing
+                         {% elif is_state("sensor.dark_sky_icon","lightning") %} Lightning
+                         {% elif is_state("sensor.dark_sky_icon","thunderstorm") %} Thunderstorm
+                         {% endif %}
+
+      dark_sky_alt_wind:
+        value_template: >-
+                        {% set winddir = ['North','North-Northeast','Northeast','East-Northeast','East','East-Southeast','Southeast','South-Southeast','South','South-Southwest','Southwest','West-Southwest','West','West-Northwest','Northwest','North-Northwest','North'] %}
+                        {{ states('sensor.dark_sky_wind_speed') | round }} mi/h from the {{ winddir[((states('sensor.dark_sky_wind_bearing') | float / 360)*16) | round]}}
+    
+# Xiaomi Air Purifier
+  - platform: template
+    sensors:
+      mi_aqi:
+        friendly_name: "Air Purifier"
+        unit_of_measurement: 'AQI'
+        value_template: "{{ state_attr('fan.xiaomi_miio_device', 'aqi') }}"
+      mi_humidity:
+        friendly_name: "Air Purifier Humidity"
+        unit_of_measurement: '%'
+        value_template: "{{ state_attr('fan.xiaomi_miio_device', 'humidity') }}"
+      mi_temperature:
+        friendly_name: "Air Purifier Temperature"
+        unit_of_measurement: '°C'
+        value_template: "{{ state_attr('fan.xiaomi_miio_device', 'temperature') }}"
+
+# Xiaomi Power Socket
+  - platform: template
+    sensors:
+      nas_power_sensor:
+        value_template: '{{ states.switch.plug_158d0002330853.attributes.load_power }}'
+        unit_of_measurement:  W
+        friendly_name: NAS power sensor
+
+      roomba_power_sensor:
+        value_template: '{{ states.switch.plug_158d00016ff1a4.attributes.load_power }}'
+        unit_of_measurement:  W
+        friendly_name: Roomba power sensor
+
+# MQTT Sensors - Sonoff
+  - platform: mqtt
+    name: Sonoff Pow Yesterday Energy
+    unit_of_measurement: "kWh"
+    state_topic: "tele/sonoffpow/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Yesterday }}"
+
+  - platform: mqtt
+    name: Sonoff Pow Today Energy
+    unit_of_measurement: "kWh"
+    state_topic: "tele/sonoffpow/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Today }}"
+
+  - platform: mqtt
+    name: Sonoff Pow Current
+    unit_of_measurement: "Amps"
+    state_topic: "tele/sonoffpow/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Current }}"
+
+  - platform: mqtt
+    name: Sonoff Pow Power
+    unit_of_measurement: "Watts"
+    state_topic: "tele/sonoffpow/SENSOR"
+    value_template: "{{ value_json['ENERGY'].Power }}"
+    
+# MQTT Sensors - Sonoff TH16
+  - platform: mqtt
+    name: Sonoff Temperature 
+    unit_of_measurement: "°C"
+    state_topic: "tele/sonoffth16/SENSOR"
+    value_template: "{{ value_json['DS18B20'].Temperature }}"
+
+  - platform: feedparser
+    name: Engineering Feed
+    feed_url: 'http://wiadomosci.gazeta.pl/pub/rss/wiadomosci_kraj.htm'
+    date_format: '%a, %b %d %I:%M %p'
+
+  - platform: feedparser
+    name: Wiadomosci Kraj
+    feed_url: 'http://wiadomosci.gazeta.pl/pub/rss/wiadomosci_kraj.htm'
+    date_format: '%a, %b %d %I:%M %p'
+    inclusions:
+      - summary
+
+  - platform: feedparser
+    name: Quote of the Day
+    feed_url: 'https://www.brainyquote.com/link/quotebr.rss'
+    date_format: '%a, %b %d %I:%M %p'
+
+  - platform: scrape
+    resource: https://www.traxelektronik.pl/pogoda/kamery/kamera.php?pkamnum=323
+    name: Url kamera traxel boleslaw (na katowice)
+    select: "#kam1 ~ a:nth-of-type(4)"
+    value_template: >-
+      {{ value.split("'")[1] }}
+    attribute: href
+    scan_interval: 60
+
+  - platform: scrape
+    resource: https://www.traxelektronik.pl/pogoda/kamery/kamera.php?pkamnum=323
+    name: Url kamera traxel boleslaw (na olkusz)
+    select: "#kam0 ~ a:nth-of-type(4)"
+    value_template: >-
+      {{ value.split("'")[1] }}
+    attribute: href
+    scan_interval: 60
+
+  - platform: rflink
+    automatic_add: false
+    devices:
+      alectov4_5fc8_temp:
+        sensor_type: temperature
+        name: Temperatura Staszek 
+  - platform: rflink
+    automatic_add: false
+    devices:
+      owl_cm180_00a8_watt:
+        sensor_type: watt
+        name: Owl Waty
+  - platform: rflink
+    automatic_add: false
+    devices:
+      owl_cm180_00a8_kwatt:
+        sensor_type: kilowatt
+        name: Owl Kilowaty
+  - platform: rflink
+    automatic_add: false
+    devices:
+      eurochron_0002_temp:
+        sensor_type: temperature
+        name: Temperatura Ogród
+
+#  - platform: miflora
+#    mac: 'C4:7C:8D:62:A9:57'
+#    name: Salon Flora
+#    location: Salon
+#    force_update: true
+#    median: 3
+#    monitored_conditions:
+#      - temperature
+#      - moisture
+#      - light
+#      - conductivity
+#      - battery
+
+  - platform: mitemp_bt
+    period: 60
+    active_scan: false
+#    hci_interface: 0
+#    mac: 'C4:7C:8D:62:A9:57'
+#    name: Salon Flora
+#    force_update: true
+#    median: 3
+#    monitored_conditions:
+#      - temperature
+#      - moisture
+#      - light
+#      - conductivity
+#      - battery
+      
+  - platform: history_stats
+    name: PS4 today
+    entity_id: switch.playstation4
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+    
+  - platform: template
+    sensors:
+      ps4_today_time:
+        friendly_name: PS4 dzienny czas
+        value_template: "{{ states('sensor.ps4_today') }}"       
+
+  - platform: integration
+    source: sensor.owl_waty
+    name: owl_energy
+    round: 2
+    unit_prefix: k
+        
+  - platform: integration
+    source: sensor.nas_power_sensor
+    name: "NAS energy"
+    round: 2
+#    unit: k
+    unit_prefix: k        
+
+  - platform: integration
+    source: sensor.pralka_power
+    name: "Pralka Energy"
+    unit_prefix: k
+    round: 2
+
+  - platform: integration
+    source: sensor.zmywarka_power
+    name: "Zmywarka Energy"
+    unit_prefix: k
+    round: 2
+
+  # - platform: template
+    # sensors:
+      # daily_energy:
+        # friendly_name: Daily Energy
+        # unit_of_measurement: W
+        # value_template: "{{ states('sensor.daily_energy_offpeak')|float + states('sensor.daily_energy_peak')|float }}"
+      # monthly_energy:
+        # friendly_name: Monthly Energy
+        # unit_of_measurement: W
+        # value_template: "{{ states('sensor.monthly_energy_offpeak')|float + states('sensor.monthly_energy_peak')|float }}"        
+        
+  - platform: pvoutput
+    system_id: 77346
+    api_key: d85e4d43516ea41260fea894f1a45c6ea08a3f0d
+    scan_interval: 120        
+
+  - platform: template
+    sensors:
+      power_consumption:
+#        value_template: '{% if is_state_attr("sensor.pvoutput", "power_consumption", "NaN") %}0{% else %}{{ state_attr("sensor.pvoutput", "power_consumption") }}{% endif %}'
+#        value_template: '{% if is_state_attr("sensor.owl_waty", "power_consumption", "NaN") %}0{% else %}{{ state_attr("sensor.owl_waty", "power_consumption") }}{% endif %}'
+        value_template: '{{ states("sensor.owl_waty") }}'
+        friendly_name: 'Using'
+        unit_of_measurement: 'Watt'
+      energy_consumption:
+#        value_template: '{{ "%0.1f"|format(state_attr("sensor.pvoutput", "energy_consumption")|float/1000) }}'
+        value_template: '{{ "%0.1f"|format(states("sensor.owl_energy")|float/1000) }}'
+#        value_template: '{{ (states("sensor.owl_energy")) }}'
+        friendly_name: 'Used'
+        unit_of_measurement: 'kWh'
+      power_generation:
+        value_template: '{% if is_state_attr("sensor.pvoutput", "power_generation", "NaN") %}0{% else %}{{ state_attr("sensor.pvoutput", "power_generation") }}{% endif %}'
+        friendly_name: 'Generating'
+        unit_of_measurement: 'Watt'
+      energy_generation:
+        value_template: '{% if is_state_attr("sensor.pvoutput", "energy_generation", "NaN") %}0{% else %}{{ "%0.2f"|format(state_attr("sensor.pvoutput", "energy_generation")|float/1000) }}{% endif %}'
+        friendly_name: 'Generated'
+        unit_of_measurement: 'kWh'
+
+  - platform: template
+    sensors:
+      rain_precipitation:
+        value_template: '{{ state_attr("weather.home_2", "forecast")[1]["precipitation_probability"] }}'
+        friendly_name: 'Rain precipitation for the next day'
+
+  - platform: mqtt
+    name: "Zmywarka Energy Today"
+    state_topic: "tele/blitzwolf1/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Today"] }}'
+    unit_of_measurement: "kWh"
+  - platform: mqtt
+    name: "Zmywarka Energy Yesterday"
+    state_topic: "tele/blitzwolf1/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
+    unit_of_measurement: "kWh"
+  - platform: mqtt
+    name: "Zmywarka Energy Total"
+    state_topic: "tele/blitzwolf1/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Total"] }}'
+    unit_of_measurement: "kWh"
+  - platform: mqtt
+    name: "Zmywarka Power"
+    state_topic: "tele/blitzwolf1/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Power"] }}'
+    unit_of_measurement: "W"
+  - platform: mqtt
+    name: "Zmywarka Voltage"
+    state_topic: "tele/blitzwolf1/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+    unit_of_measurement: "V"
+  - platform: mqtt
+    name: "Zmywarka Power Factor"
+    state_topic: "tele/blitzwolf1/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Factor"] }}'
+    
+  - platform: mqtt
+    name: "Pralka Energy Today"
+    state_topic: "tele/blitzwolf2/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Today"] }}'
+    unit_of_measurement: "kWh"
+  - platform: mqtt
+    name: "Pralka Energy Yesterday"
+    state_topic: "tele/blitzwolf2/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
+    unit_of_measurement: "kWh"
+  - platform: mqtt
+    name: "Pralka Energy Total"
+    state_topic: "tele/blitzwolf2/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Total"] }}'
+    unit_of_measurement: "kWh"
+  - platform: mqtt
+    name: "Pralka Power"
+    state_topic: "tele/blitzwolf2/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Power"] }}'
+    unit_of_measurement: "W"
+  - platform: mqtt
+    name: "Pralka Voltage"
+    state_topic: "tele/blitzwolf2/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+    unit_of_measurement: "V"
+  - platform: mqtt
+    name: "Pralka Power Factor"
+    state_topic: "tele/blitzwolf2/SENSOR"
+    value_template: '{{ value_json["ENERGY"]["Factor"] }}'    
+
+  - platform: template
+    sensors:
+      pralka:
+        friendly_name: "Pralka"
+        value_template: >-
+          {% if states('sensor.pralka_power') != ('unavailable' or 'unknown') %}
+            {% if states('sensor.pralka_power') | int > 2 %}
+              pranie
+            {% else %}
+              wyłączona
+            {% endif %}
+          {% else %}
+            {{ states('sensor.pralka') }}
+          {% endif %}
+
+  - platform: template
+    sensors:
+      zmywarka:
+        friendly_name: "Zmywarka"
+        value_template: >-
+          {% if states('sensor.zmywarka_power') != ('unavailable' or 'unknown') %}
+            {% if states('sensor.zmywarka_power') | int > 1 %}
+              pranie
+            {% else %}
+              wyłączona
+            {% endif %}
+          {% else %}
+            {{ states('sensor.zmywarka') }}
+          {% endif %}
+
+  - platform: vulcan

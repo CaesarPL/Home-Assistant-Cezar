@@ -1,0 +1,115 @@
+# My picture of Person enity
+person.Cezar:
+  entity_picture: /local/pictures/Avatar_.jpg
+
+# Change names of sensors to mine
+sensor.processor_use:
+  friendly_name: "CPU"
+sensor.memory_use_percent:
+  friendly_name: "RAM"
+  icon: mdi:chip
+sensor.disk_use_percent:
+  friendly_name: "Disk space"
+sensor.last_boot:
+  icon: mdi:clock-outline
+  friendly_name: "Last boot"
+sensor.last_boot_custom:
+  icon: mdi:clock-outline
+sensor.raspberry_cpu_temp:
+  friendly_name: "CPU temp"
+  icon: mdi:thermometer
+sensor.ha_database_size:
+  friendly_name: "Database size"
+  icon: mdi:database
+sensor.last_ha_restart:
+  friendly_name: "Last HA restart"
+  icon: mdi:clock-outline
+binary_sensor.playstation_status:
+  icon: mdi:playstation
+binary_sensor.wii_status:
+  icon: mdi:gamepad-variant
+binary_sensor.3ds_status:
+  icon: mdi:gamepad-variant
+binary_sensor.tv_status:
+  icon: mdi:television
+binary_sensor.nas_status:
+  icon: mdi:nas
+binary_sensor.retropie_status:
+  icon: mdi:gamepad
+binary_sensor.denon_status:
+  icon: mdi:audio-video
+binary_sensor.ipad_status:
+  icon: mdi:tablet-ipad
+binary_sensor.oldipad_status:
+  icon: mdi:tablet-ipad
+binary_sensor.xiaomirepeater_status:
+  icon: mdi:router-wireless
+binary_sensor.sonoffswiatloprzeddomem_status:
+  icon: mdi:theme-light-dark
+switch.sonoff_power:
+  icon: mdi:theme-light-dark
+binary_sensor.kindle_status:
+  friendly_name: "Światło przed domem"
+  icon: mdi:cellphone-text
+binary_sensor.alexa_status:
+  icon: mdi:amazon-alexa
+binary_sensor.sonoffczujniksmogu_status:
+  icon: mdi:fan
+binary_sensor.dlink720_status:
+  icon: mdi:cctv
+binary_sensor.dlink480_status:
+  icon: mdi:cctv
+binary_sensor.laptopstasia_status:
+  icon: mdi:laptop  
+binary_sensor.xiaomigateway_status:  
+  icon: mdi:router-wireless
+binary_sensor.laptopdoroty_status:
+  icon: mdi:laptop  
+binary_sensor.laptopfirmowywifi_status:
+  icon: mdi:laptop  
+binary_sensor.laptopfirmowyeth_status:
+  icon: mdi:laptop  
+binary_sensor.xiaomiairpurifier_status:
+  icon: mdi:fan
+binary_sensor.lms_status:
+  icon: mdi:speaker-wireless
+binary_sensor.picoresauna_status:
+  icon: mdi:speaker-wireless
+binary_sensor.sonoffth16_status:
+  icon: mdi:temperature-celsius
+binary_sensor.sonoffpow_status:
+  icon: mdi:power-plug
+binary_sensor.sonoffbasic2_status:
+  icon: mdi:power-plug
+light.yeelight_color1_7811dc682b4d:
+  friendly_name: "Yeelight 1"
+light.yeelight_color1_34ce0084c619:
+  friendly_name: "Yeelight 2"
+light.yeelight_color1_34ce008cf7de:
+  friendly_name: "Yeelight 3"
+script.projector_on:
+  icon: mdi:projector
+script.projector_off:
+  icon: mdi:projector
+switch.ledzatv:
+  icon: mdi:led-strip
+binary_sensor.floorplan:
+  custom_ui_state_card: state-card-floorplan
+  config: !include floorplan.yaml
+switch.plug_158d0002330853:
+  friendly_name: "NAS wtyczka Xiaomi"
+switch.plug_158d00016ff1a4:
+  friendly_name: "Roomba wtyczka Xiaomi"
+switch.sonoff_gniazdko:
+  icon: mdi:speaker
+  friendly_name: "Subwoofer"
+binary_sensor.solisinverter_status:
+  icon: mdi:solar-power
+sensor.pralka:
+  icon: mdi:washing-machine  
+sensor.pralka_power:
+  icon: mdi:power
+sensor.zmywarka:
+  icon: mdi:dishwasher
+sensor.zmywarka_power:
+  icon: mdi:power

@@ -1,0 +1,169 @@
+  - platform: mqtt
+    name: "Sonoff power"
+    state_topic: "stat/sonoff/RESULT"
+    value_template: "{{ value_json.POWER }}"
+    command_topic: "cmnd/sonoff/POWER"
+    availability_topic: "tele/sonoff/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: true
+
+  - platform: mqtt
+    name: "Sonoff POW"
+    state_topic: "stat/sonoffpow/RESULT"
+    value_template: "{{ value_json.POWER }}"
+    command_topic: "cmnd/sonoffpow/POWER"
+    availability_topic: "tele/sonoffpow/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: true
+
+  - platform: mqtt
+    name: "Sonoff TH16"
+    state_topic: "stat/sonoffth16/RESULT"
+    value_template: "{{ value_json.POWER }}"
+    command_topic: "cmnd/sonoffth16/POWER"
+    availability_topic: "tele/sonoffth16/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: true
+
+  - platform: mqtt
+    name: "Sonoff Sauna"
+    state_topic: "stat/sonoffbasic2/RESULT"
+    value_template: "{{ value_json.POWER }}"
+    command_topic: "cmnd/sonoffbasic2/POWER"
+    availability_topic: "tele/sonoffbasic2/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: true
+
+  - platform: mqtt
+    name: "Sonoff Gniazdko"
+    state_topic: "stat/sonoffgniazdko/RESULT"
+    value_template: "{{ value_json.POWER }}"
+    command_topic: "cmnd/sonoffgniazdko/POWER"
+    availability_topic: "tele/sonoffgniazdko/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: true
+
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+    switches:
+      ledzatv:
+        friendly_name: "LED za TV"
+        command_on: 'JgBQAAABR5QXERYRFxEWERYRFxEWERYRFjcWNxY2FzYWNxY2FzYXNhY3FhEXNhc2FhEWEhYRFhEWERc2FhEXERY2FjcWNhc2FgAFFAABR0oVAA0FAAAAAAAAAAA='
+        command_off: 'JgBYAAABUZMXERYRFxEWERcRFhIWERcRFjcXNhc2FzcXNhc2FzYYNhY3FzYXNhg2FzYXEhcRFxEWEhcRFxEXERgRFzYXNhg2FwAFFQABU0oXAAxdAAFSSRcADQU='
+
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+    switches:
+      ledzatvwhite:
+        friendly_name: "LED za TV white"
+        command_on: 'JgBYAAABTJUVERUVExMVExUSFRUTExQTFTgVOBU3FjgWNhc2FjgRPRU3FhQTORUbDDkUExUUExQVFhE3FhMUOBcSFDkUOBU4FgAFGAABS0oWAAxgAAFOSRcADQU='
+        command_off: 'JgBYAAABTJUVERUVExMVExUSFRUTExQTFTgVOBU3FjgWNhc2FjgRPRU3FhQTORUbDDkUExUUExQVFhE3FhMUOBcSFDkUOBU4FgAFGAABS0oWAAxgAAFOSRcADQU='
+
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+    switches:
+      ledzatvblue:
+        friendly_name: "LED za TV blue"
+        command_on: 'JgBYAAABUZQYEBYSFhEWEhYSFhEXERcRFzYXNhc2FzcXNxY3FzYXNhc3FhEXERcRFzcXERYSFhEXEhY3FzYXNxYRFzcWNxc2GAAFGQABSkkXAAxoAAFUSRcADQU='
+        command_off: 'JgBYAAABUZQYEBYSFhEWEhYSFhEXERcRFzYXNhc2FzcXNxY3FzYXNhc3FhEXERcRFzcXERYSFhEXEhY3FzYXNxYRFzcWNxc2GAAFGQABSkkXAAxoAAFUSRcADQU='
+
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+    switches:
+      ledzatvfade:
+        friendly_name: "LED za TV fade"
+        command_on: 'JgBYAAABT5QWEhYRFxEWEhYSFhEXERYSFTgWNxc2FzYWOBY3FjcWNxYRFzYXERY3FjcVExYSFhEVOBYSFjcWEhUSFzYXNhc2FwAFFQABUUkWAAxfAAFLShYADQU='
+        command_off: 'JgBYAAABT5QWEhYRFxEWEhYSFhEXERYSFTgWNxc2FzYWOBY3FjcWNxYRFzYXERY3FjcVExYSFhEVOBYSFjcWEhUSFzYXNhc2FwAFFQABUUkWAAxfAAFLShYADQU='
+
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+    switches:
+      projektor:
+        friendly_name: "Projektor"
+        command_on: 'JgBYAAABKZEVEBUQFREUERQRFBEVEBUQFRAVEBUQFRAVNRU1FRAVEBURFDUVERQRFBEVEBUQFRAVNRURFDUVNRU1FjQVNRU1FQAF7wABKUcWAAxMAAEpRxUADQU='
+        command_off: 'JgBYAAABKZEVEBUQFREUERQRFBEVEBUQFRAVEBUQFRAVNRU1FRAVEBURFDUVERQRFBEVEBUQFRAVNRURFDUVNRU1FjQVNRU1FQAF7wABKUcWAAxMAAEpRxUADQU='
+
+  - platform: rflink
+    automatic_add: false
+    devices:
+      fa20rf_fca258_01:
+        name: Alarm Zosia
+        
+  - platform: rflink
+    automatic_add: false
+    devices:
+      fa20rf_ff6994_01:
+        name: Alarm Staszek
+
+  - platform: rflink
+    automatic_add: false
+    devices:
+      dooya_12b75900_01:
+        name: Ekran
+
+  - platform: rflink
+    automatic_add: false
+    devices:
+      ab400d_48_3:
+        name: Sauna
+
+  - platform: rflink
+    automatic_add: false
+    devices:
+      ab400d_48_2:
+        name: LEDiProjektor
+
+  - platform: rflink
+    automatic_add: false
+    devices:
+      tristate_8aa2a1_10:
+        name: Altana
+        
+  - platform: command_line
+    switches:
+      playstation4:
+        command_on: "echo on"
+        command_off: "echo off"
+        command_state: "nc -z -w 5 192.168.1.125 9295"
+        friendly_name: PlayStation 
+        
+  - platform: mqtt
+    name: "Zmywarka"
+    state_topic: "stat/blitzwolf1/POWER"
+    command_topic: "cmnd/blitzwolf1/POWER"
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: false        
+    
+  - platform: mqtt
+    name: "Pralka"
+    state_topic: "stat/blitzwolf2/POWER"
+    command_topic: "cmnd/blitzwolf2/POWER"
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: false     

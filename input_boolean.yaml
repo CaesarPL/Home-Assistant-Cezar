@@ -1,0 +1,6 @@
+test:
+  name: "Test"
+  icon: "mdi:lightbulb-on-outline"
+wakacje:
+  name: "Wakacje"
+  icon: "mdi:shield-airplane"

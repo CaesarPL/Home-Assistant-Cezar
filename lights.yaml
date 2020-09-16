@@ -1,0 +1,7 @@
+- platform: limitlessled
+  bridges:
+    - host: !secret milight_ip
+      groups:
+      - number: 2
+        type: rgbw
+        name: salonled

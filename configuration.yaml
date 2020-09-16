@@ -1,0 +1,176 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_lat
+  longitude: !secret home_long
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 466
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Warsaw
+
+  customize: !include customize.yaml
+
+history: !include history.yaml
+logger: !include logger.yaml
+sensor: !include sensors.yaml
+binary_sensor: !include binary_sensors.yaml
+device_tracker: !include device_tracker.yaml
+media_player: !include media_player.yaml
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+switch: !include switches.yaml
+light: !include lights.yaml
+scene: !include scenes.yaml
+camera: !include camera.yaml
+panel_custom: !include panel_custom.yaml
+input_select: !include input_select.yaml
+input_boolean: !include input_boolean.yaml
+utility_meter: !include utility_meter.yaml
+alert: !include alert.yaml
+
+lovelace:
+  mode: yaml
+  resources:
+    - url: /hacsfiles/lovelace-canary/canary.js
+      type: module
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+      type: module
+    - url: /hacsfiles/button-card/button-card.js
+      type: module
+    - url: /hacsfiles/calendar-card/calendar-card.js
+      type: module
+    - url: /hacsfiles/atomic_calendar/atomic_calendar.js
+      type: module
+    - url: /hacsfiles/list-card/list-card.js
+      type: js
+    - url: /hacsfiles/battery-state-card/battery-state-card.js
+      type: module
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module
+    - url: /local/quote-of-the-day-card.js
+      type: js  
+    - url: /hacsfiles/light-brightness-preset-row/light-brightness-preset-row.js
+      type: module
+    - url: /hacsfiles/light-entity-card/light-entity-card.js
+      type: js
+    - url: /hacsfiles/ha-card-waze-travel-time/ha-card-waze-travel-time.js
+      type: module
+#    - url: /hacsfiles/lovelace-air-filter-card/air-filter-card.js
+#      type: module
+    - url: /hacsfiles/lovelace-google-keep-card/google-keep-card.js
+      type: module
+    - url: /hacsfiles/lovelace-animated-background/animated-background.js
+      type: module
+    - url: /hacsfiles/lovelace-darksky-card/lovelace-darksky-card.js
+      type: module   
+    - url: /hacsfiles/lovelace-more-info-card/more-info-card.js
+      type: module
+    - url: /hacsfiles/custom-header/custom-header.js
+      type: module
+    - url: /hacsfiles/ha-card-weather-conditions/ha-card-weather-conditions.js
+      type: module   
+    - url: /hacsfiles/lovelace-home-feed-card/lovelace-home-feed-card.js
+      type: js      
+    - url: /hacsfiles/lovelace-time-picker-card/time-picker-card.js
+      type: module
+    - url: /hacsfiles/config-template-card/config-template-card.js
+      type: module    
+person:
+
+#RFLink
+rflink:
+  port: /dev/serial/by-id/usb-Arduino__www.arduino.cc__0042_5563930393435111A172-if00
+
+# Floorplan
+frontend:
+  extra_html_url:
+    - /custom_ui/state-card-floorplan.html
+  themes: !include_dir_merge_named themes
+  
+# Configure a default setup of Home Assistant (frontend, api, etc)
+#default_config:
+config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Discover some devices automatically
+discovery:
+  ignore:
+  enable:
+    
+system_health:
+
+mobile_app:
+
+# Deifinition of notifying service
+notify:
+  - name: Cezar
+    platform: smtp
+    server: !secret email_server
+    port: 587
+    timeout: 15
+    sender: !secret email_sender
+    encryption: starttls
+    username: !secret email_username
+    password: !secret email_password
+    recipient:
+      - !secret email_cezar
+    sender_name: My Home Assistant
+  - name: Dorota
+    platform: smtp
+    server: !secret email_server
+    port: 587
+    timeout: 15
+    sender: !secret email_sender
+    encryption: starttls
+    username: !secret email_username
+    password: !secret email_password
+    recipient:
+      - !secret email_dorota
+    sender_name: My Home Assistant
+  - platform: alexa_media
+    name: alexa_media
+
+remote:
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+
+adb_service:
+  host: !secret adb_ip
+
+google:
+  client_id: !secret google_calendar_api
+  client_secret: !secret google_calendar_client_key
+  track_new_calendar: false
+
+# Xiaomi Air Purifier
+fan:
+  - platform: xiaomi_miio
+    host: !secret xiaomi_air_purifier_ip
+    token: !secret airpurifier
+    model: zhimi.airpurifier.v2
+    
+# ios App
+ios:
+
+# Xiaomi gateway
+xiaomi_aqara:
+  discovery_retry: 5
+  gateways:
+    - key: !secret xiaomi_gw_key
+
+# Weather service
+weather:
+  - platform: darksky
+    api_key: !secret dark_sky_api
+
+# Home Assistant Community Store
+hacs:
+  token: !secret github

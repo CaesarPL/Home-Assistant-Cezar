@@ -1,0 +1,18 @@
+light_scenes_salon:
+  name: "Tryb oświetlenia"
+  icon: mdi:palette
+  options:
+    - "jasny"
+    - "film"
+    - "dobranoc"
+    - "dyskoteka"
+    - "czytanie"
+
+light_scenes_tv:
+  name: "LED za TV"
+  icon: mdi:palette
+  options:
+    - "ledzatvonwhite"
+    - "ledzatvonblue"
+    - "ledzatvonfade"
+    - "ledzatvoff"

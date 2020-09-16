@@ -1,0 +1,17 @@
+# I am tracking MAC addresses of my equipment
+- platform: nmap_tracker
+  hosts: 192.168.1.100-255
+  scan_options: " --privileged -sP "
+  home_interval: 4
+  interval_seconds: 60
+  consider_home: 360
+  new_device_defaults:
+    track_new_devices: true
+    
+# iPhone detection
+- platform: iphonedetect
+  consider_home: 60
+  new_device_defaults:
+    track_new_devices: true
+  hosts:
+    iphone_Adam: !secret iphone_adam

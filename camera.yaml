@@ -1,0 +1,29 @@
+# Cameras
+  - platform: generic
+    name: Weather
+    still_image_url: https://www.yr.no/place/Poland/Lesser_Poland/Klucze/meteogram.svg
+    content_type: 'image/svg+xml'
+
+  - platform: mjpeg
+    name: Salon
+    still_image_url: !secret dlink935_ip
+    mjpeg_url: !secret dlink935_ip
+    username: admin
+    password: !secret my_password
+    
+  - platform: mjpeg
+    name: PrzedDomem
+    still_image_url: !secret dlink930_ip
+    mjpeg_url: !secret dlink930_ip
+    username: admin
+    password: !secret my_password
+# Street cameras 
+  - platform: generic
+    name: boleslaw (na olkusz)
+    still_image_url: >-
+      {{ states('sensor.url_kamera_traxel_boleslaw_na_olkusz') }}
+
+  - platform: generic
+    name: boleslaw (na katowice)
+    still_image_url: >-
+      {{ states('sensor.url_kamera_traxel_boleslaw_na_katowice') }}
