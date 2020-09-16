@@ -97,17 +97,17 @@ To be configured:
 * [Generic Remote Control Card](https://github.com/dimagoltsman/generic-remote-control-card) - To be configured
 
 ## Screenshots
-![HA Home](https://github.com/Home-Assistant-Cezar/HomeAssistant/blob/master/screens/HA-home.png)
-![HA Rooms](https://github.com/Home-Assistant-Cezar/HomeAssistant/blob/master/screens/HA-rooms.png)
-![HA Rooms down](https://github.com/Home-Assistant-Cezar/HomeAssistant/blob/master/screens/HA-rooms_2.png)
-![HA Weather](https://github.com/Home-Assistant-Cezar/HomeAssistant/blob/master/screens/HA-weather.png)
-![HA Multimedia](https://github.com/Home-Assistant-Cezar/HomeAssistant/blob/master/screens/HA-multimedia.png)
-![HA System](https://github.com/Home-Assistant-Cezar/HomeAssistant/blob/master/screens/HA-system.png)
-![HA Network](https://github.com/Home-Assistant-Cezar/HomeAssistant/blob/master/screens/HA-network.png)
-![HA Graphs](https://github.com/Home-Assistant-Cezar/HomeAssistant/blob/master/screens/HA-graphs.png)
-![HA Light](https://github.com/Home-Assistant-Cezar/HomeAssistant/blob/master/screens/HA-light.png)
-![HA Our Day](https://github.com/Home-Assistant-Cezar/HomeAssistant/blob/master/screens/HA-ourday.png)
-![HA Switches](https://github.com/Home-Assistant-Cezar/HomeAssistant/blob/master/screens/HA-switches.png)
+![HA Home](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-home.png)
+![HA Rooms](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-rooms.png)
+![HA Rooms down](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-rooms_2.png)
+![HA Weather](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-weather.png)
+![HA Multimedia](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-multimedia.png)
+![HA System](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-system.png)
+![HA Network](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-network.png)
+![HA Graphs](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-graphs.png)
+![HA Light](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-light.png)
+![HA Our Day](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-ourday.png)
+![HA Switches](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-switches.png)
 
 [buy-me-a-coffee-shield]: https://img.shields.io/static/v1.svg?label=%20&message=Buy%20me%20a%20coffee&color=6f4e37&logo=buy%20me%20a%20coffee&logoColor=white
 [buy-me-a-coffee]: https://www.buymeacoffee.com/CaesarPL
