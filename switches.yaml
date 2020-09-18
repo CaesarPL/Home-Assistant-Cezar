@@ -158,7 +158,7 @@
     command_topic: "cmnd/blitzwolf1/POWER"
     payload_on: "ON"
     payload_off: "OFF"
-    retain: false        
+    retain: true        
     
   - platform: mqtt
     name: "Pralka"
@@ -166,4 +166,4 @@
     command_topic: "cmnd/blitzwolf2/POWER"
     payload_on: "ON"
     payload_off: "OFF"
-    retain: false     
+    retain: true

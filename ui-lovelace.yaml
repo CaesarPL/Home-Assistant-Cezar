@@ -815,7 +815,7 @@ views:
           - sensor.total_steps
         title: Garmin
       - type: custom:battery-state-card        
-        title: "Baterie sensorów temperatury 1"
+        title: "Baterie sensorów temperatury"
         entities:      
           - sensor.temperature_158d00019c915b
           - sensor.temperature_158d0001ab2855

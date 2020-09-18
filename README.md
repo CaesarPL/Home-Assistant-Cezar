@@ -10,6 +10,8 @@
 * BlitzWolf BW-SHP6 Plugs [[Tasmota](https://tasmota.github.io/docs/) firmware]
 * Sonoff Basic switches [[Tasmota](https://tasmota.github.io/docs/) firmware]
 * Sonoff S26 Plug [[Tasmota](https://tasmota.github.io/docs/) firmware]
+* Sonoff POW Plug [[Tasmota](https://tasmota.github.io/docs/) firmware]
+* Sonoff TH16 Plug [[Tasmota](https://tasmota.github.io/docs/) firmware]
 
 ## ZigBee
 * Xiaomi Mi Smart Home Gateway 2
@@ -34,6 +36,7 @@
 * Xiaomi Mi Box
 * HP Deskjet printer
 * Solis Solar Inverter
+* SDS011 smog sensor (ESPEasy) - to be configured
 
 ## Additional Software
 * HABridge [(https://github.com/bwssytems/ha-bridge)]
@@ -97,17 +100,17 @@ To be configured:
 * [Generic Remote Control Card](https://github.com/dimagoltsman/generic-remote-control-card) - To be configured
 
 ## Screenshots
-![HA Home](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-home.png)
-![HA Rooms](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-rooms.png)
-![HA Rooms down](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-rooms_2.png)
-![HA Weather](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-weather.png)
-![HA Multimedia](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-multimedia.png)
-![HA System](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-system.png)
-![HA Network](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-network.png)
-![HA Graphs](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-graphs.png)
-![HA Light](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-light.png)
-![HA Our Day](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-ourday.png)
-![HA Switches](https://github.com/CaesarPL/Home-Assistant-Cezar/blob/master/screens/HA-switches.png)
+![HA Home](https://github.com/CaesarPL/HomeAssistant/blob/master/photos/HA-home.png)
+![HA Rooms](https://github.com/CaesarPL/HomeAssistant/blob/master/photos/HA-rooms.png)
+![HA Rooms down](https://github.com/CaesarPL/HomeAssistant/blob/master/photos/HA-rooms_2.png)
+![HA Weather](https://github.com/CaesarPL/HomeAssistant/blob/master/photos/HA-weather.png)
+![HA Multimedia](https://github.com/CaesarPL/HomeAssistant/blob/master/photos/HA-multimedia.png)
+![HA System](https://github.com/CaesarPL/HomeAssistant/blob/master/photos/HA-system.png)
+![HA Network](https://github.com/CaesarPL/HomeAssistant/blob/master/photos/HA-network.png)
+![HA Graphs](https://github.com/CaesarPL/HomeAssistant/blob/master/photos/HA-graphs.png)
+![HA Light](https://github.com/CaesarPL/HomeAssistant/blob/master/photos/HA-light.png)
+![HA Our Day](https://github.com/CaesarPL/HomeAssistant/blob/master/photos/HA-ourday.png)
+![HA Switches](https://github.com/CaesarPL/HomeAssistant/blob/master/photos/HA-switches.png)
 
 [buy-me-a-coffee-shield]: https://img.shields.io/static/v1.svg?label=%20&message=Buy%20me%20a%20coffee&color=6f4e37&logo=buy%20me%20a%20coffee&logoColor=white
 [buy-me-a-coffee]: https://www.buymeacoffee.com/CaesarPL
