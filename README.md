@@ -27,7 +27,7 @@
 ## Connected Network Devices
 * Bradlink RM Mini
 * RFLink
-* Denon AVR-X1500H
+* Denon AVR-X1500H (https://www.denon.com/pl-pl/shop/avreceiver/avrx1500h)
 * PlayStation 4
 * Samsung TV
 * iPhone
@@ -43,18 +43,18 @@
 * pvoutput [(https://pvoutput.org/)]
 
 ## Official addons:
-* [Zero Tier One]
-* [Glances]
-* [Samba share]
-* [Mosquitto Broker]
-* [InfluxDB] - to be configured
-* [Grafana] - to be configured
-* [Plex Media Server]
-* [Spotify Connect]
+* [Zero Tier One] (https://github.com/hassio-addons/addon-zerotier)
+* [Glances] (https://github.com/hassio-addons/addon-glances)
+* [Samba share] (https://github.com/home-assistant/hassio-addons/tree/master/samba)
+* [Mosquitto Broker] (https://github.com/home-assistant/hassio-addons/tree/master/mosquitto)
+* [InfluxDB] (https://github.com/hassio-addons/addon-influxdb) - to be configured
+* [Grafana] (https://github.com/hassio-addons/addon-grafana) - to be configured
+* [Plex Media Server] (https://github.com/hassio-addons/addon-plex)
+* [Spotify Connect] (https://github.com/hassio-addons/addon-spotify-connect)
+* [Portainer] (https://github.com/hassio-addons/addon-portainer)
 
 ## Less official addons:
-* [Home Assistant Google Drive Backup]
-* [Portainer]
+* [Home Assistant Google Drive Backup] (https://github.com/sabeechen/hassio-google-drive-backup)
 
 ## Integrations Used
 * [HACS](https://github.com/hacs/integration)
@@ -70,18 +70,19 @@
 * [iCal Sensor](https://github.com/tybritten/ical-sensor-homeassistant)
 * [Blitzortung](https://github.com/mrk-its/homeassistant-blitzortung)
 * [Burze dzis net](https://github.com/PiotrMachowski/Home-Assistant-custom-components-Burze.dzis.net)
-* [AccuWeather]
-* [Broadlink]
-* [Denon HEOS]
-* [Garmin Connect]
-* [Google Cast]
-* [Internet Printing Protocol]
+* [AccuWeather] (https://www.home-assistant.io/integrations/accuweather/)
+* [Broadlink] (https://www.home-assistant.io/integrations/broadlink)
+* [Denon HEOS] (https://www.home-assistant.io/integrations/heos)
+* [Garmin Connect] (https://www.home-assistant.io/integrations/garmin_connect)
+* [Google Cast] (https://www.home-assistant.io/integrations/cast)
+* [Internet Printing Protocol] (https://www.home-assistant.io/integrations/ipp)
 * [Logitech Squeezebox]
-* [Network UPS Tools]
-* [Sony PlayStation 4]
-* [Speedtest]
-* [Transmission]
-* [Xiaomi Getaway]
+* [Network UPS Tools] (https://www.home-assistant.io/integrations/nut)
+* [Sony PlayStation 4] (https://www.home-assistant.io/integrations/ps4)
+* [Speedtest] (https://www.home-assistant.io/integrations/speedtestdotnet)
+* [Transmission] (https://www.home-assistant.io/integrations/transmission)
+* [Xiaomi Getaway] (https://www.home-assistant.io/integrations/xiaomi_aqara)
+* [Spotify] (https://www.home-assistant.io/integrations/spotify)
 
 To be configured:
 * [HA Daily Sensor](https://github.com/jeroenterheerdt/HADailySensor)
