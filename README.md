@@ -42,6 +42,20 @@
 * HABridge [(https://github.com/bwssytems/ha-bridge)]
 * pvoutput [(https://pvoutput.org/)]
 
+## Official addons:
+* [Zero Tier One]
+* [Glances]
+* [Samba share]
+* [Mosquitto Broker]
+* [InfluxDB] - to be configured
+* [Grafana] - to be configured
+* [Plex Media Server]
+* [Spotify Connect]
+
+## Less official addons:
+* [Home Assistant Google Drive Backup]
+* [Portainer]
+
 ## Integrations Used
 * [HACS](https://github.com/hacs/integration)
 * [Alexa Media Player](https://github.com/custom-components/alexa_media_player)
@@ -56,6 +70,18 @@
 * [iCal Sensor](https://github.com/tybritten/ical-sensor-homeassistant)
 * [Blitzortung](https://github.com/mrk-its/homeassistant-blitzortung)
 * [Burze dzis net](https://github.com/PiotrMachowski/Home-Assistant-custom-components-Burze.dzis.net)
+* [AccuWeather]
+* [Broadlink]
+* [Denon HEOS]
+* [Garmin Connect]
+* [Google Cast]
+* [Internet Printing Protocol]
+* [Logitech Squeezebox]
+* [Network UPS Tools]
+* [Sony PlayStation 4]
+* [Speedtest]
+* [Transmission]
+* [Xiaomi Getaway]
 
 To be configured:
 * [HA Daily Sensor](https://github.com/jeroenterheerdt/HADailySensor)

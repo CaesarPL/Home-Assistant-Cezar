@@ -93,9 +93,9 @@ script.projector_off:
   icon: mdi:projector
 switch.ledzatv:
   icon: mdi:led-strip
-binary_sensor.floorplan:
-  custom_ui_state_card: state-card-floorplan
-  config: !include floorplan.yaml
+#binary_sensor.floorplan:
+#  custom_ui_state_card: state-card-floorplan
+#  config: !include floorplan.yaml
 switch.plug_158d0002330853:
   friendly_name: "NAS wtyczka Xiaomi"
 switch.plug_158d00016ff1a4:

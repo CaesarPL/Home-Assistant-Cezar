@@ -1,5 +1,5 @@
 # Weather prediction
-  - platform: yr
+#  - platform: yr
 
 # Google keep
   - platform: google_keep
@@ -461,5 +461,3 @@
           {% else %}
             {{ states('sensor.zmywarka') }}
           {% endif %}
-
-  - platform: vulcan

@@ -3,7 +3,7 @@ household:
   entities:
     - person.Cezar
     - person.Dorota
-zones:
-  name: Zones
-  entities:
-    - binary_sensor.floorplan
+#zones:
+#  name: Zones
+#  entities:
+#    - binary_sensor.floorplan

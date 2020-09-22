@@ -113,9 +113,9 @@
   storms_nearby:
     radius: 30
 
-- platform: mqtt
-  state_topic: dummy/floorplan/sensor
-  name: Floorplan
+#- platform: mqtt
+#  state_topic: dummy/floorplan/sensor
+#  name: Floorplan
   
 - platform: template
   sensors:

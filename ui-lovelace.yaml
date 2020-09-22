@@ -2,7 +2,6 @@ animated_background:
   default_url: "https://cdn.flixel.com/flixel/ypy8bw9fgw1zv2b4htp2.hd.mp4"
   included_users:
     - Cezar
-  # This entity is just an example, use whatever entity you would like
   entity: "weather.home"
   state_url:
     'sunny':
@@ -58,7 +57,6 @@ views:
       - binary_sensor.door_window_sensor_158d00019e275f
       - binary_sensor.water_leak_sensor_158d0001bb93e7
       - binary_sensor.switch_158d00016d7744
-      - sensor.yr_symbol
       - sensor.disk_use_percent_home
       - sensor.memory_free
       - sensor.processor_use
@@ -150,10 +148,10 @@ views:
             - switch.wall_switch_right_158d0001dbe17b            
             - input_select.light_scenes_salon
             - input_select.light_scenes_tv
-            - switch.ledzatv
-            - switch.ledzatvwhite
-            - switch.ledzatvblue
-            - switch.ledzatvfade
+            - switch.led_za_tv
+            - switch.led_za_tv_white
+            - switch.led_za_tv_blue
+            - switch.led_za_tv_fade
             - switch.sonoff_gniazdko
             - switch.projektor
             - script.projector_on
@@ -323,7 +321,8 @@ views:
           entities:
             - sensor.temperature_158d0001b95f89
             - sensor.humidity_158d0001b95f89
-
+            - entity: binary_sensor.motion_sensor_158d00016d5ddd
+              secondary_info: last-changed
   - badges: []
     cards:
       - type: vertical-stack
@@ -436,26 +435,8 @@ views:
         entity: media_player.adam_s_echo_dot
       - type: media-control
         entity: media_player.samsungtvsmart
-#      - type: custom:mini-media-player
-#        entity: media_player.playstation_4
-#        hide:
-#          controls: true
-#          volume: true
-#          power_state: false
-#          progress: true
-#        info: scroll
-#        group: true
-# zwykły button #
-#      - type: vertical-stack
-#        cards:
-#        - cards:
-#          - color_type: icon
-#            icon: 'mdi:power-standby'
-#            tap_action:
-#              action: call-service
-#              service: adb_service.press
-#            type: button
-#          type: horizontal-stack
+      - type: media-control
+        entity: media_player.spotify_sobczaki
       - type: vertical-stack
         cards:
         - cards:
@@ -876,16 +857,15 @@ views:
         title: Kablowe
         type: entities
       - entities:
-#          - entity: sensor.iphone_adam_battery_level
-          - entity: sensor.battery_level
-          - entity: sensor.geocoded_location
-          - entity: sensor.iphone_adam_storage
-          - entity: sensor.iphone_adam_cellular_provider
-          - entity: sensor.last_update_trigger
-          - entity: sensor.sim_1
-          - entity: device_tracker.iphone_adam
-          - entity: sensor.ssid
-          - entity: sensor.connection_type
+          - device_tracker.iphone_adam_2
+          - sensor.iphone_adam_battery_level_2
+          - sensor.iphone_adam_battery_state_2
+          - sensor.iphone_adam_bssid
+          - sensor.iphone_adam_connection_type
+          - sensor.iphone_adam_last_update_trigger
+          - sensor.iphone_adam_sim_1
+          - sensor.iphone_adam_ssid
+          - sensor.iphone_adam_storage_2
         title: Komórka
         type: entities
       - entities:
@@ -978,7 +958,6 @@ views:
           - entity: light.yeelight_color1_34ce008cf7de
             type: custom:light-brightness-preset-row
             name: Światło 3
-            customTheme: false
             customTheme: true
             customSetpoints: true
             LowBrightness: 30
@@ -1112,86 +1091,6 @@ views:
         - entity: input_boolean.wakacje
         title: Ustawienia systemu
         type: entities
-        
-      - type: custom:ha-card-weather-conditions
-        name: "Cezar"
-        language: en
-        animation: true
-        camera: camera.przeddomem
-        pollen:
-          tree:
-            entity: sensor.cc_test_pollen_tree
-            min: 0
-            max: 5
-            low: 1
-            high: 3
-          weed:
-            entity: sensor.cc_test_pollen_weed
-            min: 0
-            max: 5
-            low: 1
-            high: 3
-          grass:
-            entity: sensor.cc_test_pollen_grass
-            min: 0
-            max: 5
-            low: 1
-            high: 3
-        air_quality:
-          pm25: sensor.cc_test_pm25
-          pm10: sensor.cc_test_pm10
-          o3: sensor.cc_test_o3
-          no2: sensor.cc_test_no2
-          co: sensor.cc_test_co
-          so2: sensor.cc_test_so2
-          epa_aqi: sensor.cc_test_epa_aqi
-          epa_health_concern: sensor.cc_test_epa_health_concern
-        weather:
-          icons_model: climacell
-          current:
-            sun: sun.sun
-            current_conditions: sensor.cc_test_weather_condition
-            humidity: sensor.cc_test_humidity_percentage
-            pressure: sensor.cc_test_barometric_pressure
-            temperature: sensor.cc_test_temperature
-            visibility: sensor.cc_test_visibility
-            wind_bearing: sensor.cc_test_wind_direction
-            wind_speed: sensor.cc_test_wind_speed
-            precipitation: sensor.cc_test_precipitation
-            forecast: true
-          forecast:
-            meteogram: camera.weather
-            icons:
-              day_1: sensor.cc_test_weather_condition_0d
-              day_2: sensor.cc_test_weather_condition_1d
-              day_3: sensor.cc_test_weather_condition_2d
-              day_4: sensor.cc_test_weather_condition_3d
-              day_5: sensor.cc_test_weather_condition_4d
-            temperature_high:
-              day_1: sensor.cc_test_temperature_max_0d
-              day_2: sensor.cc_test_temperature_max_1d
-              day_3: sensor.cc_test_temperature_max_2d
-              day_4: sensor.cc_test_temperature_max_3d
-              day_5: sensor.cc_test_temperature_max_4d
-            temperature_low:
-              day_1: sensor.cc_test_temperature_min_0d
-              day_2: sensor.cc_test_temperature_min_1d
-              day_3: sensor.cc_test_temperature_min_2d
-              day_4: sensor.cc_test_temperature_min_3d
-              day_5: sensor.cc_test_temperature_min_4d
-            precipitation_probability:
-              day_1: sensor.cc_test_precipitation_probability_0d
-              day_2: sensor.cc_test_precipitation_probability_1d
-              day_3: sensor.cc_test_precipitation_probability_2d
-              day_4: sensor.cc_test_precipitation_probability_3d
-              day_5: sensor.cc_test_precipitation_probability_4d
-            precipitation_intensity:
-              day_1: sensor.cc_test_precipitation_max_0d
-              day_2: sensor.cc_test_precipitation_max_1d
-              day_3: sensor.cc_test_precipitation_max_2d
-              day_4: sensor.cc_test_precipitation_max_3d
-              day_5: sensor.cc_test_precipitation_max_4d  
-              
     path: setting
     title: Settings
   - badges: []
@@ -1206,9 +1105,6 @@ views:
             entities:
               - entity: binary_sensor.motion_sensor_158d00016d5ddd
                 secondary_info: last-changed
-              - switch.alarm_zosia
-              - switch.alarm_staszek
-              - sensor.rain_precipitation
 
               - sensor.zmywarka_energy_today
               - sensor.zmywarka_energy_total
@@ -1221,22 +1117,12 @@ views:
               - sensor.pralka_power
               - sensor.pralka_voltage
               - sensor.pralka_power_factor   
-              - switch.pralka
                            
               - sensor.salon_flora_temperature
               - sensor.salon_flora_moisture
               - sensor.salon_flora_battery
               - sensor.salon_flora_light_intensity
               - sensor.salon_flora_conductivity
-              - sensor.pralka
-      - type: 'custom:google-keep-card'
-        entity: sensor.googlekeep_d4fa36d9fe
-#        theme: dark
-#        alpha: 0.7
-        show:
-#          - checked
-          - unchecked    
-        hide_if_empty: false
       - type: "custom:config-template-card"
         variables:
           - states['binary_sensor.person_cezar_url'].attributes.url

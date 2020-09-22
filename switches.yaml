@@ -64,47 +64,48 @@
     retain: true
 
   - platform: broadlink
-    host: !secret broadlink_ip
+#    host: !secret broadlink_ip
     mac: !secret broadlink_mac
     switches:
-      ledzatv:
-        friendly_name: "LED za TV"
+#      ledzatv:
+        name: "LED za TV"
         command_on: 'JgBQAAABR5QXERYRFxEWERYRFxEWERYRFjcWNxY2FzYWNxY2FzYXNhY3FhEXNhc2FhEWEhYRFhEWERc2FhEXERY2FjcWNhc2FgAFFAABR0oVAA0FAAAAAAAAAAA='
         command_off: 'JgBYAAABUZMXERYRFxEWERcRFhIWERcRFjcXNhc2FzcXNhc2FzYYNhY3FzYXNhg2FzYXEhcRFxEWEhcRFxEXERgRFzYXNhg2FwAFFQABU0oXAAxdAAFSSRcADQU='
 
   - platform: broadlink
-    host: !secret broadlink_ip
+#    host: !secret broadlink_ip
     mac: !secret broadlink_mac
     switches:
-      ledzatvwhite:
-        friendly_name: "LED za TV white"
+#      ledzatvwhite:
+#        friendly_name: "LED za TV white"
+        name: "LED za TV white"
         command_on: 'JgBYAAABTJUVERUVExMVExUSFRUTExQTFTgVOBU3FjgWNhc2FjgRPRU3FhQTORUbDDkUExUUExQVFhE3FhMUOBcSFDkUOBU4FgAFGAABS0oWAAxgAAFOSRcADQU='
         command_off: 'JgBYAAABTJUVERUVExMVExUSFRUTExQTFTgVOBU3FjgWNhc2FjgRPRU3FhQTORUbDDkUExUUExQVFhE3FhMUOBcSFDkUOBU4FgAFGAABS0oWAAxgAAFOSRcADQU='
 
   - platform: broadlink
-    host: !secret broadlink_ip
+#    host: !secret broadlink_ip
     mac: !secret broadlink_mac
     switches:
-      ledzatvblue:
-        friendly_name: "LED za TV blue"
+#      ledzatvblue:
+        name: "LED za TV blue"
         command_on: 'JgBYAAABUZQYEBYSFhEWEhYSFhEXERcRFzYXNhc2FzcXNxY3FzYXNhc3FhEXERcRFzcXERYSFhEXEhY3FzYXNxYRFzcWNxc2GAAFGQABSkkXAAxoAAFUSRcADQU='
         command_off: 'JgBYAAABUZQYEBYSFhEWEhYSFhEXERcRFzYXNhc2FzcXNxY3FzYXNhc3FhEXERcRFzcXERYSFhEXEhY3FzYXNxYRFzcWNxc2GAAFGQABSkkXAAxoAAFUSRcADQU='
 
   - platform: broadlink
-    host: !secret broadlink_ip
+#    host: !secret broadlink_ip
     mac: !secret broadlink_mac
     switches:
-      ledzatvfade:
-        friendly_name: "LED za TV fade"
+#      ledzatvfade:
+        name: "LED za TV fade"
         command_on: 'JgBYAAABT5QWEhYRFxEWEhYSFhEXERYSFTgWNxc2FzYWOBY3FjcWNxYRFzYXERY3FjcVExYSFhEVOBYSFjcWEhUSFzYXNhc2FwAFFQABUUkWAAxfAAFLShYADQU='
         command_off: 'JgBYAAABT5QWEhYRFxEWEhYSFhEXERYSFTgWNxc2FzYWOBY3FjcWNxYRFzYXERY3FjcVExYSFhEVOBYSFjcWEhUSFzYXNhc2FwAFFQABUUkWAAxfAAFLShYADQU='
 
   - platform: broadlink
-    host: !secret broadlink_ip
+#    host: !secret broadlink_ip
     mac: !secret broadlink_mac
     switches:
-      projektor:
-        friendly_name: "Projektor"
+#      projektor:
+        name: "Projektor"
         command_on: 'JgBYAAABKZEVEBUQFREUERQRFBEVEBUQFRAVEBUQFRAVNRU1FRAVEBURFDUVERQRFBEVEBUQFRAVNRURFDUVNRU1FjQVNRU1FQAF7wABKUcWAAxMAAEpRxUADQU='
         command_off: 'JgBYAAABKZEVEBUQFREUERQRFBEVEBUQFRAVEBUQFRAVNRU1FRAVEBURFDUVERQRFBEVEBUQFRAVNRURFDUVNRU1FjQVNRU1FQAF7wABKUcWAAxMAAEpRxUADQU='
 

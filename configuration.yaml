@@ -10,6 +10,8 @@ homeassistant:
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Warsaw
+#  media_dirs:
+#    media: /mnt
 
   customize: !include customize.yaml
 
@@ -26,7 +28,7 @@ switch: !include switches.yaml
 light: !include lights.yaml
 scene: !include scenes.yaml
 camera: !include camera.yaml
-panel_custom: !include panel_custom.yaml
+#panel_custom: !include panel_custom.yaml
 input_select: !include input_select.yaml
 input_boolean: !include input_boolean.yaml
 utility_meter: !include utility_meter.yaml
@@ -79,17 +81,23 @@ lovelace:
       type: module
     - url: /hacsfiles/config-template-card/config-template-card.js
       type: module    
+
 person:
+
+#http:
+#  server_port: 80
+
+media_source:
 
 #RFLink
 rflink:
   port: /dev/serial/by-id/usb-Arduino__www.arduino.cc__0042_5563930393435111A172-if00
 
 # Floorplan
-frontend:
-  extra_html_url:
-    - /custom_ui/state-card-floorplan.html
-  themes: !include_dir_merge_named themes
+#frontend:
+#  extra_html_url:
+#    - /custom_ui/state-card-floorplan.html
+#  themes: !include_dir_merge_named themes
   
 # Configure a default setup of Home Assistant (frontend, api, etc)
 #default_config:
@@ -98,6 +106,10 @@ config:
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 # http:
 #   base_url: example.duckdns.org:8123
+
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
 
 # Discover some devices automatically
 discovery:
@@ -137,10 +149,10 @@ notify:
   - platform: alexa_media
     name: alexa_media
 
-remote:
-  - platform: broadlink
-    host: !secret broadlink_ip
-    mac: !secret broadlink_mac
+#remote:
+#  - platform: broadlink
+#    host: !secret broadlink_ip
+#    mac: !secret broadlink_mac
 
 adb_service:
   host: !secret adb_ip

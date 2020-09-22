@@ -114,10 +114,10 @@
     platform: sun
   condition:
   - condition: state
-    entity_id: switch.sonoff_power
+    entity_id: switch.sonoff_pow
     state: 'off'
   action:
-  - entity_id: switch.sonoff_power
+  - entity_id: switch.sonoff_pow
     service: switch.turn_on
   - data:
       message: HA - światła przed domem włączone
@@ -129,6 +129,7 @@
       message: Lights outside are on
       title: Lights outside
     service: notify.alexa_media_adam_s_echo_dot
+  mode: single
 - id: '1587673559006'
   alias: Jasno
   description: ''
@@ -197,11 +198,11 @@
     platform: time
   condition:
   - condition: state
-    entity_id: switch.sonoff_power
+    entity_id: switch.sonoff_pow
     state: 'on'
   action:
   - data: {}
-    entity_id: switch.sonoff_power
+    entity_id: switch.sonoff_pow
     service: switch.turn_off
   - data:
       message: HA - wyłączyłem światła przed domem
@@ -213,6 +214,7 @@
       message: <amazon:effect name='whispered'>Lights outside are off</amazon:effect>
       title: Lights outside
     service: notify.alexa_media_adam_s_echo_dot
+  mode: single
 - id: '1588281346963'
   alias: AleJaja
   description: ''
