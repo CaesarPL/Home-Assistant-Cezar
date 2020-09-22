@@ -27,7 +27,7 @@
 ## Connected Network Devices
 * Bradlink RM Mini
 * RFLink
-* Denon AVR-X1500H(https://www.denon.com/pl-pl/shop/avreceiver/avrx1500h)
+* [Denon AVR-X1500H](https://www.denon.com/pl-pl/shop/avreceiver/avrx1500h)
 * PlayStation 4
 * Samsung TV
 * iPhone
@@ -39,8 +39,8 @@
 * SDS011 smog sensor (ESPEasy) - to be configured
 
 ## Additional Software
-* HABridge [(https://github.com/bwssytems/ha-bridge)]
-* pvoutput [(https://pvoutput.org/)]
+* [HABridge](https://github.com/bwssytems/ha-bridge)
+* [pvoutput](https://pvoutput.org/)
 
 ## Official addons:
 * [Zero Tier One](https://github.com/hassio-addons/addon-zerotier)
@@ -54,7 +54,7 @@
 * [Portainer](https://github.com/hassio-addons/addon-portainer)
 
 ## Less official addons:
-* [Home Assistant Google Drive Backup] (https://github.com/sabeechen/hassio-google-drive-backup)
+* [Home Assistant Google Drive Backup](https://github.com/sabeechen/hassio-google-drive-backup)
 
 ## Integrations Used
 * [HACS](https://github.com/hacs/integration)
