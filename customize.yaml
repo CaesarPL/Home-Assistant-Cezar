@@ -24,10 +24,38 @@ sensor.ha_database_size:
 sensor.last_ha_restart:
   friendly_name: "Last HA restart"
   icon: mdi:clock-outline
+sensor.pralka:
+  icon: mdi:washing-machine  
+sensor.pralka_power:
+  icon: mdi:power
+sensor.zmywarka:
+  icon: mdi:dishwasher
+sensor.zmywarka_power:
+  icon: mdi:power
+sensor.rain_precipitation:
+  icon: mdi:weather-rainy
+sensor.power_generation:
+  icon: mdi:solar-power
+sensor.energy_generation:
+  icon: mdi:solar-power
+sensor.transmission_status:
+  icon: mdi:download-network-outline
+sensor.transmission_active_torrents:
+  icon: mdi:format-list-numbered
+sensor.transmission_paused_torrents:
+  icon: mdi:format-list-numbered
+sensor.transmission_total_torrents:
+  icon: mdi:format-list-numbered
+sensor.transmission_started_torrents:
+  icon: mdi:format-list-numbered
+sensor.transmission_down_speed:
+  icon: mdi:speedometer
+sensor.transmission_up_speed:
+  icon: mdi:speedometer
 binary_sensor.playstation_status:
-  icon: mdi:playstation
+  icon: mdi:sony-playstation
 binary_sensor.wii_status:
-  icon: mdi:gamepad-variant
+  icon: mdi:nintendo-wii
 binary_sensor.3ds_status:
   icon: mdi:gamepad-variant
 binary_sensor.tv_status:
@@ -46,10 +74,8 @@ binary_sensor.xiaomirepeater_status:
   icon: mdi:router-wireless
 binary_sensor.sonoffswiatloprzeddomem_status:
   icon: mdi:theme-light-dark
-switch.sonoff_power:
-  icon: mdi:theme-light-dark
 binary_sensor.kindle_status:
-  friendly_name: "Światło przed domem"
+#  friendly_name: "Światło przed domem"
   icon: mdi:cellphone-text
 binary_sensor.alexa_status:
   icon: mdi:amazon-alexa
@@ -81,11 +107,15 @@ binary_sensor.sonoffpow_status:
   icon: mdi:power-plug
 binary_sensor.sonoffbasic2_status:
   icon: mdi:power-plug
+binary_sensor.solisinverter_status:
+  icon: mdi:solar-power
 light.yeelight_color1_7811dc682b4d:
   friendly_name: "Yeelight 1"
 light.yeelight_color1_34ce0084c619:
   friendly_name: "Yeelight 2"
 light.yeelight_color1_34ce008cf7de:
+  friendly_name: "Yeelight 3"
+light.yeelight_color_0x00000000036eeb91:
   friendly_name: "Yeelight 3"
 script.projector_on:
   icon: mdi:projector
@@ -93,9 +123,6 @@ script.projector_off:
   icon: mdi:projector
 switch.ledzatv:
   icon: mdi:led-strip
-#binary_sensor.floorplan:
-#  custom_ui_state_card: state-card-floorplan
-#  config: !include floorplan.yaml
 switch.plug_158d0002330853:
   friendly_name: "NAS wtyczka Xiaomi"
 switch.plug_158d00016ff1a4:
@@ -103,13 +130,21 @@ switch.plug_158d00016ff1a4:
 switch.sonoff_gniazdko:
   icon: mdi:speaker
   friendly_name: "Subwoofer"
-binary_sensor.solisinverter_status:
-  icon: mdi:solar-power
-sensor.pralka:
-  icon: mdi:washing-machine  
-sensor.pralka_power:
-  icon: mdi:power
-sensor.zmywarka:
-  icon: mdi:dishwasher
-sensor.zmywarka_power:
-  icon: mdi:power
+switch.sonoff_power:
+  icon: mdi:theme-light-dark
+switch.wall_switch_right_158d0001dbe288:
+  icon: mdi:lightbulb-outline
+switch.wall_switch_left_158d0001dbe288:
+  icon: mdi:lightbulb-outline
+switch.wall_switch_left_158d0001dbe17b:
+  icon: mdi:wall-sconce
+switch.wall_switch_right_158d0001dbe17b:  
+  icon: mdi:led-strip
+switch.led_za_tv:
+  icon: mdi:led-strip
+switch.led_za_tv_white:
+  icon: mdi:led-strip
+switch.led_za_tv_blue:
+  icon: mdi:led-strip
+switch.led_za_tv_fade:
+  icon: mdi:led-strip

@@ -10,4 +10,4 @@ include:
     - binary_sensor.playstation_status
     - sensor.power_generation
     - sensor.energy_generation
-    - sensor.daily_home_energy
+#    - sensor.daily_home_energy

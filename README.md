@@ -91,14 +91,15 @@ To be configured:
 * [Mitemp Bluetooth](https://github.com/custom-components/sensor.mitemp_bt)
 
 ## Frontend
+Themes
 * [Blue night Theme](https://github.com/home-assistant-community-themes/blue-night)
 * [Synthwave Theme](https://github.com/bbbenji/synthwave-hass)
-
+Weather
 * [DarkSky Card](https://github.com/clayauld/lovelace-darksky-card)
 * [Weather Conditions Card](https://github.com/r-renato/ha-card-weather-conditions)
-
+Background
 * [Lovelace Animated Background](https://github.com/Villhellm/lovelace-animated-background)
-
+Views
 * [Custom Header](https://github.com/maykar/custom-header)
 * [Custom Button Card](https://github.com/custom-cards/button-card)
 * [Secondary Info Entity Row](https://github.com/custom-cards/secondaryinfo-entity-row)
@@ -106,17 +107,17 @@ To be configured:
 * [Config Template Card](https://github.com/iantrich/config-template-card)
 * [List Card](https://github.com/iantrich/list-card)
 * [Group Element](https://github.com/custom-cards/group-element)
-
+Calendar
 * [Calendar Card](https://github.com/ljmerza/calendar-card)
 * [Atomic Calendar](https://github.com/atomic7777/atomic_calendar)
-
+Control
 * [Battery State Card](https://github.com/maxwroc/battery-state-card)
 * [Time Picker Card](https://github.com/GeorgeSG/lovelace-time-picker-card) - To be configured
 * [Cover Control](https://github.com/finity69x2/cover-control-button-row) - To be configured
 * [Mini Media Player](https://github.com/kalkih/mini-media-player)
 * [Mini Graph Card](https://github.com/kalkih/mini-graph-card)
 * [Light Entity Card](https://github.com/ljmerza/light-entity-card)
-
+Additional
 * [Home Feed Card](https://github.com/gadgetchnnel/lovelace-home-feed-card)
 * [More Info Card](https://github.com/thomasloven/lovelace-more-info-card)
 * [MiFlora Card](https://github.com/RodBr/miflora-card) - To be configured

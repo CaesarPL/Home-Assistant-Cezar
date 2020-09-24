@@ -376,16 +376,18 @@
   - data:
       message: 'HA - temperatura w salonie: {{ states(''sensor.temperature_158d0001b95f89'')
         }} , w ogrodzie: {{ states(''sensor.temperatura_ogrod'') }}, u Zosi: {{ states(''sensor.temperature_158d00019c915b'')
-        }}, u Stasia {{ states(''sensor.temperatura_staszek'') }}. Prognoza mówi:
-        {{ states(''sensor.dark_sky_summary_1d'') }} Moja kochana żona pojedzie do
-        pracy {{ states(''sensor.dorota'') }} minut.'
+        }}, u Stasia {{ states(''sensor.temperature_158d000163e802'') }}. Prognoza
+        mówi: {{ states(''sensor.dark_sky_summary_1d'') }} Opady na {{ states(''sensor.rain_precipitation_today'')
+        }} procent. Moja kochana żona pojedzie do pracy {{ states(''sensor.dorota'')
+        }} minut.'
     service: notify.cezar
   - data:
       message: 'HA - temperatura w salonie: {{ states(''sensor.temperature_158d0001b95f89'')
         }} , w ogrodzie: {{ states(''sensor.temperatura_ogrod'') }}, u Zosi: {{ states(''sensor.temperature_158d00019c915b'')
-        }}, u Stasia {{ states(''sensor.temperatura_staszek'') }}. Prognoza mówi:
-        {{ states(''sensor.dark_sky_summary_1d'') }} Kochana żono - pojedziesz do
-        pracy {{ states(''sensor.dorota'') }} minut.'
+        }}, u Stasia {{ states(''sensor.temperature_158d000163e802'') }}. Prognoza
+        mówi: {{ states(''sensor.dark_sky_summary_1d'') }} Opady na {{ states(''sensor.rain_precipitation_today'')
+        }} procent. Kochana żono - pojedziesz do pracy {{ states(''sensor.dorota'')
+        }} minut.'
     service: notify.dorota
   mode: single
 - id: '1596984381234'

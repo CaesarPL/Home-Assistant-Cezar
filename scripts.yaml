@@ -1,11 +1,15 @@
 projector_on:
   alias: "Włącz/Wyłącz projektor"
   sequence:
-    - service: broadlink.send
+#    - service: broadlink.send
+#      data:
+#        host: !secret broadlink_ip
+#        packet: JgBYAAABKZEVEBUQFREUERQRFBEVEBUQFRAVEBUQFRAVNRU1FRAVEBURFDUVERQRFBEVEBUQFRAVNRURFDUVNRU1FjQVNRU1FQAF7wABKUcWAAxMAAEpRxUADQU=
+    - service: remote.send_command
       data:
-        host: !secret broadlink_ip
-        packet: JgBYAAABKZEVEBUQFREUERQRFBEVEBUQFRAVEBUQFRAVNRU1FRAVEBURFDUVERQRFBEVEBUQFRAVNRURFDUVNRU1FjQVNRU1FQAF7wABKUcWAAxMAAEpRxUADQU=
-
+        entity_id: remote.broadlink_remote
+        command: JgBYAAABKZEVEBUQFREUERQRFBEVEBUQFRAVEBUQFRAVNRU1FRAVEBURFDUVERQRFBEVEBUQFRAVNRURFDUVNRU1FjQVNRU1FQAF7wABKUcWAAxMAAEpRxUADQU=
+        
 projector_off:
   alias: "Wyłącz projektor"
   sequence:

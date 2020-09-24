@@ -1,6 +1,6 @@
 light_scenes_salon:
   name: "Tryb oświetlenia"
-  icon: mdi:palette
+  icon: mdi:ceiling-light
   options:
     - "jasny"
     - "film"
@@ -10,7 +10,7 @@ light_scenes_salon:
 
 light_scenes_tv:
   name: "LED za TV"
-  icon: mdi:palette
+  icon: mdi:television-ambient-light
   options:
     - "ledzatvonwhite"
     - "ledzatvonblue"

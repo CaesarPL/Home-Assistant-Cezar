@@ -245,8 +245,8 @@ views:
           title: "Staszek"
           show_name: false
           entities:
-            - sensor.temperatura_staszek
             - sensor.temperature_158d000163e802
+            - sensor.humidity_158d000163e802
         - type: entities
           no_card: true
           show_header_toggle: false
@@ -307,7 +307,7 @@ views:
             - light.gateway_light_34ce00812981
             - light.yeelight_color1_7811dc682b4d
             - light.yeelight_color1_34ce0084c619
-            - light.yeelight_color1_34ce008cf7de
+            - light.yeelight_color_0x00000000036eeb91
             - switch.sonoff_power
           title: Light
           type: entities
@@ -323,6 +323,15 @@ views:
             - sensor.humidity_158d0001b95f89
             - entity: binary_sensor.motion_sensor_158d00016d5ddd
               secondary_info: last-changed
+    - type: vertical-stack
+      in_card: true
+      cards:
+        - type: glance
+          no_card: true
+          title: "Spiżarnia"
+          show_name: false
+          entities:
+            - sensor.temperatura_staszek
   - badges: []
     cards:
       - type: vertical-stack
@@ -367,10 +376,10 @@ views:
             title: Bolesław na Katowice
             type: picture-entity
       - entities:
-          - entity: fan.xiaomi_miio_device
-          - entity: sensor.mi_aqi
-          - entity: sensor.mi_humidity
-          - entity: sensor.mi_temperature
+          - fan.xiaomi_miio_device
+          - sensor.mi_aqi
+          - sensor.mi_humidity
+          - sensor.mi_temperature
         show_header_toggle: false
         title: Powietrze
         type: entities
@@ -815,33 +824,33 @@ views:
   - badges: []
     cards:
       - entities:
-          - entity: binary_sensor.workday_sensor
-          - entity: binary_sensor.sonoffswiatloprzeddomem_status
-          - entity: binary_sensor.ipad_status
-          - entity: binary_sensor.xiaomirepeater_status
-          - entity: binary_sensor.dlink480_status
-          - entity: binary_sensor.dlink720_status
-          - entity: binary_sensor.kindle_status
-          - entity: binary_sensor.alexa_status
-          - entity: binary_sensor.sonoffczujniksmogu_status
-          - entity: binary_sensor.xiaomigateway_status
-          - entity: binary_sensor.laptopdoroty_status
-          - entity: binary_sensor.laptopfirmowywifi_status
-          - entity: binary_sensor.xiaomiairpurifier_status
-          - entity: binary_sensor.picoresauna_status
-          - entity: binary_sensor.sonoffsauna_status
-          - entity: binary_sensor.sonoffth16_status
-          - entity: binary_sensor.sonoffpow_status
-          - entity: binary_sensor.sonoffgniazdko_status
-          - entity: binary_sensor.solisinverter_status
+          - binary_sensor.workday_sensor
+          - binary_sensor.sonoffswiatloprzeddomem_status
+          - binary_sensor.ipad_status
+          - binary_sensor.xiaomirepeater_status
+          - binary_sensor.dlink480_status
+          - binary_sensor.dlink720_status
+          - binary_sensor.kindle_status
+          - binary_sensor.alexa_status
+          - binary_sensor.sonoffczujniksmogu_status
+          - binary_sensor.xiaomigateway_status
+          - binary_sensor.laptopdoroty_status
+          - binary_sensor.laptopfirmowywifi_status
+          - binary_sensor.xiaomiairpurifier_status
+          - binary_sensor.picoresauna_status
+          - binary_sensor.sonoffsauna_status
+          - binary_sensor.sonoffth16_status
+          - binary_sensor.sonoffpow_status
+          - binary_sensor.sonoffgniazdko_status
+          - binary_sensor.solisinverter_status
         show_header_toggle: false
         title: WiFi
         type: entities
       - entities:
-          - entity: binary_sensor.playstation_status
-          - entity: binary_sensor.retropie_status
-          - entity: binary_sensor.wii_status
-          - entity: binary_sensor.3ds_status
+          - binary_sensor.playstation_status
+          - binary_sensor.retropie_status
+          - binary_sensor.wii_status
+          - binary_sensor.3ds_status
         show_header_toggle: false
         title: Konsole do gier
         type: entities
@@ -869,9 +878,9 @@ views:
         title: Komórka
         type: entities
       - entities:
-          - entity: sensor.hp_deskjet_5000_series
-          - entity: sensor.hp_deskjet_5000_series_black_ink
-          - entity: sensor.hp_deskjet_5000_series_tri_color_ink
+          - sensor.hp_deskjet_5000_series
+          - sensor.hp_deskjet_5000_series_black_ink
+          - sensor.hp_deskjet_5000_series_tri_color_ink
         show_header_toggle: false
         title: Drukarka
         type: entities
@@ -880,7 +889,7 @@ views:
   - badges: []
     cards:
       - entities:
-          - entity: sensor.raspberry_cpu_temp
+          - sensor.raspberry_cpu_temp
         hours_to_show: 24
         refresh_interval: 0
         title: Temperatura CPU
@@ -891,30 +900,30 @@ views:
 #        refresh_interval: 0
 #        title: Energia w domu
 #        type: history-graph
+#      - entities:
+#          - entity: sensor.daily_home_energy
+#        hours_to_show: 48
+#        refresh_interval: 0
+#        title: Dzienna energia
+#        type: history-graph
       - entities:
-          - entity: sensor.daily_home_energy
-        hours_to_show: 48
-        refresh_interval: 0
-        title: Dzienna energia
-        type: history-graph
-      - entities:
-          - entity: sensor.speedtest_download
-          - entity: sensor.speedtest_upload
+          - sensor.speedtest_download
+          - sensor.speedtest_upload
         hours_to_show: 24
         refresh_interval: 0
         title: Internet
         type: history-graph
       - entities:
-          - entity: sensor.temperature_158d0001ab2855
+          - sensor.temperature_158d0001ab2855
         hours_to_show: 48
         refresh_interval: 0
         title: Temperatura kuchnia
         type: history-graph
       - entities:
-          - entity: sensor.worldwide_coronavirus_confirmed
-          - entity: sensor.worldwide_coronavirus_current
-          - entity: sensor.worldwide_coronavirus_deaths
-          - entity: sensor.worldwide_coronavirus_recovered
+          - sensor.worldwide_coronavirus_confirmed
+          - sensor.worldwide_coronavirus_current
+          - sensor.worldwide_coronavirus_deaths
+          - sensor.worldwide_coronavirus_recovered
         title: Korona
         type: entities
       - type: custom:mini-graph-card
@@ -934,7 +943,7 @@ views:
           - light.gateway_light_34ce00812981
           - light.yeelight_color1_7811dc682b4d
           - light.yeelight_color1_34ce0084c619
-          - light.yeelight_color1_34ce008cf7de
+          - light.yeelight_color_0x00000000036eeb91
           - switch.wall_switch_right_158d0001dbe288
           - switch.wall_switch_left_158d0001dbe288
           - switch.wall_switch_left_158d0001dbe17b
@@ -955,7 +964,7 @@ views:
             type: custom:light-brightness-preset-row
             name: Światło 2
             customTheme: false
-          - entity: light.yeelight_color1_34ce008cf7de
+          - entity: light.yeelight_color_0x00000000036eeb91
             type: custom:light-brightness-preset-row
             name: Światło 3
             customTheme: true
@@ -975,7 +984,7 @@ views:
         - type: custom:light-entity-card
           entity: light.yeelight_color1_34ce0084c619
         - type: custom:light-entity-card
-          entity: light.yeelight_color1_34ce008cf7de
+          entity: light.yeelight_color_0x00000000036eeb91
 #      - type: custom:more-info-card
 #        entity: light.yeelight_color1_34ce008cf7de
 #        title: Yeelight RGB
@@ -987,17 +996,17 @@ views:
         in_card: true
         cards:
           - entities:
-              - entity: sensor.ps4_today_time
-              - entity: sensor.next_launch
-              - entity: sensor.moon
-              - entity: sensor.season
-              - entity: sensor.time
-              - entity: sensor.date
-              - entity: sensor.rocznica_slubu
+              - sensor.ps4_today_time
+              - sensor.next_launch
+              - sensor.moon
+              - sensor.season
+              - sensor.time
+              - sensor.date
+              - sensor.rocznica_slubu
             type: entities
           - entities:
-              - entity: sensor.adam
-              - entity: sensor.dorota
+              - sensor.adam
+              - sensor.dorota
             show_header_toggle: false
             title: Do pracy
             type: entities
@@ -1041,7 +1050,11 @@ views:
             entities:
               - entity: calendar.domowy
                 type: holiday
-            
+
+          - type: calendar
+            entities:
+              - calendar.domowy
+
           - type: custom:quote-of-the-day-card               
             entity: sensor.quote_of_the_day
             feed_attribute: entries # Required if using FeedParser v0.0.8 or later
@@ -1057,29 +1070,29 @@ views:
   - badges: []
     cards:
       - entities:
-          - entity: switch.wall_switch_right_158d0001dbe288
-          - entity: switch.wall_switch_left_158d0001dbe288
-          - entity: switch.wall_switch_left_158d0001dbe17b
-          - entity: switch.wall_switch_right_158d0001dbe17b
-          - entity: switch.plug_158d0002330853
-          - entity: switch.plug_158d00016ff1a4
-          - entity: switch.sonoff_power
-          - entity: switch.sonoff_pow
-          - entity: switch.sonoff_sauna
-          - entity: switch.sonoff_th16
-          - entity: switch.sonoff_gniazdko
-          - entity: switch.altana
-          - entity: switch.zmywarka
-          - entity: switch.pralka
+          - switch.wall_switch_right_158d0001dbe288
+          - switch.wall_switch_left_158d0001dbe288
+          - switch.wall_switch_left_158d0001dbe17b
+          - switch.wall_switch_right_158d0001dbe17b
+          - switch.plug_158d0002330853
+          - switch.plug_158d00016ff1a4
+          - switch.sonoff_power
+          - switch.sonoff_pow
+          - switch.sonoff_sauna
+          - switch.sonoff_th16
+          - switch.sonoff_gniazdko
+          - switch.altana
+          - switch.zmywarka
+          - switch.pralka
         title: Switch
         type: entities
       - entities:
-          - entity: switch.sonoff_pow
-          - entity: sensor.sonoff_pow_current
-          - entity: sensor.sonoff_pow_power
-          - entity: sensor.sonoff_pow_today_energy
-          - entity: sensor.sonoff_pow_yesterday_energy
-          - entity: sensor.sonoff_temperature
+          - switch.sonoff_pow
+          - sensor.sonoff_pow_current
+          - sensor.sonoff_pow_power
+          - sensor.sonoff_pow_today_energy
+          - sensor.sonoff_pow_yesterday_energy
+          - sensor.sonoff_temperature
         show_header_toggle: false
         title: Sonoff POW - konsole
         type: entities

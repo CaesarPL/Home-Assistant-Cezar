@@ -372,6 +372,12 @@
         value_template: '{{ state_attr("weather.home_2", "forecast")[1]["precipitation_probability"] }}'
         friendly_name: 'Rain precipitation for the next day'
 
+  - platform: template
+    sensors:
+      rain_precipitation_today:
+        value_template: '{{ state_attr("weather.home_2", "forecast")[0]["precipitation_probability"] }}'
+        friendly_name: 'Rain precipitation for today'
+
   - platform: mqtt
     name: "Zmywarka Energy Today"
     state_topic: "tele/blitzwolf1/SENSOR"
