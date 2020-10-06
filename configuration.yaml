@@ -80,8 +80,10 @@ lovelace:
     - url: /hacsfiles/lovelace-time-picker-card/time-picker-card.js
       type: module
     - url: /hacsfiles/config-template-card/config-template-card.js
-      type: module    
-
+      type: module
+    - url: /hacsfiles/purifier-card/purifier-card.js
+      type: module
+      
 person:
 
 #http:
@@ -89,15 +91,25 @@ person:
 
 media_source:
 
+influxdb:
+  username: homeassistant
+  password: !secret my_password
+  max_retries: 3
+  default_measurement: state
+  include:
+    entities:
+      - sensor.temperature_158d0001b95f89
+      - sensor.temperature_158d0002239fbb
+      
 #RFLink
 rflink:
   port: /dev/serial/by-id/usb-Arduino__www.arduino.cc__0042_5563930393435111A172-if00
 
 # Floorplan
-#frontend:
+frontend:
 #  extra_html_url:
 #    - /custom_ui/state-card-floorplan.html
-#  themes: !include_dir_merge_named themes
+  themes: !include_dir_merge_named themes
   
 # Configure a default setup of Home Assistant (frontend, api, etc)
 #default_config:
@@ -119,6 +131,8 @@ discovery:
 system_health:
 
 mobile_app:
+
+#vulcan:
 
 # Deifinition of notifying service
 notify:

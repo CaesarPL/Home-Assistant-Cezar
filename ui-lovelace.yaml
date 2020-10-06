@@ -383,6 +383,42 @@ views:
         show_header_toggle: false
         title: Powietrze
         type: entities
+      - type: "custom:purifier-card"
+        entity: fan.xiaomi_miio_device
+        stats:
+          - attribute: filter_life_remaining
+            unit: '%'
+            subtitle: Filter Remaining
+          - attribute: motor_speed
+            unit: RPS
+            subtitle: Motor Speed
+        actions:
+          - name: Silent
+            icon: 'mdi:weather-night'
+            speed: Silent
+          - name: 25%
+            icon: 'mdi:circle-slice-2'
+            speed: Favorite
+            xiaomi_miio_favorite_level: 3
+          - name: 50%
+            icon: 'mdi:circle-slice-4'
+            speed: Favorite
+            xiaomi_miio_favorite_level: 7
+          - name: 75%
+            icon: 'mdi:circle-slice-6'
+            speed: Favorite
+            xiaomi_miio_favorite_level: 10
+          - name: 100%
+            icon: 'mdi:circle-slice-8'
+            speed: Favorite
+            xiaomi_miio_favorite_level: 14
+          - name: Auto
+            icon: 'mdi:brightness-auto'
+            speed: Auto
+        show_name: true
+        show_state: true
+        show_toolbar: true
+        compact_view: false          
         
       - type: 'custom:lovelace-darksky-card'
         entity_current_conditions: sensor.dark_sky_icon
@@ -1084,6 +1120,7 @@ views:
           - switch.altana
           - switch.zmywarka
           - switch.pralka
+          - binary_sensor.switch_158d00016d7744
         title: Switch
         type: entities
       - entities:
@@ -1130,6 +1167,8 @@ views:
               - sensor.pralka_power
               - sensor.pralka_voltage
               - sensor.pralka_power_factor   
+              - sensor.czujnik_smogu_pm25
+              - sensor.czujnik_smogu_pm10
                            
               - sensor.salon_flora_temperature
               - sensor.salon_flora_moisture
@@ -1143,5 +1182,41 @@ views:
           - binary_sensor.person_cezar_url
         card:
           type: iframe
-          url: "${ vars[0] }"        
+          url: "${ vars[0] }"      
+      - type: "custom:purifier-card"
+        entity: fan.xiaomi_miio_device
+        stats:
+          - attribute: filter_life_remaining
+            unit: '%'
+            subtitle: Filter Remaining
+          - attribute: motor_speed
+            unit: RPS
+            subtitle: Motor Speed
+        actions:
+          - name: Silent
+            icon: 'mdi:weather-night'
+            speed: Silent
+          - name: 25%
+            icon: 'mdi:circle-slice-2'
+            speed: Favorite
+            xiaomi_miio_favorite_level: 3
+          - name: 50%
+            icon: 'mdi:circle-slice-4'
+            speed: Favorite
+            xiaomi_miio_favorite_level: 7
+          - name: 75%
+            icon: 'mdi:circle-slice-6'
+            speed: Favorite
+            xiaomi_miio_favorite_level: 10
+          - name: 100%
+            icon: 'mdi:circle-slice-8'
+            speed: Favorite
+            xiaomi_miio_favorite_level: 14
+          - name: Auto
+            icon: 'mdi:brightness-auto'
+            speed: Auto
+        show_name: true
+        show_state: true
+        show_toolbar: true
+        compact_view: false          
     title: Temp

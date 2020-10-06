@@ -265,6 +265,7 @@
   - data:
       name: blue_night
     service: frontend.set_theme
+  mode: single
 - id: '1588675771948'
   alias: Motyw - Jasny po wschodzie słońca
   description: ''
@@ -374,7 +375,7 @@
   condition: []
   action:
   - data:
-      message: 'HA - temperatura w salonie: {{ states(''sensor.temperature_158d0001b95f89'')
+      message: 'HA - temperatura w salonie: {{ states(''sensor.temperature_158d0001ab2855'')
         }} , w ogrodzie: {{ states(''sensor.temperatura_ogrod'') }}, u Zosi: {{ states(''sensor.temperature_158d00019c915b'')
         }}, u Stasia {{ states(''sensor.temperature_158d000163e802'') }}. Prognoza
         mówi: {{ states(''sensor.dark_sky_summary_1d'') }} Opady na {{ states(''sensor.rain_precipitation_today'')
@@ -382,7 +383,7 @@
         }} minut.'
     service: notify.cezar
   - data:
-      message: 'HA - temperatura w salonie: {{ states(''sensor.temperature_158d0001b95f89'')
+      message: 'HA - temperatura w salonie: {{ states(''sensor.temperature_158d0001ab2855'')
         }} , w ogrodzie: {{ states(''sensor.temperatura_ogrod'') }}, u Zosi: {{ states(''sensor.temperature_158d00019c915b'')
         }}, u Stasia {{ states(''sensor.temperature_158d000163e802'') }}. Prognoza
         mówi: {{ states(''sensor.dark_sky_summary_1d'') }} Opady na {{ states(''sensor.rain_precipitation_today'')
@@ -478,4 +479,14 @@
   - data: {}
     entity_id: switch.blitzwolf
     service: switch.turn_off
+  mode: single
+- id: '1601932797814'
+  alias: Motyw - Ciemny po zachodzie słońca (Duplicate)
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - data:
+      name: blue_night
+    service: frontend.set_theme
   mode: single

@@ -467,3 +467,13 @@
           {% else %}
             {{ states('sensor.zmywarka') }}
           {% endif %}
+
+  - platform: mqtt
+    name: "Czujnik smogu PM25"
+    state_topic: "CzujnikSmogu_1/CzujnikSmogu/PM25"
+    unit_of_measurement: "ug/m3"
+
+  - platform: mqtt
+    name: "Czujnik smogu PM10"
+    state_topic: "CzujnikSmogu_1/CzujnikSmogu/PM10"
+    unit_of_measurement: "ug/m3"
