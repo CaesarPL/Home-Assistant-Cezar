@@ -448,7 +448,7 @@
   description: ''
   trigger:
   - entity_id: sensor.pralka
-    for: 00:03:00
+    for: 00:04:00
     from: pranie
     platform: state
     to: wyłączona

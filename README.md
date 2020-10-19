@@ -120,12 +120,13 @@ Control
 Additional
 * [Home Feed Card](https://github.com/gadgetchnnel/lovelace-home-feed-card)
 * [More Info Card](https://github.com/thomasloven/lovelace-more-info-card)
-* [MiFlora Card](https://github.com/RodBr/miflora-card) - To be configured
-* [Air Filter Card](https://github.com/fineemb/lovelace-air-filter-card) - To be configured
+* [Purifier card](https://github.com/denysdovhan/purifier-card)
 * [Google Keep Card](https://github.com/PiotrMachowski/lovelace-google-keep-card)
 * [Waze Travel Card](https://github.com/r-renato/ha-card-waze-travel-time)
 * [RGD Light Card](https://github.com/bokub/rgb-light-card)
 * [Generic Remote Control Card](https://github.com/dimagoltsman/generic-remote-control-card) - To be configured
+* [MiFlora Card](https://github.com/RodBr/miflora-card) - To be configured
+* [Purifier Card](https://github.com/denysdovhan/purifier-card)
 
 ## Screenshots
 ![HA Home](https://github.com/CaesarPL/HomeAssistant/blob/master/photos/HA-home.png)

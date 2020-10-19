@@ -52,6 +52,24 @@ sensor.transmission_down_speed:
   icon: mdi:speedometer
 sensor.transmission_up_speed:
   icon: mdi:speedometer
+sensor.czujnik_smogu_pm25:
+  icon: mdi:smog
+sensor.czujnik_smogu_pm10:
+  icon: mdi:smog
+sensor.temperature_158d0002239fbb:
+  friendly_name: "Łazienka Dół"
+sensor.temperature_158d000163e802:
+  friendly_name: "Staszek"
+sensor.temperature_158d0001ab2855:
+  friendly_name: "Kuchnia"
+sensor.temperature_158d0001b95f89:
+  friendly_name: "Sypialnia"
+sensor.temperature_158d00019c915b:
+  friendly_name: "Zosia"
+sensor.temperature_158d00022723b2:
+  friendly_name: "Łazienka góra"
+sensor.mi_humidity:
+  icon: mdi:smog
 binary_sensor.playstation_status:
   icon: mdi:sony-playstation
 binary_sensor.wii_status:
@@ -148,3 +166,5 @@ switch.led_za_tv_blue:
   icon: mdi:led-strip
 switch.led_za_tv_fade:
   icon: mdi:led-strip
+fan.xiaomi_miio_device:
+  icon: mdi:air-purifier

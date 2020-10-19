@@ -44,11 +44,11 @@ animated_background:
 
     'rainy': "https://cdn.flixel.com/flixel/f0w23bd0enxur5ff0bxz.hd.mp4"
 
-custom_header:
-  compact_mode: false
-  header_text: '{{ hours24 }}:{{ minutesLZ }} {{ dayNameLong }} {{ dayNum }} {{ monthNameLong }} {{ year4d }}'  
-  button_text:
-    menu: '{{ dayNameShort }}. {{ monthNameShort }}. {{ dayNum }} {{ year4d }}'
+#custom_header:
+#  compact_mode: false
+#  header_text: '{{ hours24 }}:{{ minutesLZ }} {{ dayNameLong }} {{ dayNum }} {{ monthNameLong }} {{ year4d }}'  
+#  button_text:
+#    menu: '{{ dayNameShort }}. {{ monthNameShort }}. {{ dayNum }} {{ year4d }}'
 
 title: Sobczaki
 views:
@@ -375,50 +375,70 @@ views:
             entity: camera.boleslaw_na_olkusz
             title: Bolesław na Katowice
             type: picture-entity
-      - entities:
-          - fan.xiaomi_miio_device
-          - sensor.mi_aqi
-          - sensor.mi_humidity
-          - sensor.mi_temperature
-        show_header_toggle: false
-        title: Powietrze
-        type: entities
-      - type: "custom:purifier-card"
-        entity: fan.xiaomi_miio_device
-        stats:
-          - attribute: filter_life_remaining
-            unit: '%'
-            subtitle: Filter Remaining
-          - attribute: motor_speed
-            unit: RPS
-            subtitle: Motor Speed
-        actions:
-          - name: Silent
-            icon: 'mdi:weather-night'
-            speed: Silent
-          - name: 25%
-            icon: 'mdi:circle-slice-2'
-            speed: Favorite
-            xiaomi_miio_favorite_level: 3
-          - name: 50%
-            icon: 'mdi:circle-slice-4'
-            speed: Favorite
-            xiaomi_miio_favorite_level: 7
-          - name: 75%
-            icon: 'mdi:circle-slice-6'
-            speed: Favorite
-            xiaomi_miio_favorite_level: 10
-          - name: 100%
-            icon: 'mdi:circle-slice-8'
-            speed: Favorite
-            xiaomi_miio_favorite_level: 14
-          - name: Auto
-            icon: 'mdi:brightness-auto'
-            speed: Auto
-        show_name: true
-        show_state: true
-        show_toolbar: true
-        compact_view: false          
+      # - entities:
+          # - fan.xiaomi_miio_device
+          # - sensor.mi_aqi
+          # - sensor.mi_humidity
+          # - sensor.mi_temperature
+        # show_header_toggle: false
+        # title: Powietrze
+        # type: entities
+      - type: vertical-stack
+        in_card: true
+        cards:
+          - type: glance
+            no_card: true
+            title: "Na zewnątrz PM 2.5/PM10"
+            show_name: false
+            entities:
+              - sensor.czujnik_smogu_pm25
+              - sensor.czujnik_smogu_pm10
+          - type: entities
+            no_card: true
+            title: "Powietrze w domu"
+            show_header_toggle: false
+            state_color: true
+            entities:
+              - fan.xiaomi_miio_device
+              - sensor.mi_aqi
+              - sensor.mi_humidity
+              - sensor.mi_temperature
+          - type: "custom:purifier-card"
+            entity: fan.xiaomi_miio_device
+            stats:
+              - attribute: filter_life_remaining
+                unit: '%'
+                subtitle: Filter Remaining
+              - attribute: motor_speed
+                unit: RPS
+                subtitle: Motor Speed
+            actions:
+              - name: Silent
+                icon: 'mdi:weather-night'
+                speed: Silent
+              - name: 25%
+                icon: 'mdi:circle-slice-2'
+                speed: Favorite
+                xiaomi_miio_favorite_level: 3
+              - name: 50%
+                icon: 'mdi:circle-slice-4'
+                speed: Favorite
+                xiaomi_miio_favorite_level: 7
+              - name: 75%
+                icon: 'mdi:circle-slice-6'
+                speed: Favorite
+                xiaomi_miio_favorite_level: 10
+              - name: 100%
+                icon: 'mdi:circle-slice-8'
+                speed: Favorite
+                xiaomi_miio_favorite_level: 14
+              - name: Auto
+                icon: 'mdi:brightness-auto'
+                speed: Auto
+            show_name: true
+            show_state: true
+            show_toolbar: true
+            compact_view: false          
         
       - type: 'custom:lovelace-darksky-card'
         entity_current_conditions: sensor.dark_sky_icon
@@ -1183,40 +1203,8 @@ views:
         card:
           type: iframe
           url: "${ vars[0] }"      
-      - type: "custom:purifier-card"
-        entity: fan.xiaomi_miio_device
-        stats:
-          - attribute: filter_life_remaining
-            unit: '%'
-            subtitle: Filter Remaining
-          - attribute: motor_speed
-            unit: RPS
-            subtitle: Motor Speed
-        actions:
-          - name: Silent
-            icon: 'mdi:weather-night'
-            speed: Silent
-          - name: 25%
-            icon: 'mdi:circle-slice-2'
-            speed: Favorite
-            xiaomi_miio_favorite_level: 3
-          - name: 50%
-            icon: 'mdi:circle-slice-4'
-            speed: Favorite
-            xiaomi_miio_favorite_level: 7
-          - name: 75%
-            icon: 'mdi:circle-slice-6'
-            speed: Favorite
-            xiaomi_miio_favorite_level: 10
-          - name: 100%
-            icon: 'mdi:circle-slice-8'
-            speed: Favorite
-            xiaomi_miio_favorite_level: 14
-          - name: Auto
-            icon: 'mdi:brightness-auto'
-            speed: Auto
-        show_name: true
-        show_state: true
-        show_toolbar: true
-        compact_view: false          
+      - type: iframe
+        id: graf1
+        url: http://192.168.1.133:8123/api/hassio_ingress/fp2s44paqPGdZR2V3M7Sr1vI5K0TQu9jH10omYz4w38/d-solo/AHwE-k5Gz/cezar_ha?orgId=1&from=1602835941663&to=1602922341663&panelId=9
+        aspect_ratio: 65%
     title: Temp
