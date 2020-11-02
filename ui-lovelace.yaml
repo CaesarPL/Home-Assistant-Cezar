@@ -1004,6 +1004,7 @@ views:
           - switch.wall_switch_left_158d0001dbe288
           - switch.wall_switch_left_158d0001dbe17b
           - switch.wall_switch_right_158d0001dbe17b
+          - light.ikea_kitchen
         title: Światła
         type: entities
       - entity: light.gateway_light_34ce00812981
@@ -1028,6 +1029,10 @@ views:
             LowBrightness: 30
             MedBrightness: 100
             HiBrightness: 225
+          - entity: light.ikea_kitchen
+            type: custom:light-brightness-preset-row
+            name: Ikea Kitchen
+            customTheme: false
       - type: vertical-stack
         title: Kolory
         in_card: true
@@ -1041,6 +1046,8 @@ views:
           entity: light.yeelight_color1_34ce0084c619
         - type: custom:light-entity-card
           entity: light.yeelight_color_0x00000000036eeb91
+        - type: custom:light-entity-card
+          entity: light.ikea_kitchen
 #      - type: custom:more-info-card
 #        entity: light.yeelight_color1_34ce008cf7de
 #        title: Yeelight RGB

@@ -5,3 +5,11 @@
       - number: 2
         type: rgbw
         name: salonled
+- platform: mqtt
+  state_topic: "zigbee2mqtt/Ikea_Kitchen_1"
+  name: "Ikea Kitchen"
+  availability_topic: "zigbee2mqtt/bridge/state"
+  brightness: true
+  schema: "json"
+  command_topic: "zigbee2mqtt/Ikea_Kitchen_1/set"
+  brightness_scale: 254
