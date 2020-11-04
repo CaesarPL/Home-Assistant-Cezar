@@ -36,7 +36,7 @@
 * Xiaomi Mi Box
 * HP Deskjet printer
 * Solis Solar Inverter
-* SDS011 smog sensor [[ESPEasy)](https://www.letscontrolit.com/wiki/index.php/ESPEasy) firmware]
+* SDS011 smog sensor [[ESPEasy](https://www.letscontrolit.com/wiki/index.php/ESPEasy) firmware] - How to: (http://cezarowy.blogspot.com/2020/10/home-assistant-i-czujnik-smogu-sds011.html)
 
 ## Additional Software
 * [HABridge](https://github.com/bwssytems/ha-bridge)
