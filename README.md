@@ -36,7 +36,7 @@
 * Xiaomi Mi Box
 * HP Deskjet printer
 * Solis Solar Inverter
-* SDS011 smog sensor (ESPEasy) - to be configured
+* SDS011 smog sensor [[ESPEasy)](https://www.letscontrolit.com/wiki/index.php/ESPEasy) firmware]
 
 ## Additional Software
 * [HABridge](https://github.com/bwssytems/ha-bridge)
@@ -47,8 +47,8 @@
 * [Glances](https://github.com/hassio-addons/addon-glances)
 * [Samba share](https://github.com/home-assistant/hassio-addons/tree/master/samba)
 * [Mosquitto Broker](https://github.com/home-assistant/hassio-addons/tree/master/mosquitto)
-* [InfluxDB](https://github.com/hassio-addons/addon-influxdb) - to be configured
-* [Grafana](https://github.com/hassio-addons/addon-grafana) - to be configured
+* [InfluxDB](https://github.com/hassio-addons/addon-influxdb)
+* [Grafana](https://github.com/hassio-addons/addon-grafana)
 * [Plex Media Server](https://github.com/hassio-addons/addon-plex)
 * [Spotify Connect](https://github.com/hassio-addons/addon-spotify-connect)
 * [Portainer](https://github.com/hassio-addons/addon-portainer)
