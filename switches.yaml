@@ -12,7 +12,7 @@
     retain: true
 
   - platform: mqtt
-    name: "Sonoff POW"
+    name: "Sonoff Przed Domem"
     state_topic: "stat/sonoffpow/RESULT"
     value_template: "{{ value_json.POWER }}"
     command_topic: "cmnd/sonoffpow/POWER"
@@ -25,7 +25,7 @@
     retain: true
 
   - platform: mqtt
-    name: "Sonoff TH16"
+    name: "Sonoff garaż"
     state_topic: "stat/sonoffth16/RESULT"
     value_template: "{{ value_json.POWER }}"
     command_topic: "cmnd/sonoffth16/POWER"
@@ -154,7 +154,7 @@
         friendly_name: PlayStation 
         
   - platform: mqtt
-    name: "Zmywarka"
+    name: "TV"
     state_topic: "stat/blitzwolf1/POWER"
     command_topic: "cmnd/blitzwolf1/POWER"
     payload_on: "ON"

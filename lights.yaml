@@ -6,7 +6,8 @@
         type: rgbw
         name: salonled
 - platform: mqtt
-  state_topic: "zigbee2mqtt/Ikea_Kitchen_1"
+  state_topic: "tele/zigbee2mqtt/Ikea_Kitchen_1/RESULT"
+#  state_topic: "zigbee2mqtt/Ikea_Kitchen_1"
   name: "Ikea Kitchen"
   availability_topic: "zigbee2mqtt/bridge/state"
   brightness: true

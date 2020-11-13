@@ -7,7 +7,7 @@
 * Home Assistant supervised Docker on Ubuntu (To bo changed to Debian)
 
 ## Plugs
-* BlitzWolf BW-SHP6 Plugs [[Tasmota](https://tasmota.github.io/docs/) firmware]
+* BlitzWolf BW-SHP6 Plugs [[Tasmota](https://tasmota.github.io/docs/) firmware] - How to: (http://cezarowy.blogspot.com/2020/08/gniazdka-blitzwolf-wgrywamy-tasmota-za.html)
 * Sonoff Basic switches [[Tasmota](https://tasmota.github.io/docs/) firmware]
 * Sonoff S26 Plug [[Tasmota](https://tasmota.github.io/docs/) firmware]
 * Sonoff POW Plug [[Tasmota](https://tasmota.github.io/docs/) firmware]
@@ -25,8 +25,8 @@
 * Xiaomi Yeelight Bulb (MJDP02YL)
 
 ## Connected Network Devices
-* Bradlink RM Mini
-* RFLink
+* Broadlink RM Mini
+* RFLink - How to: (http://cezarowy.blogspot.com/2020/05/home-assistant-oraz-rflink.html)
 * [Denon AVR-X1500H](https://www.denon.com/pl-pl/shop/avreceiver/avrx1500h)
 * PlayStation 4
 * Samsung TV
@@ -43,12 +43,12 @@
 * [pvoutput](https://pvoutput.org/)
 
 ## Official addons:
-* [Zero Tier One](https://github.com/hassio-addons/addon-zerotier)
+* [Zero Tier One](https://github.com/hassio-addons/addon-zerotier) - How to: (http://cezarowy.blogspot.com/2020/09/home-assistant-i-zerotier-zdalny-dostep.html)
 * [Glances](https://github.com/hassio-addons/addon-glances)
 * [Samba share](https://github.com/home-assistant/hassio-addons/tree/master/samba)
 * [Mosquitto Broker](https://github.com/home-assistant/hassio-addons/tree/master/mosquitto)
-* [InfluxDB](https://github.com/hassio-addons/addon-influxdb)
-* [Grafana](https://github.com/hassio-addons/addon-grafana)
+* [InfluxDB](https://github.com/hassio-addons/addon-influxdb) - How to: (http://cezarowy.blogspot.com/2020/10/home-assistant-influxdb-i-grafana.html)
+* [Grafana](https://github.com/hassio-addons/addon-grafana) - How to: (http://cezarowy.blogspot.com/2020/10/home-assistant-influxdb-i-grafana_15.html)
 * [Plex Media Server](https://github.com/hassio-addons/addon-plex)
 * [Spotify Connect](https://github.com/hassio-addons/addon-spotify-connect)
 * [Portainer](https://github.com/hassio-addons/addon-portainer)

@@ -28,9 +28,9 @@ sensor.pralka:
   icon: mdi:washing-machine  
 sensor.pralka_power:
   icon: mdi:power
-sensor.zmywarka:
-  icon: mdi:dishwasher
-sensor.zmywarka_power:
+sensor.tv:
+  icon: mdi:television-classic
+sensor.tv_power:
   icon: mdi:power
 sensor.rain_precipitation:
   icon: mdi:weather-rainy

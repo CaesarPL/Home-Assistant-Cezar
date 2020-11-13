@@ -114,10 +114,10 @@
     platform: sun
   condition:
   - condition: state
-    entity_id: switch.sonoff_pow
+    entity_id: switch.sonoff_przed_domem
     state: 'off'
   action:
-  - entity_id: switch.sonoff_pow
+  - entity_id: switch.sonoff_przed_domem
     service: switch.turn_on
   - data:
       message: HA - światła przed domem włączone
@@ -198,11 +198,11 @@
     platform: time
   condition:
   - condition: state
-    entity_id: switch.sonoff_pow
+    entity_id: switch.sonoff_przed_domem
     state: 'on'
   action:
   - data: {}
-    entity_id: switch.sonoff_pow
+    entity_id: switch.sonoff_przed_domem
     service: switch.turn_off
   - data:
       message: HA - wyłączyłem światła przed domem

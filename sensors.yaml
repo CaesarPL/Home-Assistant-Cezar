@@ -160,13 +160,13 @@
     sensors:
       nas_power_sensor:
         value_template: '{{ states.switch.plug_158d0002330853.attributes.load_power }}'
-        unit_of_measurement:  W
+        unit_of_measurement: W
         friendly_name: NAS power sensor
 
       roomba_power_sensor:
         value_template: '{{ states.switch.plug_158d00016ff1a4.attributes.load_power }}'
-        unit_of_measurement:  W
-        friendly_name: Roomba power sensor
+        unit_of_measurement: W
+        friendly_name: Subwoofer power sensor
 
 # MQTT Sensors - Sonoff
   - platform: mqtt
@@ -324,8 +324,8 @@
     round: 2
 
   - platform: integration
-    source: sensor.zmywarka_power
-    name: "Zmywarka Energy"
+    source: sensor.tv_power
+    name: "TV Energy"
     unit_prefix: k
     round: 2
 
@@ -380,33 +380,74 @@
         value_template: '{{ state_attr("weather.home_2", "forecast")[0]["precipitation_probability"] }}'
         friendly_name: 'Rain precipitation for today'
 
+  - platform: template
+    sensors:
+     airly_pm25:
+      friendly_name: "Pył PM2.5"
+      icon_template: mdi:blur
+      unit_of_measurement: "μg/m3"
+      value_template: "{{ state_attr('air_quality.airly', 'particulate_matter_2_5') }}"
+      
+     airly_pm10:
+      friendly_name: "Pył PM10"
+      icon_template: mdi:blur
+      unit_of_measurement: "μg/m3"
+      value_template: "{{ state_attr('air_quality.airly', 'particulate_matter_10') }}"
+      
+     airly_quality:
+      friendly_name: "Jakość powietrza"
+      icon_template: mdi:quicktime
+      value_template: "{{ state_attr('air_quality.airly', 'air_quality_index') }}"
+      
+     airly_level:
+      friendly_name: "Komunikat"
+      icon_template: mdi:information-outline
+      value_template: "{{ state_attr('air_quality.airly', 'air_quality_index_description') }}"
+      
+     airly_advice:
+      friendly_name: "Porada"
+      icon_template: mdi:information-outline
+      value_template: "{{ state_attr('air_quality.airly', 'advice') }}"
+
+     airly_pm25_limit:
+      friendly_name: "Pył PM2.5 % normy"
+      icon_template: mdi:blur
+      unit_of_measurement: "%"
+      value_template: "{{ state_attr('air_quality.airly', 'particulate_matter_2_5_percent_of_limit') }}"
+       
+     airly_pm10_limit:
+      friendly_name: "Pył PM10 % normy"
+      icon_template: mdi:blur
+      unit_of_measurement: "%"
+      value_template: "{{ state_attr('air_quality.airly', 'particulate_matter_10_percent_of_limit') }}"
+
   - platform: mqtt
-    name: "Zmywarka Energy Today"
+    name: "TV Energy Today"
     state_topic: "tele/blitzwolf1/SENSOR"
     value_template: '{{ value_json["ENERGY"]["Today"] }}'
     unit_of_measurement: "kWh"
   - platform: mqtt
-    name: "Zmywarka Energy Yesterday"
+    name: "TV Energy Yesterday"
     state_topic: "tele/blitzwolf1/SENSOR"
     value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
     unit_of_measurement: "kWh"
   - platform: mqtt
-    name: "Zmywarka Energy Total"
+    name: "TV Energy Total"
     state_topic: "tele/blitzwolf1/SENSOR"
     value_template: '{{ value_json["ENERGY"]["Total"] }}'
     unit_of_measurement: "kWh"
   - platform: mqtt
-    name: "Zmywarka Power"
+    name: "TV Power"
     state_topic: "tele/blitzwolf1/SENSOR"
     value_template: '{{ value_json["ENERGY"]["Power"] }}'
     unit_of_measurement: "W"
   - platform: mqtt
-    name: "Zmywarka Voltage"
+    name: "TV Voltage"
     state_topic: "tele/blitzwolf1/SENSOR"
     value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
     unit_of_measurement: "V"
   - platform: mqtt
-    name: "Zmywarka Power Factor"
+    name: "TV Power Factor"
     state_topic: "tele/blitzwolf1/SENSOR"
     value_template: '{{ value_json["ENERGY"]["Factor"] }}'
     
@@ -457,17 +498,17 @@
 
   - platform: template
     sensors:
-      zmywarka:
-        friendly_name: "Zmywarka"
+      tv:
+        friendly_name: "TV"
         value_template: >-
-          {% if states('sensor.zmywarka_power') != ('unavailable' or 'unknown') %}
-            {% if states('sensor.zmywarka_power') | int > 1 %}
+          {% if states('sensor.tv_power') != ('unavailable' or 'unknown') %}
+            {% if states('sensor.tv_power') | int > 1 %}
               pranie
             {% else %}
               wyłączona
             {% endif %}
           {% else %}
-            {{ states('sensor.zmywarka') }}
+            {{ states('sensor.tv') }}
           {% endif %}
 
   - platform: mqtt

@@ -280,8 +280,6 @@ views:
             - sensor.temperature_158d0001ab2855
             - sensor.humidity_158d0001ab2855
             - sensor.illumination_34ce00812981
-            - sensor.zmywarka
-            - sensor.zmywarka_power
         - type: entities
           no_card: true
           show_header_toggle: false
@@ -308,7 +306,7 @@ views:
             - light.yeelight_color1_7811dc682b4d
             - light.yeelight_color1_34ce0084c619
             - light.yeelight_color_0x00000000036eeb91
-            - switch.sonoff_power
+            - switch.sonoff_przed_domem
           title: Light
           type: entities
     - type: vertical-stack
@@ -323,6 +321,8 @@ views:
             - sensor.humidity_158d0001b95f89
             - entity: binary_sensor.motion_sensor_158d00016d5ddd
               secondary_info: last-changed
+            - sensor.tv
+            - sensor.tv_power
     - type: vertical-stack
       in_card: true
       cards:
@@ -332,6 +332,16 @@ views:
           show_name: false
           entities:
             - sensor.temperatura_staszek
+    - type: vertical-stack
+      in_card: true
+      cards:
+        - type: glance
+          no_card: true
+          title: "Garaż"
+          show_name: false
+          entities:
+            - switch.sonoff_garaz
+            - sensor.sonoff_temperature
   - badges: []
     cards:
       - type: vertical-stack
@@ -440,6 +450,41 @@ views:
             show_toolbar: true
             compact_view: false          
         
+      - type: vertical-stack
+        in_card: true
+        cards:
+          - type: glance
+            no_card: true
+            title: "Airly"
+            show_name: true
+            entities:
+              - sensor.airly_pm25
+              - sensor.airly_pm25_limit
+              - sensor.airly_pm10
+              - sensor.airly_pm10_limit
+          - type: entities
+            no_card: true
+            title: "Airly - dokładnie"
+            show_header_toggle: false
+            state_color: true
+            entities:
+              - sensor.airly_temperature
+              - sensor.airly_humidity
+              - sensor.airly_pressure
+              - sensor.airly_pm1
+              - entity: sensor.airly_pm25
+                secondary_info: >-
+                  [[ if(sensor.airly_pm25_limit >= 100, "<span style="color:red;">",
+                  "<span style="color:green;">") ]] Norma [[ sensor.airly_pm25_limit ]]
+                  %</span>
+              - entity: sensor.airly_pm10
+                secondary_info: >-
+                  [[ if(sensor.airly_pm10_limit >= 100, "<span style="color:red;">",
+                  "<span style="color:green;">") ]] Norma [[ sensor.airly_pm10_limit ]]
+                  %</span>
+              - entity: sensor.airly_level
+                secondary_info: '[[ sensor.airly_advice ]]'
+
       - type: 'custom:lovelace-darksky-card'
         entity_current_conditions: sensor.dark_sky_icon
         entity_temperature: sensor.dark_sky_temperature
@@ -807,7 +852,7 @@ views:
               - sensor.nas_power_sensor
               - sensor.roomba_power_sensor
               - sensor.pralka_power
-              - sensor.zmywarka_power
+              - sensor.tv_power
 #              - sensor.owl_energy
 #              - sensor.hourly_home_energy
 #              - sensor.daily_home_energy
@@ -1140,25 +1185,27 @@ views:
           - switch.plug_158d0002330853
           - switch.plug_158d00016ff1a4
           - switch.sonoff_power
-          - switch.sonoff_pow
+          - switch.sonoff_przed_domem
           - switch.sonoff_sauna
-          - switch.sonoff_th16
+          - switch.sonoff_garaz
           - switch.sonoff_gniazdko
           - switch.altana
-          - switch.zmywarka
+          - switch.tv
           - switch.pralka
           - binary_sensor.switch_158d00016d7744
+          - switch.plug_158d0002330853
+          - switch.plug_158d00016ff1a4
         title: Switch
         type: entities
       - entities:
-          - switch.sonoff_pow
+          - switch.sonoff_przed_domem
           - sensor.sonoff_pow_current
           - sensor.sonoff_pow_power
           - sensor.sonoff_pow_today_energy
           - sensor.sonoff_pow_yesterday_energy
           - sensor.sonoff_temperature
         show_header_toggle: false
-        title: Sonoff POW - konsole
+        title: Sonoff POW i TH16
         type: entities
     path: switches
     title: Switches
@@ -1183,11 +1230,11 @@ views:
               - entity: binary_sensor.motion_sensor_158d00016d5ddd
                 secondary_info: last-changed
 
-              - sensor.zmywarka_energy_today
-              - sensor.zmywarka_energy_total
-              - sensor.zmywarka_power
-              - sensor.zmywarka_voltage
-              - sensor.zmywarka_power_factor   
+              - sensor.tv_energy_today
+              - sensor.tv_energy_total
+              - sensor.tv_power
+              - sensor.tv_voltage
+              - sensor.tv_power_factor   
 
               - sensor.pralka_energy_today
               - sensor.pralka_energy_total
@@ -1202,6 +1249,31 @@ views:
               - sensor.salon_flora_battery
               - sensor.salon_flora_light_intensity
               - sensor.salon_flora_conductivity
+              
+              - sensor.airly_pm25
+              - sensor.airly_pm10
+              - sensor.airly_level
+              - sensor.airly_quality
+              - sensor.airly_pm25_limit
+              - sensor.airly_pm10_limit
+
+              - sensor.airly_temperature
+              - sensor.airly_humidity
+              - sensor.airly_pressure
+              - sensor.airly_pm1
+              - entity: sensor.airly_pm25
+                secondary_info: >-
+                  [[ if(sensor.airly_pm25_limit >= 100, "<span style="color:red;">",
+                  "<span style="color:green;">") ]] Norma [[ sensor.airly_pm25_limit ]]
+                  %</span>
+              - entity: sensor.airly_pm10
+                secondary_info: >-
+                  [[ if(sensor.airly_pm10_limit >= 100, "<span style="color:red;">",
+                  "<span style="color:green;">") ]] Norma [[ sensor.airly_pm10_limit ]]
+                  %</span>
+              - entity: sensor.airly_level
+                secondary_info: '[[ sensor.airly_advice ]]'
+
       - type: "custom:config-template-card"
         variables:
           - states['binary_sensor.person_cezar_url'].attributes.url
