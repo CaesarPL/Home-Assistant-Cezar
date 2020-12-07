@@ -83,9 +83,14 @@ lovelace:
       type: module
     - url: /hacsfiles/purifier-card/purifier-card.js
       type: module
-      
+#    - {type: js, url: '/hacsfiles/transmission-card/transmission-card.js'}     
+    - url: /hacsfiles/transmission-card/transmission-card.js
+      type: js  
 person:
 
+tts:
+  - platform: reversotts
+    language: 'Ania-Polish'
 #http:
 #  server_port: 80
 
@@ -96,7 +101,14 @@ influxdb:
   password: !secret my_password
   max_retries: 3
   default_measurement: state
-#  include:
+  measurement_attr: domain__device_class
+  include:
+    domains:
+      - sensor
+      - binary_sensor
+      - device_tracker
+      - light
+#    - sensors
 #    entities:
 #      - sensor.temperature_158d0001b95f89
 #      - sensor.temperature_158d0002239fbb

@@ -64,6 +64,7 @@ views:
       - sensor.speedtest_download
       - sensor.speedtest_upload
       - sensor.illumination_34ce00812981
+      - sensor.temperatura_ogrod
       - sensor.temperature_158d0002239fbb
       - sensor.temperature_158d0001ab2855
       - sensor.temperature_158d0001b95f89
@@ -515,7 +516,7 @@ views:
     title: Weather
   - badges: []
     cards:
-      - entity: media_player.mibox3
+      - entity: media_player.mibox3_2
         type: media-control
       - entity: media_player.playstation_4
         type: media-control
@@ -791,8 +792,7 @@ views:
           - sensor.processor_use
           - sensor.ad_version_current
           - sensor.ha_version_current
-          - sensor.raspberry_cpu_temp
-          - sensor.last_ha_restart
+          - sensor.cpu_temp
         show_header_toggle: false
         title: System
         type: entities
@@ -952,6 +952,7 @@ views:
           - binary_sensor.retropie_status
           - binary_sensor.wii_status
           - binary_sensor.3ds_status
+          - binary_sensor.vita_status
         show_header_toggle: false
         title: Konsole do gier
         type: entities
@@ -1215,6 +1216,7 @@ views:
         - entity: input_boolean.wakacje
         title: Ustawienia systemu
         type: entities
+      - type: custom:transmission-card
     path: setting
     title: Settings
   - badges: []
@@ -1229,7 +1231,8 @@ views:
             entities:
               - entity: binary_sensor.motion_sensor_158d00016d5ddd
                 secondary_info: last-changed
-
+              - switch.christmas_led
+              
               - sensor.tv_energy_today
               - sensor.tv_energy_total
               - sensor.tv_power

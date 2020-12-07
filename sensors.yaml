@@ -55,7 +55,7 @@
 
 # Definition of some command line queries
   - platform: command_line
-    name: "Raspberry CPU Temp"
+    name: "CPU Temp"
     command: "cat /sys/class/thermal/thermal_zone0/temp"
     unit_of_measurement: "°C"
     value_template: "{{ (value | multiply(0.001)) | round(1) }}"
@@ -75,6 +75,10 @@
     command: python3 -c "import requests; print(requests.get('https://pypi.org/pypi/appdaemon/json').json()['info']['version'])"
     name: "AD Version Current"
     scan_interval: 1800
+
+  - platform: filesize
+    file_paths:
+      - /config/home-assistant_v2.db
     
 # DarkSky weather
   - platform: darksky
@@ -488,7 +492,7 @@
         value_template: >-
           {% if states('sensor.pralka_power') != ('unavailable' or 'unknown') %}
             {% if states('sensor.pralka_power') | int > 2 %}
-              pranie
+              Pranie
             {% else %}
               wyłączona
             {% endif %}
@@ -503,7 +507,7 @@
         value_template: >-
           {% if states('sensor.tv_power') != ('unavailable' or 'unknown') %}
             {% if states('sensor.tv_power') | int > 1 %}
-              pranie
+              Włączony
             {% else %}
               wyłączona
             {% endif %}

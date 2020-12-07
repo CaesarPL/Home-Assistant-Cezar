@@ -72,6 +72,8 @@ sensor.mi_humidity:
   icon: mdi:smog
 binary_sensor.playstation_status:
   icon: mdi:sony-playstation
+binary_sensor.vita_status:
+  icon: mdi:sony-playstation
 binary_sensor.wii_status:
   icon: mdi:nintendo-wii
 binary_sensor.3ds_status:

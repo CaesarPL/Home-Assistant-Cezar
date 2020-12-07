@@ -24,6 +24,9 @@
     wii_status:
       value_template: "{{ is_state('device_tracker.Wii', 'home') }}"
       friendly_name: "Nintendo Wii"
+    vita_status:
+      value_template: "{{ is_state('device_tracker.PSVita', 'home') }}"
+      friendly_name: "PlayStation Vita"
     tv_status:
       value_template: "{{ is_state('device_tracker.SamsungTV', 'home') }}"
       friendly_name: "Telewizor"
