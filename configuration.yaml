@@ -12,7 +12,9 @@ homeassistant:
   time_zone: Europe/Warsaw
 #  media_dirs:
 #    media: /mnt
-
+  whitelist_external_dirs:
+    - /config
+    
   customize: !include customize.yaml
 
 history: !include history.yaml

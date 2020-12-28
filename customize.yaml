@@ -146,7 +146,7 @@ switch.ledzatv:
 switch.plug_158d0002330853:
   friendly_name: "NAS wtyczka Xiaomi"
 switch.plug_158d00016ff1a4:
-  friendly_name: "Roomba wtyczka Xiaomi"
+  friendly_name: "Choinka"
 switch.sonoff_gniazdko:
   icon: mdi:speaker
   friendly_name: "Subwoofer"

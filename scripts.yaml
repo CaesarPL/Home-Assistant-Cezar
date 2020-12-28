@@ -197,4 +197,67 @@ screen_down_and_stop:
       data:
         command: 'stop'
         device_id: dooya_12b75900_01
-    
+
+ps4_button_ps:
+  alias: PS4 PS
+  sequence:
+  - data:
+      command: ps
+      entity_id: media_player.playstation_4
+    service: ps4.send_command
+ps4_button_ps_hold:
+  alias: PS4 PS Hold
+  sequence:
+  - data:
+      command: ps_hold
+      entity_id: media_player.playstation_4
+    service: ps4.send_command
+ps4_button_down:
+  alias: PS4 Down
+  sequence:
+  - data:
+      command: down
+      entity_id: media_player.playstation_4
+    service: ps4.send_command
+ps4_button_up:
+  alias: PS4 Up
+  sequence:
+  - data:
+      command: up
+      entity_id: media_player.playstation_4
+    service: ps4.send_command
+ps4_button_option:
+  alias: PS4 Option
+  sequence:
+  - data:
+      command: option
+      entity_id: media_player.playstation_4
+    service: ps4.send_command
+ps4_button_left:
+  alias: PS4 Left
+  sequence:
+  - data:
+      command: left
+      entity_id: media_player.playstation_4
+    service: ps4.send_command
+ps4_button_right:
+  alias: PS4 Right
+  sequence:
+  - data:
+      command: right
+      entity_id: media_player.playstation_4
+    service: ps4.send_command
+ps4_button_enter:
+  alias: PS4 Enter
+  sequence:
+  - data:
+      command: enter
+      entity_id: media_player.playstation_4
+    service: ps4.send_command
+ps4_button_back:
+  alias: PS4 Back
+  sequence:
+  - data:
+      command: back
+      entity_id: media_player.playstation_4
+    service: ps4.send_command    

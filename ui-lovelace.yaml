@@ -84,6 +84,15 @@ views:
         entities: []
         title: Przed domem
         type: picture-glance
+      - entities:
+          - switch.christmas_led
+          - switch.plug_158d00016ff1a4
+          - switch.wall_switch_right_158d0001dbe288
+          - switch.wall_switch_left_158d0001dbe288
+          - switch.wall_switch_left_158d0001dbe17b
+          - switch.wall_switch_right_158d0001dbe17b
+        title: Światła
+        type: entities
       - type: 'custom:home-feed-card'
         title: Home Feed
         card_id: main_feed
@@ -97,13 +106,6 @@ views:
         - entity: binary_sensor.motion_sensor_158d00016d5ddd
           name: Movement
           more_info_on_tap: false
-      - entities:
-          - switch.wall_switch_right_158d0001dbe288
-          - switch.wall_switch_left_158d0001dbe288
-          - switch.wall_switch_left_158d0001dbe17b
-          - switch.wall_switch_right_158d0001dbe17b
-        title: Światła
-        type: entities
       - type: 'custom:google-keep-card'
         entity: sensor.googlekeep_d4fa36d9fe
 #        theme: dark
@@ -516,270 +518,342 @@ views:
     title: Weather
   - badges: []
     cards:
-      - entity: media_player.mibox3_2
-        type: media-control
       - entity: media_player.playstation_4
         type: media-control
-      - entity: media_player.denon_2
-        type: media-control
-      - entities:
-        - script.denon_favourite_pr3
-        - script.denon_favourite_ebm
-        - script.denon_favourite_ps4
-        - script.denon_nowy_swiat
-        - script.denon_favourite_deathfm
-        - script.denon_favourite_darkwave
-        - script.denon_favourite_antyradio
-        title: Denon Ulubione
-        type: entities
-      - entities:
-        - script.samsung_tv_netflix
-        - script.samsung_tv_hbogo
-        - script.samsung_tv_hdmi
-        title: Samsung TV
-        type: entities
- #     - entity: media_player.tv_samsung_8_series_65
- #       type: media-control
-      - type: media-control
-        entity: media_player.sauna
-      - type: media-control
-        entity: media_player.adam_s_echo_dot
-      - type: media-control
-        entity: media_player.samsungtvsmart
-      - type: media-control
-        entity: media_player.spotify_sobczaki
       - type: vertical-stack
         cards:
-        - cards:
-          - color_type: icon
-            icon: 'mdi:power-standby'
-            tap_action:
-              action: call-service
-              service: adb_service.press
-            type: 'custom:button-card'
-          - color_type: icon
-            icon: 'mdi:volume-plus'
-            tap_action:
-              action: call-service
-              service: adb_service.press
-              service_data:
-                key: VolumeUp
-            type: 'custom:button-card'
-          - color_type: icon
-            icon: 'mdi:volume-minus'
-            tap_action:
-              action: call-service
-              service: adb_service.press
-              service_data:
-                key: VolumeDown
-            type: 'custom:button-card'
-          type: horizontal-stack
+          - type: markdown
+            content: >
+                **Play Station 4**
+          - type: horizontal-stack
+            cards:    
+              - entity: script.ps4_button_ps
+                type: button
+                icon: mdi:sony-playstation
+                show_name: false 
+                tap_action:
+                    action: toggle
+              - entity: script.ps4_button_up
+                type: button
+                icon: mdi:arrow-up-drop-circle
+                show_name: false
+                tap_action:
+                    action: toggle
+              - entity: script.ps4_button_ps_hold
+                type: button
+                icon: mdi:sony-playstation
+                show_name: false
+                tap_action:
+                    action: toggle
+          - type: horizontal-stack
+            cards: 
+              - entity: script.ps4_button_left
+                type: button
+                icon: mdi:arrow-left-drop-circle
+                show_name: false
+                tap_action:
+                    action: toggle            
+              - entity: script.ps4_button_enter
+                type: button
+                icon: mdi:location-enter
+                show_name: false
+                tap_action:
+                    action: toggle
+              - entity: script.ps4_button_right
+                type: button
+                icon: mdi:arrow-right-drop-circle
+                show_name: false
+                tap_action:
+                    action: toggle
+          - type: horizontal-stack
+            cards:
+              - entity: script.ps4_button_back
+                type: button
+                icon: mdi:backspace
+                show_name: false
+                tap_action:
+                    action: toggle
+              - entity: script.ps4_button_down
+                type: button
+                icon: mdi:arrow-down-drop-circle
+                show_name: false
+                tap_action:
+                    action: toggle
+              - entity: script.ps4_button_option
+                type: button
+                icon: mdi:cogs
+                show_name: false
+                tap_action:
+                    action: toggle    
 
-        - cards:
-            - color_type: icon
-              icon: 'mdi:information-variant'
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Info
-              type: 'custom:button-card'
-            - color_type: icon
-              icon: 'mdi:arrow-up-bold-box'
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Up
-              type: 'custom:button-card'
-            - color_type: icon
-              icon: 'mdi:plus-box-outline'
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: ProgramUp
-              type: 'custom:button-card'
-          type: horizontal-stack
-        - cards:
-            - color_type: icon
-              icon: 'mdi:arrow-left-bold-box'
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Left
-              type: 'custom:button-card'
-            - color_type: icon
-              name: OK
-              aspect_ratio: 2/1
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Ok
-              type: 'custom:button-card'
-            - color_type: icon
-              icon: 'mdi:arrow-right-bold-box'
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Right
-              type: 'custom:button-card'
-          type: horizontal-stack
-        - cards:
-            - color_type: icon
-              icon: 'mdi:keyboard-return'
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Back
-              type: 'custom:button-card'
-            - color_type: icon
-              icon: 'mdi:arrow-down-bold-box'
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Down
-              type: 'custom:button-card'
-            - color_type: icon
-              icon: 'mdi:minus-box-outline'
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: ProgramDown
-              type: 'custom:button-card'
-          type: horizontal-stack
-        - cards:
-            - color_type: icon
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Rewind
-              icon: 'mdi:rewind'
-              type: 'custom:button-card'
-            - color_type: icon
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Play
-              icon: 'mdi:play'
-              type: 'custom:button-card'
-            - color_type: icon
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Pause
-              icon: 'mdi:pause'
-              type: 'custom:button-card'
-            - color_type: icon
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: FForward
-              icon: 'mdi:fast-forward'
-              type: 'custom:button-card'
-          type: horizontal-stack
-        - cards:
-            - color_type: icon
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: One
-              icon: 'mdi:numeric-1-box-outline'
-              type: 'custom:button-card'
-            - color_type: icon
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Two
-              icon: 'mdi:numeric-2-box-outline'
-              type: 'custom:button-card'
-            - color_type: icon
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Three
-              icon: 'mdi:numeric-3-box-outline'
-              type: 'custom:button-card'
-          type: horizontal-stack
-        - cards:
-            - color_type: icon
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Four
-              icon: 'mdi:numeric-4-box-outline'
-              type: 'custom:button-card'
-            - color_type: icon
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Five
-              icon: 'mdi:numeric-5-box-outline'
-              type: 'custom:button-card'
-            - color_type: icon
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Six
-              icon: 'mdi:numeric-6-box-outline'
-              type: 'custom:button-card'
-          type: horizontal-stack
-        - cards:
-            - color_type: icon
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Seven
-              icon: 'mdi:numeric-7-box-outline'
-              type: 'custom:button-card'
-            - color_type: icon
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Eight
-              icon: 'mdi:numeric-8-box-outline'
-              type: 'custom:button-card'
-            - color_type: icon
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Nine
-              icon: 'mdi:numeric-9-box-outline'
-              type: 'custom:button-card'
-          type: horizontal-stack
-        - cards:
-            - type: 'custom:button-card'
-              color_type: blank-card
-            - color_type: icon
-              tap_action:
-                action: call-service
-                service: adb_service.press
-                service_data:
-                  key: Zero
-              icon: 'mdi:numeric-0-box-outline'
-              type: 'custom:button-card'
-            - type: 'custom:button-card'
-              color_type: blank-card
-          type: horizontal-stack
+      - type: vertical-stack
+        cards:
+        - type: media-control
+          entity: media_player.sauna
+        - type: media-control
+          entity: media_player.adam_s_echo_dot
+        - entity: media_player.denon_2
+          type: media-control
+        - type: media-control
+          entity: media_player.spotify_sobczaki
+
+        - entities:
+          - script.denon_favourite_pr3
+          - script.denon_favourite_ebm
+          - script.denon_favourite_ps4
+          - script.denon_nowy_swiat
+          - script.denon_favourite_deathfm
+          - script.denon_favourite_darkwave
+          - script.denon_favourite_antyradio
+          title: Denon Ulubione
+          type: entities
+
+      - type: vertical-stack
+        cards:
+          - entities:
+            - script.samsung_tv_netflix
+            - script.samsung_tv_hbogo
+            - script.samsung_tv_hdmi
+            title: Samsung TV
+            type: entities
+     #     - entity: media_player.tv_samsung_8_series_65
+     #       type: media-control
+          - type: media-control
+            entity: media_player.samsungtvsmart
+          - entity: media_player.mibox3_2
+            type: media-control
+          - type: vertical-stack
+            cards:
+            - cards:
+              - color_type: icon
+                icon: 'mdi:power-standby'
+                tap_action:
+                  action: call-service
+                  service: adb_service.press
+                type: 'custom:button-card'
+              - color_type: icon
+                icon: 'mdi:volume-plus'
+                tap_action:
+                  action: call-service
+                  service: adb_service.press
+                  service_data:
+                    key: VolumeUp
+                type: 'custom:button-card'
+              - color_type: icon
+                icon: 'mdi:volume-minus'
+                tap_action:
+                  action: call-service
+                  service: adb_service.press
+                  service_data:
+                    key: VolumeDown
+                type: 'custom:button-card'
+              type: horizontal-stack
+
+            - cards:
+                - color_type: icon
+                  icon: 'mdi:information-variant'
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Info
+                  type: 'custom:button-card'
+                - color_type: icon
+                  icon: 'mdi:arrow-up-bold-box'
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Up
+                  type: 'custom:button-card'
+                - color_type: icon
+                  icon: 'mdi:plus-box-outline'
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: ProgramUp
+                  type: 'custom:button-card'
+              type: horizontal-stack
+            - cards:
+                - color_type: icon
+                  icon: 'mdi:arrow-left-bold-box'
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Left
+                  type: 'custom:button-card'
+                - color_type: icon
+                  name: OK
+                  aspect_ratio: 2/1
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Ok
+                  type: 'custom:button-card'
+                - color_type: icon
+                  icon: 'mdi:arrow-right-bold-box'
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Right
+                  type: 'custom:button-card'
+              type: horizontal-stack
+            - cards:
+                - color_type: icon
+                  icon: 'mdi:keyboard-return'
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Back
+                  type: 'custom:button-card'
+                - color_type: icon
+                  icon: 'mdi:arrow-down-bold-box'
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Down
+                  type: 'custom:button-card'
+                - color_type: icon
+                  icon: 'mdi:minus-box-outline'
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: ProgramDown
+                  type: 'custom:button-card'
+              type: horizontal-stack
+            - cards:
+                - color_type: icon
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Rewind
+                  icon: 'mdi:rewind'
+                  type: 'custom:button-card'
+                - color_type: icon
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Play
+                  icon: 'mdi:play'
+                  type: 'custom:button-card'
+                - color_type: icon
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Pause
+                  icon: 'mdi:pause'
+                  type: 'custom:button-card'
+                - color_type: icon
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: FForward
+                  icon: 'mdi:fast-forward'
+                  type: 'custom:button-card'
+              type: horizontal-stack
+            - cards:
+                - color_type: icon
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: One
+                  icon: 'mdi:numeric-1-box-outline'
+                  type: 'custom:button-card'
+                - color_type: icon
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Two
+                  icon: 'mdi:numeric-2-box-outline'
+                  type: 'custom:button-card'
+                - color_type: icon
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Three
+                  icon: 'mdi:numeric-3-box-outline'
+                  type: 'custom:button-card'
+              type: horizontal-stack
+            - cards:
+                - color_type: icon
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Four
+                  icon: 'mdi:numeric-4-box-outline'
+                  type: 'custom:button-card'
+                - color_type: icon
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Five
+                  icon: 'mdi:numeric-5-box-outline'
+                  type: 'custom:button-card'
+                - color_type: icon
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Six
+                  icon: 'mdi:numeric-6-box-outline'
+                  type: 'custom:button-card'
+              type: horizontal-stack
+            - cards:
+                - color_type: icon
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Seven
+                  icon: 'mdi:numeric-7-box-outline'
+                  type: 'custom:button-card'
+                - color_type: icon
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Eight
+                  icon: 'mdi:numeric-8-box-outline'
+                  type: 'custom:button-card'
+                - color_type: icon
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Nine
+                  icon: 'mdi:numeric-9-box-outline'
+                  type: 'custom:button-card'
+              type: horizontal-stack
+            - cards:
+                - type: 'custom:button-card'
+                  color_type: blank-card
+                - color_type: icon
+                  tap_action:
+                    action: call-service
+                    service: adb_service.press
+                    service_data:
+                      key: Zero
+                  icon: 'mdi:numeric-0-box-outline'
+                  type: 'custom:button-card'
+                - type: 'custom:button-card'
+                  color_type: blank-card
+              type: horizontal-stack
     path: multimedia
     title: Multimedia
   - badges: []
@@ -866,6 +940,15 @@ views:
               - sensor.power_generation
 #              - sensor.power_consumption
               - sensor.energy_generation
+              - sensor.tauron_amiplus_consumption_daily
+              - sensor.tauron_amiplus_consumption_monthly
+              - sensor.tauron_amiplus_consumption_yearly
+              - sensor.tauron_amiplus_generation_daily
+              - sensor.tauron_amiplus_generation_monthly
+              - sensor.tauron_amiplus_generation_yearly
+              - sensor.daily_difference
+              - sensor.monthly_difference
+              - sensor.yearly_difference
 #              - sensor.energy_consumption
 #              - sensor.daily_energy_nas
 #          - type: horizontal-stack
@@ -991,7 +1074,7 @@ views:
   - badges: []
     cards:
       - entities:
-          - sensor.raspberry_cpu_temp
+          - sensor.cpu_temp
         hours_to_show: 24
         refresh_interval: 0
         title: Temperatura CPU
@@ -1216,11 +1299,81 @@ views:
         - entity: input_boolean.wakacje
         title: Ustawienia systemu
         type: entities
-      - type: custom:transmission-card
+#      - type: custom:transmission-card
     path: setting
     title: Settings
   - badges: []
     cards: 
+
+      - type: vertical-stack
+        cards:
+          - type: markdown
+            content: >
+                **Play Station 4**
+          - type: horizontal-stack
+            cards:    
+              - entity: script.ps4_button_ps
+                type: button
+                icon: mdi:sony-playstation
+                show_name: false 
+                tap_action:
+                    action: toggle
+              - entity: script.ps4_button_up
+                type: button
+                icon: mdi:arrow-up-drop-circle
+                show_name: false
+                tap_action:
+                    action: toggle
+              - entity: script.ps4_button_ps_hold
+                type: button
+                icon: mdi:sony-playstation
+                show_name: false
+                tap_action:
+                    action: toggle
+          
+          - type: horizontal-stack
+            cards: 
+              - entity: script.ps4_button_left
+                type: button
+                icon: mdi:arrow-left-drop-circle
+                show_name: false
+                tap_action:
+                    action: toggle            
+              - entity: script.ps4_button_enter
+                type: button
+                icon: mdi:location-enter
+                show_name: false
+                tap_action:
+                    action: toggle
+              - entity: script.ps4_button_right
+                type: button
+                icon: mdi:arrow-right-drop-circle
+                show_name: false
+                tap_action:
+                    action: toggle
+                    
+          - type: horizontal-stack
+            cards:
+              - entity: script.ps4_button_back
+                type: button
+                icon: mdi:backspace
+                show_name: false
+                tap_action:
+                    action: toggle
+              - entity: script.ps4_button_down
+                type: button
+                icon: mdi:arrow-down-drop-circle
+                show_name: false
+                tap_action:
+                    action: toggle
+              - entity: script.ps4_button_option
+                type: button
+                icon: mdi:cogs
+                show_name: false
+                tap_action:
+                    action: toggle    
+    
+    
       - type: vertical-stack
         in_card: true
         cards:
@@ -1238,6 +1391,14 @@ views:
               - sensor.tv_power
               - sensor.tv_voltage
               - sensor.tv_power_factor   
+
+              - sensor.tauron_amiplus_zone
+              - sensor.tauron_amiplus_consumption_daily
+              - sensor.tauron_amiplus_consumption_monthly
+              - sensor.tauron_amiplus_consumption_yearly
+              - sensor.tauron_amiplus_generation_daily
+              - sensor.tauron_amiplus_generation_monthly
+              - sensor.tauron_amiplus_generation_yearly
 
               - sensor.pralka_energy_today
               - sensor.pralka_energy_total

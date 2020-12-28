@@ -492,7 +492,7 @@
         value_template: >-
           {% if states('sensor.pralka_power') != ('unavailable' or 'unknown') %}
             {% if states('sensor.pralka_power') | int > 2 %}
-              Pranie
+              pranie
             {% else %}
               wyłączona
             {% endif %}
@@ -524,3 +524,35 @@
     name: "Czujnik smogu PM10"
     state_topic: "CzujnikSmogu_1/CzujnikSmogu/PM10"
     unit_of_measurement: "ug/m3"
+
+  - platform: tauron_amiplus
+    name: "Tauron AMIPlus"
+    username: !secret tauron_amiplus.username
+    password: !secret tauron_amiplus.password
+    energy_meter_id: !secret tauron_amiplus.energy_meter_id
+    check_generation: true
+    monitored_variables:
+      - zone
+      - consumption_daily
+      - consumption_monthly
+      - consumption_yearly
+      - generation_daily
+      - generation_monthly
+      - generation_yearly
+      
+  - platform: template
+    sensors:
+      daily_difference:
+        friendly_name: Daily Difference
+        unit_of_measurement: kWh
+        value_template: '{{ states("sensor.tauron_amiplus_consumption_daily")|float |round(2) - states("sensor.tauron_amiplus_generation_daily")|float |round(2) }}'
+      monthly_difference:
+        friendly_name: Monthly Difference
+        unit_of_measurement: kWh
+        value_template: '{{ (states("sensor.tauron_amiplus_consumption_monthly")|float - states("sensor.tauron_amiplus_generation_monthly")|float) |round(2) }}'
+      yearly_difference:
+        friendly_name: Yearly Difference
+        unit_of_measurement: kWh
+        value_template: '{{ (states("sensor.tauron_amiplus_consumption_yearly")|float - states("sensor.tauron_amiplus_generation_yearly")|float) | round(2) }}'
+        
+        

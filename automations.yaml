@@ -129,6 +129,9 @@
       message: Lights outside are on
       title: Lights outside
     service: notify.alexa_media_adam_s_echo_dot
+  - service: notify.mobile_app_iphone_adam
+    data:
+      message: Światła przed domem włączone
   mode: single
 - id: '1587673559006'
   alias: Jasno
