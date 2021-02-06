@@ -1,0 +1,4 @@
+czas_do_liczenia_czasu_gry:
+    name: Czas gry na PS4
+    has_date: true
+    has_time: false

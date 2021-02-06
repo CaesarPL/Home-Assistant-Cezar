@@ -545,7 +545,8 @@
       daily_difference:
         friendly_name: Daily Difference
         unit_of_measurement: kWh
-        value_template: '{{ states("sensor.tauron_amiplus_consumption_daily")|float |round(2) - states("sensor.tauron_amiplus_generation_daily")|float |round(2) }}'
+        value_template: '{{ (states("sensor.tauron_amiplus_consumption_daily")|float - states("sensor.tauron_amiplus_generation_daily")|float) |round(2) }}'
+#        value_template: '{{ states("sensor.tauron_amiplus_consumption_daily")|float |round(2) - states("sensor.tauron_amiplus_generation_daily")|float |round(2) }}'
       monthly_difference:
         friendly_name: Monthly Difference
         unit_of_measurement: kWh
@@ -554,5 +555,20 @@
         friendly_name: Yearly Difference
         unit_of_measurement: kWh
         value_template: '{{ (states("sensor.tauron_amiplus_consumption_yearly")|float - states("sensor.tauron_amiplus_generation_yearly")|float) | round(2) }}'
-        
-        
+
+  - platform: history_stats
+    name: PS4 playing time
+    entity_id: media_player.playstation_4
+    state: 'playing'
+    type: time
+    start: "{{ state_attr('input_datetime.czas_do_liczenia_czasu_gry', 'timestamp') }}"
+    end: '{{ now() }}'
+    
+  - platform: places
+    name: adam_places
+    devicetracker_id: device_tracker.iphone_adam
+    options: place,street_number,street,city,state,postal_code,country,formatted_address
+    map_provider: apple
+    map_zoom: 19
+    home_zone: zone.Home
+    api_key: !secret email_pocztafm

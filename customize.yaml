@@ -72,6 +72,8 @@ sensor.mi_humidity:
   icon: mdi:smog
 binary_sensor.playstation_status:
   icon: mdi:sony-playstation
+binary_sensor.playstation3_status:
+  icon: mdi:sony-playstation
 binary_sensor.vita_status:
   icon: mdi:sony-playstation
 binary_sensor.wii_status:
@@ -95,9 +97,12 @@ binary_sensor.xiaomirepeater_status:
 binary_sensor.sonoffswiatloprzeddomem_status:
   icon: mdi:theme-light-dark
 binary_sensor.kindle_status:
-#  friendly_name: "Światło przed domem"
+  icon: mdi:cellphone-text
+binary_sensor.kindle10_status:
   icon: mdi:cellphone-text
 binary_sensor.alexa_status:
+  icon: mdi:amazon-alexa
+binary_sensor.echoflex_status:
   icon: mdi:amazon-alexa
 binary_sensor.sonoffczujniksmogu_status:
   icon: mdi:fan
@@ -106,7 +111,9 @@ binary_sensor.dlink720_status:
 binary_sensor.dlink480_status:
   icon: mdi:cctv
 binary_sensor.laptopstasia_status:
-  icon: mdi:laptop  
+  icon: mdi:laptop
+binary_sensor.staszekxeon_status:
+  icon: mdi:desktop-tower-monitor
 binary_sensor.xiaomigateway_status:  
   icon: mdi:router-wireless
 binary_sensor.laptopdoroty_status:
@@ -127,8 +134,12 @@ binary_sensor.sonoffpow_status:
   icon: mdi:power-plug
 binary_sensor.sonoffbasic2_status:
   icon: mdi:power-plug
+binary_sensor.esp32bluetooth_status:
+  icon: mdi:bluetooth
 binary_sensor.solisinverter_status:
   icon: mdi:solar-power
+binary_sensor.xbox360_status:
+  icon: mdi:microsoft-xbox
 light.yeelight_color1_7811dc682b4d:
   friendly_name: "Yeelight 1"
 light.yeelight_color1_34ce0084c619:

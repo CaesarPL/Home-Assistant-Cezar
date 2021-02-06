@@ -15,6 +15,9 @@
     playstation_status:
       value_template: "{{ is_state('device_tracker.PS4', 'home') }}"
       friendly_name: "PlayStation 4"
+    playstation3_status:
+      value_template: "{{ is_state('device_tracker.PS3', 'home') }}"
+      friendly_name: "PlayStation 3"
     retropie_status:
       value_template: "{{ is_state('device_tracker.RetroPieCezar', 'home') }}"
       friendly_name: "RetroPie"
@@ -27,6 +30,9 @@
     vita_status:
       value_template: "{{ is_state('device_tracker.PSVita', 'home') }}"
       friendly_name: "PlayStation Vita"
+    xbox360_status:
+      value_template: "{{ is_state('device_tracker.xbox360', 'home') }}"
+      friendly_name: "Xbox 360"
     tv_status:
       value_template: "{{ is_state('device_tracker.SamsungTV', 'home') }}"
       friendly_name: "Telewizor"
@@ -46,17 +52,26 @@
       value_template: "{{ is_state('device_tracker.XiaomiRepeater', 'home') }}"
       friendly_name: "Xiaomi Repeater"
     sonoffswiatloprzeddomem_status:
-      value_template: "{{ is_state('device_tracker.SonoffSwiatloPrzedDomem', 'home') }}"
+      value_template: "{{ is_state('device_tracker.SonoffPOW', 'home') }}"
       friendly_name: "Światło przed domem"
     sonoffczujniksmogu_status:
       value_template: "{{ is_state('device_tracker.SonoffCzujnikSmogu', 'home') }}"
       friendly_name: "Czujnik smogu"
+    esp32bluetooth_status:
+      value_template: "{{ is_state('device_tracker.esp32bluetooth', 'home') }}"
+      friendly_name: "ESP32 Bluetooth"
     laptopstasia_status:
       value_template: "{{ is_state('device_tracker.LaptopStasia', 'home') }}"
       friendly_name: "Laptop Stasia"
+    staszekxeon_status:
+      value_template: "{{ is_state('device_tracker.StaszekXeon', 'home') }}"
+      friendly_name: "Desktop Stasia"
     kindle_status:
       value_template: "{{ is_state('device_tracker.Kindle', 'home') }}"
       friendly_name: "Kindle"
+    kindle10_status:
+      value_template: "{{ is_state('device_tracker.Kindle10', 'home') }}"
+      friendly_name: "Kindle 10"
     dlink720_status:
       value_template: "{{ is_state('device_tracker.Dlink720', 'home') }}"
       friendly_name: "Dlink 720"
@@ -66,6 +81,9 @@
     alexa_status:
       value_template: "{{ is_state('device_tracker.Alexa', 'home') }}"
       friendly_name: "Alexa"
+    echoflex_status:
+      value_template: "{{ is_state('device_tracker.echoflex', 'home') }}"
+      friendly_name: "Echo Flex"
     xiaomigateway_status:
       value_template: "{{ is_state('device_tracker.XiaomiGateway', 'home') }}"
       friendly_name: "Xiaomi Gateway"
@@ -78,6 +96,9 @@
     laptopfirmowyeth_status:
       value_template: "{{ is_state('device_tracker.LaptopFirmowyETH', 'home') }}"
       friendly_name: "Laptop Firmowy ETH"
+    laptopfirmowyeth1_status:
+      value_template: "{{ is_state('device_tracker.LaptopFirmowy_ETH1', 'home') }}"
+      friendly_name: "Laptop Firmowy ETH 1"
     xiaomiairpurifier_status:
       value_template: "{{ is_state('device_tracker.XiaomiAirPurifier', 'home') }}"
       friendly_name: "Oczyszczacz powietrza"      
@@ -95,7 +116,7 @@
       friendly_name: "Sonoff Sauna"      
     sonoffgniazdko_status:
       value_template: "{{ is_state('device_tracker.SonoffGniazdko', 'home') }}"
-      friendly_name: "Sonoff Sauna"      
+      friendly_name: "Sonoff Gniazdko"      
     picoresauna_status:
       value_template: "{{ is_state('device_tracker.PiCoreSauna', 'home') }}"
       friendly_name: "piCore Player Sauna"      

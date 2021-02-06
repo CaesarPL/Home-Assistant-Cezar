@@ -84,6 +84,18 @@ views:
         entities: []
         title: Przed domem
         type: picture-glance
+      - type: "custom:analog-clock"
+        hide_SecondHand: false
+        locale: pl-PL
+        diameter: 200
+        color_HourHand: "#326ba8"
+        color_MinuteHand: "#3273a8"
+        color_DigitalTime: "#CCCCCC"
+        color_FaceDigits: "#a83832"
+        color_Ticks: "Silver"
+        style_hourhand: 3
+        style_minutehand: 3
+        style_secondhand: 3
       - entities:
           - switch.christmas_led
           - switch.plug_158d00016ff1a4
@@ -135,9 +147,10 @@ views:
           title: "Salon"
           show_name: false
           entities:
-            - sensor.mitemp_bt_temperature
+            - sensor.salon_moisture
+            - sensor.salon_illuminance
+            - sensor.salon_temperature
             - sensor.humidity_158d000163e802
-            - sensor.mitemp_bt_humidity
 #            - sensor.salon_flora_moisture
         - type: entities
           no_card: true
@@ -585,6 +598,13 @@ views:
                 show_name: false
                 tap_action:
                     action: toggle    
+          - cards:
+            - entities:
+                - sensor.ps4_today_time
+                - sensor.ps4_playing_time
+                - input_datetime.czas_do_liczenia_czasu_gry
+              type: entities
+            type: vertical-stack
 
       - type: vertical-stack
         cards:
@@ -980,6 +1000,10 @@ views:
         show_header_toggle: false
         title: Transmission
         type: entities
+      - type: "custom:transmission-card"
+        hide_type: false
+        default_type: "active"
+#        sensor_name: Transmission
       - type: entities
         entities:
           - sensor.active_time
@@ -1002,7 +1026,6 @@ views:
           - binary_sensor.water_leak_sensor_158d0001bb93e7
           - binary_sensor.switch_158d00016d7744
           - binary_sensor.door_window_sensor_158d00019e275f
-          - sensor.mitemp_bt_battery
     path: system
     title: System
   - badges: []
@@ -1015,7 +1038,9 @@ views:
           - binary_sensor.dlink480_status
           - binary_sensor.dlink720_status
           - binary_sensor.kindle_status
+          - binary_sensor.kindle10_status
           - binary_sensor.alexa_status
+          - binary_sensor.echoflex_status
           - binary_sensor.sonoffczujniksmogu_status
           - binary_sensor.xiaomigateway_status
           - binary_sensor.laptopdoroty_status
@@ -1026,25 +1051,29 @@ views:
           - binary_sensor.sonoffth16_status
           - binary_sensor.sonoffpow_status
           - binary_sensor.sonoffgniazdko_status
+          - binary_sensor.esp32bluetooth_status
           - binary_sensor.solisinverter_status
         show_header_toggle: false
         title: WiFi
         type: entities
       - entities:
           - binary_sensor.playstation_status
+          - binary_sensor.playstation3_status
           - binary_sensor.retropie_status
           - binary_sensor.wii_status
           - binary_sensor.3ds_status
           - binary_sensor.vita_status
+          - binary_sensor.xbox360_status
         show_header_toggle: false
         title: Konsole do gier
         type: entities
       - entities:
           - entity: binary_sensor.denon_status
+          - entity: binary_sensor.staszekxeon_status
           - entity: binary_sensor.laptopstasia_status
           - entity: binary_sensor.laptopfirmowyeth_status
-          - entity: binary_sensor.lms_status
-          - entity: binary_sensor.raspberry_status
+#          - entity: binary_sensor.lms_status
+#          - entity: binary_sensor.raspberry_status
           - entity: binary_sensor.nas_status
           - entity: binary_sensor.tv_status
         show_header_toggle: false
@@ -1278,7 +1307,6 @@ views:
           - switch.pralka
           - binary_sensor.switch_158d00016d7744
           - switch.plug_158d0002330853
-          - switch.plug_158d00016ff1a4
         title: Switch
         type: entities
       - entities:
@@ -1296,84 +1324,50 @@ views:
   - badges: []
     cards:
       - entities:
-        - entity: input_boolean.wakacje
+        - sensor.lesson_1
+        - sensor.lesson_2
+        - sensor.lesson_3
+        - sensor.lesson_4
+        - sensor.lesson_5
+        - sensor.lesson_6
+        - sensor.lesson_7
+        - sensor.lesson_8
+        title: Plan lekcji na dzisiaj
+        type: entities
+      - entities:
+        - sensor.lesson_1_tomorrow
+        - sensor.lesson_2_tomorrow
+        - sensor.lesson_3_tomorrow
+        - sensor.lesson_4_tomorrow
+        - sensor.lesson_5_tomorrow
+        - sensor.lesson_6_tomorrow
+        - sensor.lesson_7_tomorrow
+        - sensor.lesson_8_tomorrow
+        title: Plan lekcji na jutro
+        type: entities
+      - entities:
+        - sensor.next_homework
+        - sensor.latest_message
+        - sensor.latest_grade
+        - sensor.latest_attendance
+        title: Ogólne
+        type: entities
+    path: lessons
+    title: Lessons
+  - badges: []
+    cards:
+      - type: "custom:transmission-card"
+        hide_type: false
+        default_type: "active"
+#        sensor_name: Transmission
+      - entities:
+        - input_boolean.wakacje
         title: Ustawienia systemu
         type: entities
-#      - type: custom:transmission-card
     path: setting
     title: Settings
   - badges: []
     cards: 
-
-      - type: vertical-stack
-        cards:
-          - type: markdown
-            content: >
-                **Play Station 4**
-          - type: horizontal-stack
-            cards:    
-              - entity: script.ps4_button_ps
-                type: button
-                icon: mdi:sony-playstation
-                show_name: false 
-                tap_action:
-                    action: toggle
-              - entity: script.ps4_button_up
-                type: button
-                icon: mdi:arrow-up-drop-circle
-                show_name: false
-                tap_action:
-                    action: toggle
-              - entity: script.ps4_button_ps_hold
-                type: button
-                icon: mdi:sony-playstation
-                show_name: false
-                tap_action:
-                    action: toggle
-          
-          - type: horizontal-stack
-            cards: 
-              - entity: script.ps4_button_left
-                type: button
-                icon: mdi:arrow-left-drop-circle
-                show_name: false
-                tap_action:
-                    action: toggle            
-              - entity: script.ps4_button_enter
-                type: button
-                icon: mdi:location-enter
-                show_name: false
-                tap_action:
-                    action: toggle
-              - entity: script.ps4_button_right
-                type: button
-                icon: mdi:arrow-right-drop-circle
-                show_name: false
-                tap_action:
-                    action: toggle
-                    
-          - type: horizontal-stack
-            cards:
-              - entity: script.ps4_button_back
-                type: button
-                icon: mdi:backspace
-                show_name: false
-                tap_action:
-                    action: toggle
-              - entity: script.ps4_button_down
-                type: button
-                icon: mdi:arrow-down-drop-circle
-                show_name: false
-                tap_action:
-                    action: toggle
-              - entity: script.ps4_button_option
-                type: button
-                icon: mdi:cogs
-                show_name: false
-                tap_action:
-                    action: toggle    
-    
-    
       - type: vertical-stack
         in_card: true
         cards:
@@ -1382,70 +1376,46 @@ views:
             show_header_toggle: false
             state_color: true
             entities:
+              - sensor.adam_places
               - entity: binary_sensor.motion_sensor_158d00016d5ddd
                 secondary_info: last-changed
-              - switch.christmas_led
-              
-              - sensor.tv_energy_today
-              - sensor.tv_energy_total
-              - sensor.tv_power
-              - sensor.tv_voltage
-              - sensor.tv_power_factor   
+#              - sensor.tv_energy_today
+#              - sensor.tv_energy_total
+#              - sensor.tv_voltage
+#              - sensor.tv_power_factor   
 
-              - sensor.tauron_amiplus_zone
-              - sensor.tauron_amiplus_consumption_daily
-              - sensor.tauron_amiplus_consumption_monthly
-              - sensor.tauron_amiplus_consumption_yearly
-              - sensor.tauron_amiplus_generation_daily
-              - sensor.tauron_amiplus_generation_monthly
-              - sensor.tauron_amiplus_generation_yearly
-
-              - sensor.pralka_energy_today
-              - sensor.pralka_energy_total
-              - sensor.pralka_power
-              - sensor.pralka_voltage
-              - sensor.pralka_power_factor   
-              - sensor.czujnik_smogu_pm25
-              - sensor.czujnik_smogu_pm10
+#              - sensor.pralka_energy_today
+#              - sensor.pralka_energy_total
+#              - sensor.pralka_power
+#              - sensor.pralka_voltage
+#              - sensor.pralka_power_factor   
                            
-              - sensor.salon_flora_temperature
-              - sensor.salon_flora_moisture
-              - sensor.salon_flora_battery
-              - sensor.salon_flora_light_intensity
-              - sensor.salon_flora_conductivity
+#              - sensor.salon_flora_temperature
+#              - sensor.salon_flora_moisture
+#              - sensor.salon_flora_battery
+#              - sensor.salon_flora_light_intensity
+#              - sensor.salon_flora_conductivity
+#              - sensor.ps4_playing_time
+#              - input_datetime.czas_do_liczenia_czasu_gry
+#              - sensor.salon_moisture
+#              - sensor.salon_battery_level
+#              - sensor.salon_illuminance
+#              - sensor.salon_temperature
+#              - sensor.salon_soil_conductivity
+
+      - type: "custom:analog-clock"
+        hide_SecondHand: false
+        locale: pl-PL
+        diameter: 200
+        color_HourHand: "#326ba8"
+        color_MinuteHand: "#3273a8"
+        color_DigitalTime: "#CCCCCC"
+        color_FaceDigits: "#a83832"
+        color_Ticks: "Silver"
+        style_hourhand: 3
+        style_minutehand: 3
+        style_secondhand: 3
               
-              - sensor.airly_pm25
-              - sensor.airly_pm10
-              - sensor.airly_level
-              - sensor.airly_quality
-              - sensor.airly_pm25_limit
-              - sensor.airly_pm10_limit
-
-              - sensor.airly_temperature
-              - sensor.airly_humidity
-              - sensor.airly_pressure
-              - sensor.airly_pm1
-              - entity: sensor.airly_pm25
-                secondary_info: >-
-                  [[ if(sensor.airly_pm25_limit >= 100, "<span style="color:red;">",
-                  "<span style="color:green;">") ]] Norma [[ sensor.airly_pm25_limit ]]
-                  %</span>
-              - entity: sensor.airly_pm10
-                secondary_info: >-
-                  [[ if(sensor.airly_pm10_limit >= 100, "<span style="color:red;">",
-                  "<span style="color:green;">") ]] Norma [[ sensor.airly_pm10_limit ]]
-                  %</span>
-              - entity: sensor.airly_level
-                secondary_info: '[[ sensor.airly_advice ]]'
-
-      - type: "custom:config-template-card"
-        variables:
-          - states['binary_sensor.person_cezar_url'].attributes.url
-        entities:
-          - binary_sensor.person_cezar_url
-        card:
-          type: iframe
-          url: "${ vars[0] }"      
       - type: iframe
         id: graf1
         url: http://192.168.1.133:8123/api/hassio_ingress/fp2s44paqPGdZR2V3M7Sr1vI5K0TQu9jH10omYz4w38/d-solo/AHwE-k5Gz/cezar_ha?orgId=1&from=1602835941663&to=1602922341663&panelId=9

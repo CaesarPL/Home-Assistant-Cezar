@@ -35,6 +35,7 @@ input_select: !include input_select.yaml
 input_boolean: !include input_boolean.yaml
 utility_meter: !include utility_meter.yaml
 alert: !include alert.yaml
+input_datetime: !include input_datetime.yaml
 
 lovelace:
   mode: yaml
@@ -63,8 +64,6 @@ lovelace:
       type: js
     - url: /hacsfiles/ha-card-waze-travel-time/ha-card-waze-travel-time.js
       type: module
-#    - url: /hacsfiles/lovelace-air-filter-card/air-filter-card.js
-#      type: module
     - url: /hacsfiles/lovelace-google-keep-card/google-keep-card.js
       type: module
     - url: /hacsfiles/lovelace-animated-background/animated-background.js
@@ -85,9 +84,14 @@ lovelace:
       type: module
     - url: /hacsfiles/purifier-card/purifier-card.js
       type: module
-#    - {type: js, url: '/hacsfiles/transmission-card/transmission-card.js'}     
     - url: /hacsfiles/transmission-card/transmission-card.js
-      type: js  
+      type: module
+    - url: /hacsfiles/transmission-card/transmission-card.js
+      type: js
+    - url: /hacsfiles/analogclock/analogclock.js
+      type: js
+    - {type: js, url: '/hacsfiles/transmission-card/transmission-card.js'}
+    
 person:
 
 tts:
@@ -212,5 +216,5 @@ weather:
     api_key: !secret dark_sky_api
 
 # Home Assistant Community Store
-hacs:
-  token: !secret github
+#hacs:
+#  token: !secret github
