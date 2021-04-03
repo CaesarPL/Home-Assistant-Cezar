@@ -52,7 +52,8 @@ animated_background:
 
 title: Sobczaki
 views:
-  - badges:
+  - title: Home
+    badges:
       - binary_sensor.motion_sensor_158d00016d5ddd
       - binary_sensor.door_window_sensor_158d00019e275f
       - binary_sensor.water_leak_sensor_158d0001bb93e7
@@ -74,15 +75,15 @@ views:
       - person.cezar
       - person.dorota
     cards:
-      - aspect_ratio: 0%
+      - title: Salon
+        aspect_ratio: 0%
         camera_image: camera.salon
         entities: []
-        title: Salon
         type: picture-glance
-      - aspect_ratio: 0%
+      - title: Przed domem
+        aspect_ratio: 0%
         camera_image: camera.przeddomem
         entities: []
-        title: Przed domem
         type: picture-glance
       - type: "custom:analog-clock"
         hide_SecondHand: false
@@ -96,17 +97,17 @@ views:
         style_hourhand: 3
         style_minutehand: 3
         style_secondhand: 3
-      - entities:
+      - title: Światła
+        entities:
           - switch.christmas_led
-          - switch.plug_158d00016ff1a4
+#          - switch.plug_158d00016ff1a4
           - switch.wall_switch_right_158d0001dbe288
           - switch.wall_switch_left_158d0001dbe288
           - switch.wall_switch_left_158d0001dbe17b
           - switch.wall_switch_right_158d0001dbe17b
-        title: Światła
         type: entities
-      - type: 'custom:home-feed-card'
-        title: Home Feed
+      - title: Home Feed
+        type: 'custom:home-feed-card'
         card_id: main_feed
         show_empty: true
         calendars:
@@ -135,7 +136,6 @@ views:
           type: iframe
           url: "${ vars[0] }"        
     path: default_view
-    title: Home
   - title: Rooms
     badges: []
     cards: 
@@ -225,9 +225,9 @@ views:
     - type: vertical-stack
       in_card: true
       cards:
-        - type: glance
+        - title: "Łazienka dół"
+          type: glance
           no_card: true
-          title: "Łazienka dół"
           show_name: false
           entities:
             - sensor.temperature_158d0002239fbb
@@ -244,9 +244,9 @@ views:
     - type: vertical-stack
       in_card: true
       cards:
-        - type: glance
+        - title: "Łazienka góra"
+          type: glance
           no_card: true
-          title: "Łazienka góra"
           show_name: false
           entities:
             - sensor.temperature_158d00022723b2
@@ -256,13 +256,15 @@ views:
     - type: vertical-stack
       in_card: true
       cards:
-        - type: glance
+        - title: "Staszek"
+          type: glance
           no_card: true
-          title: "Staszek"
           show_name: false
           entities:
             - sensor.temperature_158d000163e802
             - sensor.humidity_158d000163e802
+            - sensor.desktop_stasia
+            - sensor.desktop_stasia_power
         - type: entities
           no_card: true
           show_header_toggle: false
@@ -272,9 +274,9 @@ views:
     - type: vertical-stack
       in_card: true
       cards:
-        - type: glance
+        - title: "Zosia"
+          type: glance
           no_card: true
-          title: "Zosia"
           show_name: false
           entities:
             - sensor.temperature_158d00019c915b
@@ -288,9 +290,9 @@ views:
     - type: vertical-stack
       in_card: true
       cards:
-        - type: glance
+        - title: "Kuchnia"
+          type: glance
           no_card: true
-          title: "Kuchnia"
           show_name: false
           entities:
             - sensor.temperature_158d0001ab2855
@@ -305,9 +307,9 @@ views:
     - type: vertical-stack
       in_card: true
       cards:
-        - type: glance
+        - title: "Taras"
+          type: glance
           no_card: true
-          title: "Taras"
           show_name: false
           entities:
             - sensor.temperatura_ogrod
@@ -317,48 +319,47 @@ views:
           state_color: true
           entities:
             - binary_sensor.door_window_sensor_158d00019e275f
-        - entities:
+        - title: Light
+          entities:
             - light.gateway_light_34ce00812981
-            - light.yeelight_color1_7811dc682b4d
-            - light.yeelight_color1_34ce0084c619
+            - light.yeelight_color_0x00000000035ea378
+            - light.yeelight_color_0x000000000456691a
             - light.yeelight_color_0x00000000036eeb91
             - switch.sonoff_przed_domem
-          title: Light
           type: entities
     - type: vertical-stack
       in_card: true
       cards:
-        - type: glance
+        - title: "Sypialnia"
+          type: glance
           no_card: true
-          title: "Sypialnia"
           show_name: false
           entities:
             - sensor.temperature_158d0001b95f89
             - sensor.humidity_158d0001b95f89
             - entity: binary_sensor.motion_sensor_158d00016d5ddd
               secondary_info: last-changed
-            - sensor.tv
-            - sensor.tv_power
     - type: vertical-stack
       in_card: true
       cards:
-        - type: glance
+        - title: "Spiżarnia"
+          type: glance
           no_card: true
-          title: "Spiżarnia"
           show_name: false
           entities:
             - sensor.temperatura_staszek
     - type: vertical-stack
       in_card: true
       cards:
-        - type: glance
+        - title: "Garaż"
+          type: glance
           no_card: true
-          title: "Garaż"
           show_name: false
           entities:
             - switch.sonoff_garaz
             - sensor.sonoff_temperature
-  - badges: []
+  - title: Weather
+    badges: []
     cards:
       - type: vertical-stack
         in_card: true
@@ -368,7 +369,8 @@ views:
 #            title: Dark Sky
           - entity: weather.home
             type: weather-forecast
-          - entities:
+          - title: Burze
+            entities:
               - binary_sensor.burze_dzis_net_frost_warning
               - binary_sensor.burze_dzis_net_heat_warning
               - binary_sensor.burze_dzis_net_precipitation_warning
@@ -378,13 +380,12 @@ views:
               - binary_sensor.burze_dzis_net_wind_warning
               - sensor.rain_precipitation
             type: entities
-            title: Burze
-          - entities:
+          - title: Błyskawice
+            entities:
             - sensor.blitzortung_lightning_azimuth
             - sensor.blitzortung_lightning_counter
             - sensor.blitzortung_lightning_distance  
             type: entities
-            title: Błyskawice
       - type: iframe
         url: https://embed.windy.com/embed2.html?lat=50.335733&lon=19.562571&zoom=11&location=coordinates&metricWind=m%2Fs
         aspect_ratio: 61%
@@ -412,16 +413,16 @@ views:
       - type: vertical-stack
         in_card: true
         cards:
-          - type: glance
+          - title: "Na zewnątrz PM 2.5/PM10"
+            type: glance
             no_card: true
-            title: "Na zewnątrz PM 2.5/PM10"
             show_name: false
             entities:
               - sensor.czujnik_smogu_pm25
               - sensor.czujnik_smogu_pm10
-          - type: entities
+          - title: "Powietrze w domu"
+            type: entities
             no_card: true
-            title: "Powietrze w domu"
             show_header_toggle: false
             state_color: true
             entities:
@@ -469,18 +470,18 @@ views:
       - type: vertical-stack
         in_card: true
         cards:
-          - type: glance
+          - title: "Airly"
+            type: glance
             no_card: true
-            title: "Airly"
             show_name: true
             entities:
               - sensor.airly_pm25
               - sensor.airly_pm25_limit
               - sensor.airly_pm10
               - sensor.airly_pm10_limit
-          - type: entities
+          - title: "Airly - dokładnie"
+            type: entities
             no_card: true
-            title: "Airly - dokładnie"
             show_header_toggle: false
             state_color: true
             entities:
@@ -528,8 +529,8 @@ views:
         entity_current_text: sensor.dark_sky_current_text
         alt_wind: sensor.dark_sky_alt_wind
     path: weather
-    title: Weather
-  - badges: []
+  - title: Multimedia
+    badges: []
     cards:
       - entity: media_player.playstation_4
         type: media-control
@@ -617,7 +618,8 @@ views:
         - type: media-control
           entity: media_player.spotify_sobczaki
 
-        - entities:
+        - title: Denon Ulubione
+          entities:
           - script.denon_favourite_pr3
           - script.denon_favourite_ebm
           - script.denon_favourite_ps4
@@ -625,16 +627,15 @@ views:
           - script.denon_favourite_deathfm
           - script.denon_favourite_darkwave
           - script.denon_favourite_antyradio
-          title: Denon Ulubione
           type: entities
 
       - type: vertical-stack
         cards:
-          - entities:
+          - title: Samsung TV
+            entities:
             - script.samsung_tv_netflix
             - script.samsung_tv_hbogo
             - script.samsung_tv_hdmi
-            title: Samsung TV
             type: entities
      #     - entity: media_player.tv_samsung_8_series_65
      #       type: media-control
@@ -875,10 +876,75 @@ views:
                   color_type: blank-card
               type: horizontal-stack
     path: multimedia
-    title: Multimedia
-  - badges: []
+  - title: System
+    badges: []
     cards:
-      - entities:
+      - type: vertical-stack
+        in_card: true
+        cards:
+          - title: "Energia"
+            type: entities
+            no_card: true
+            show_header_toggle: false
+            entities:
+              - sensor.sonoff_pow_power
+              - sensor.nas_power_sensor
+              - sensor.roomba_power_sensor
+              - sensor.pralka_power
+              - sensor.desktop_stasia_power
+              - sensor.power_generation
+              - sensor.energy_generation
+              - sensor.tauron_amiplus_consumption_daily
+              - sensor.tauron_amiplus_consumption_monthly
+              - sensor.tauron_amiplus_consumption_yearly
+              - sensor.tauron_amiplus_generation_daily
+              - sensor.tauron_amiplus_generation_monthly
+              - sensor.tauron_amiplus_generation_yearly
+              - sensor.daily_difference
+              - sensor.monthly_difference
+              - sensor.yearly_difference
+      - title: Transmission
+        entities:
+          - sensor.transmission_status
+          - sensor.transmission_active_torrents
+          - sensor.transmission_paused_torrents
+          - sensor.transmission_total_torrents
+          - sensor.transmission_started_torrents
+          - sensor.transmission_down_speed
+          - sensor.transmission_up_speed
+        show_header_toggle: false
+        type: entities
+      - type: "custom:transmission-card"
+        hide_type: false
+        default_type: "active"
+      - title: Garmin
+        type: entities
+        entities:
+          - sensor.active_time
+          - sensor.active_kilocalories
+          - sensor.daily_step_goal
+          - sensor.floors_ascended
+          - sensor.total_steps
+      - title: "Baterie sensorów temperatury"
+        type: custom:battery-state-card        
+        entities:      
+          - sensor.temperature_158d00019c915b
+          - sensor.temperature_158d0001ab2855
+          - sensor.temperature_158d0002239fbb
+          - sensor.temperature_158d00022723b2
+          - sensor.temperature_158d0001b95f89
+          - sensor.temperature_158d000163e802
+
+          - binary_sensor.motion_sensor_158d00016d5ddd
+          - binary_sensor.water_leak_sensor_158d0001bb93e7
+          - binary_sensor.switch_158d00016d7744
+          - binary_sensor.door_window_sensor_158d00019e275f
+    path: system
+  - title: Servers
+    badges: []
+    cards:
+      - title: System
+        entities:
           - sensor.disk_use_percent_home
           - sensor.last_boot
           - sensor.load_15m
@@ -887,15 +953,24 @@ views:
           - sensor.ad_version_current
           - sensor.ha_version_current
           - sensor.cpu_temp
+          - sensor.omv_2
+          - sensor.omv_cpu_load
+          - sensor.omv_memory
+          - sensor.omv_sda
+          - sensor.omv_sdb
+          - sensor.omv_sdc
+          - sensor.omv_sdd
+          - binary_sensor.omv_update_available
+          - binary_sensor.omv_reboot_pending
+          - sensor.omv_uptime
         show_header_toggle: false
-        title: System
         type: entities
       - type: vertical-stack
         in_card: true
         cards:
-          - type: entities
+          - title: "UPS"
+            type: entities
             no_card: true
-            title: "UPS"
             show_header_toggle: false
             entities:
               - sensor.apc350_battery_runtime
@@ -933,104 +1008,12 @@ views:
                   - sensor.apc350_battery_runtime
                 line_color: "#36a2eb"
                 lower_bound: 0
-      - type: vertical-stack
-        in_card: true
-        cards:
-          - type: entities
-            no_card: true
-            title: "Energia"
-            show_header_toggle: false
-            entities:
-#              - sensor.owl_waty
-              - sensor.sonoff_pow_power
-              - sensor.nas_power_sensor
-              - sensor.roomba_power_sensor
-              - sensor.pralka_power
-              - sensor.tv_power
-#              - sensor.owl_energy
-#              - sensor.hourly_home_energy
-#              - sensor.daily_home_energy
-#              - sensor.monthly_home_energy
-#              - sensor.hourly_home_input
-#              - sensor.daily_home_input
-#              - sensor.monthly_home_input
-#              - sensor.hourly_home_output
-#              - sensor.daily_home_output
-#              - sensor.monthly_home_output
-              - sensor.power_generation
-#              - sensor.power_consumption
-              - sensor.energy_generation
-              - sensor.tauron_amiplus_consumption_daily
-              - sensor.tauron_amiplus_consumption_monthly
-              - sensor.tauron_amiplus_consumption_yearly
-              - sensor.tauron_amiplus_generation_daily
-              - sensor.tauron_amiplus_generation_monthly
-              - sensor.tauron_amiplus_generation_yearly
-              - sensor.daily_difference
-              - sensor.monthly_difference
-              - sensor.yearly_difference
-#              - sensor.energy_consumption
-#              - sensor.daily_energy_nas
-#          - type: horizontal-stack
-#            no_cards: true
-#            cards:
-#              - type: custom:mini-graph-card
-#                no_card: true
-#                hour24: true
-#                decimals: 0
-#                points_per_hour: 1
-#                show:
-#                  fill: fade
-#                  extrema: true
-#                  icon: false
-#                  labels: false
-#                  name: true
-#                  state: true                
-#                entities:
-#                  - sensor.owl_waty
-#                line_color: "#ef5350"
-      - entities:
-          - sensor.transmission_status
-          - sensor.transmission_active_torrents
-          - sensor.transmission_paused_torrents
-          - sensor.transmission_total_torrents
-          - sensor.transmission_started_torrents
-          - sensor.transmission_down_speed
-          - sensor.transmission_up_speed
-        show_header_toggle: false
-        title: Transmission
-        type: entities
-      - type: "custom:transmission-card"
-        hide_type: false
-        default_type: "active"
-#        sensor_name: Transmission
-      - type: entities
-        entities:
-          - sensor.active_time
-          - sensor.active_kilocalories
-          - sensor.daily_step_goal
-          - sensor.floors_ascended
-          - sensor.total_steps
-        title: Garmin
-      - type: custom:battery-state-card        
-        title: "Baterie sensorów temperatury"
-        entities:      
-          - sensor.temperature_158d00019c915b
-          - sensor.temperature_158d0001ab2855
-          - sensor.temperature_158d0002239fbb
-          - sensor.temperature_158d00022723b2
-          - sensor.temperature_158d0001b95f89
-          - sensor.temperature_158d000163e802
-
-          - binary_sensor.motion_sensor_158d00016d5ddd
-          - binary_sensor.water_leak_sensor_158d0001bb93e7
-          - binary_sensor.switch_158d00016d7744
-          - binary_sensor.door_window_sensor_158d00019e275f
-    path: system
-    title: System
-  - badges: []
+    path: servers
+  - title: Network
+    badges: []
     cards:
-      - entities:
+      - title: WiFi
+        entities:
           - binary_sensor.workday_sensor
           - binary_sensor.sonoffswiatloprzeddomem_status
           - binary_sensor.ipad_status
@@ -1054,9 +1037,9 @@ views:
           - binary_sensor.esp32bluetooth_status
           - binary_sensor.solisinverter_status
         show_header_toggle: false
-        title: WiFi
         type: entities
-      - entities:
+      - title: Konsole do gier
+        entities:
           - binary_sensor.playstation_status
           - binary_sensor.playstation3_status
           - binary_sensor.retropie_status
@@ -1065,21 +1048,19 @@ views:
           - binary_sensor.vita_status
           - binary_sensor.xbox360_status
         show_header_toggle: false
-        title: Konsole do gier
         type: entities
-      - entities:
+      - title: Kablowe
+        entities:
           - entity: binary_sensor.denon_status
           - entity: binary_sensor.staszekxeon_status
           - entity: binary_sensor.laptopstasia_status
           - entity: binary_sensor.laptopfirmowyeth_status
-#          - entity: binary_sensor.lms_status
-#          - entity: binary_sensor.raspberry_status
           - entity: binary_sensor.nas_status
           - entity: binary_sensor.tv_status
         show_header_toggle: false
-        title: Kablowe
         type: entities
-      - entities:
+      - title: Komórka
+        entities:
           - device_tracker.iphone_adam_2
           - sensor.iphone_adam_battery_level_2
           - sensor.iphone_adam_battery_state_2
@@ -1089,56 +1070,43 @@ views:
           - sensor.iphone_adam_sim_1
           - sensor.iphone_adam_ssid
           - sensor.iphone_adam_storage_2
-        title: Komórka
         type: entities
-      - entities:
+      - title: Drukarka
+        entities:
           - sensor.hp_deskjet_5000_series
           - sensor.hp_deskjet_5000_series_black_ink
           - sensor.hp_deskjet_5000_series_tri_color_ink
         show_header_toggle: false
-        title: Drukarka
         type: entities
     path: network
-    title: Network
-  - badges: []
+  - title: Graphs
+    badges: []
     cards:
-      - entities:
+      - title: Temperatura CPU
+        entities:
           - sensor.cpu_temp
         hours_to_show: 24
         refresh_interval: 0
-        title: Temperatura CPU
         type: history-graph
-#      - entities:
-#          - entity: sensor.owl_waty
-#        hours_to_show: 48
-#        refresh_interval: 0
-#        title: Energia w domu
-#        type: history-graph
-#      - entities:
-#          - entity: sensor.daily_home_energy
-#        hours_to_show: 48
-#        refresh_interval: 0
-#        title: Dzienna energia
-#        type: history-graph
-      - entities:
+      - title: Internet
+        entities:
           - sensor.speedtest_download
           - sensor.speedtest_upload
         hours_to_show: 24
         refresh_interval: 0
-        title: Internet
         type: history-graph
-      - entities:
+      - title: Temperatura kuchnia
+        entities:
           - sensor.temperature_158d0001ab2855
         hours_to_show: 48
         refresh_interval: 0
-        title: Temperatura kuchnia
         type: history-graph
-      - entities:
+      - title: Korona
+        entities:
           - sensor.worldwide_coronavirus_confirmed
           - sensor.worldwide_coronavirus_current
           - sensor.worldwide_coronavirus_deaths
           - sensor.worldwide_coronavirus_recovered
-        title: Korona
         type: entities
       - type: custom:mini-graph-card
 #        <<: *CLIMATE_GRAPH_PARAMS
@@ -1147,35 +1115,35 @@ views:
         line_color: "#4bc0c0"
         decimals: 1
     path: graphs
-    title: Graphs
-  - badges: []
+  - title: Light
+    badges: []
     cards:
-      - entity: light.salonled
-        title: Salon LED
+      - title: Salon LED
+        entity: light.salonled
         type: light
-      - entities:
+      - title: Światła
+        entities:
           - light.gateway_light_34ce00812981
-          - light.yeelight_color1_7811dc682b4d
-          - light.yeelight_color1_34ce0084c619
+          - light.yeelight_color_0x00000000035ea378
+          - light.yeelight_color_0x000000000456691a
           - light.yeelight_color_0x00000000036eeb91
           - switch.wall_switch_right_158d0001dbe288
           - switch.wall_switch_left_158d0001dbe288
           - switch.wall_switch_left_158d0001dbe17b
           - switch.wall_switch_right_158d0001dbe17b
           - light.ikea_kitchen
-        title: Światła
         type: entities
       - entity: light.gateway_light_34ce00812981
         type: light
-      - type: entities
-        title: Taras
+      - title: Taras
+        type: entities
         show_header_toggle: false
         entities:
-          - entity: light.yeelight_color1_7811dc682b4d
+          - entity: light.yeelight_color_0x000000000456691a
             type: custom:light-brightness-preset-row
             name: Światło 1
             customTheme: false
-          - entity: light.yeelight_color1_34ce0084c619
+          - entity: light.yeelight_color_0x00000000035ea378
             type: custom:light-brightness-preset-row
             name: Światło 2
             customTheme: false
@@ -1191,27 +1159,24 @@ views:
             type: custom:light-brightness-preset-row
             name: Ikea Kitchen
             customTheme: false
-      - type: vertical-stack
-        title: Kolory
+      - title: Kolory
+        type: vertical-stack
         in_card: true
         cards:
         - type: custom:light-entity-card
           name: Salon LED
           entity: light.salonled
         - type: custom:light-entity-card
-          entity: light.yeelight_color1_7811dc682b4d
+          entity: light.yeelight_color_0x00000000035ea378
         - type: custom:light-entity-card
-          entity: light.yeelight_color1_34ce0084c619
+          entity: light.yeelight_color_0x000000000456691a
         - type: custom:light-entity-card
           entity: light.yeelight_color_0x00000000036eeb91
         - type: custom:light-entity-card
           entity: light.ikea_kitchen
-#      - type: custom:more-info-card
-#        entity: light.yeelight_color1_34ce008cf7de
-#        title: Yeelight RGB
     path: light
-    title: Light
-  - badges: []
+  - title: Our Day
+    badges: []
     cards:
       - type: vertical-stack
         in_card: true
@@ -1225,11 +1190,11 @@ views:
               - sensor.date
               - sensor.rocznica_slubu
             type: entities
-          - entities:
+          - title: Do pracy
+            entities:
               - sensor.adam
               - sensor.dorota
             show_header_toggle: false
-            title: Do pracy
             type: entities
           - entity: sensor.dorota
             max: 100
@@ -1260,22 +1225,19 @@ views:
       - type: vertical-stack
         in_card: true
         cards:
-          - type: custom:calendar-card
-            title: "My Calendar"
+          - title: "My Calendar"
+            type: custom:calendar-card
             progressBar: true
             entities:
               - calendar.domowy
-
-          - type: custom:atomic-calendar
-            title: "Calendar"
+          - title: "Calendar"
+            type: custom:atomic-calendar
             entities:
               - entity: calendar.domowy
                 type: holiday
-
           - type: calendar
             entities:
               - calendar.domowy
-
           - type: custom:quote-of-the-day-card               
             entity: sensor.quote_of_the_day
             feed_attribute: entries # Required if using FeedParser v0.0.8 or later
@@ -1287,10 +1249,11 @@ views:
             field: summary
             add_link: link
     path: ourday
-    title: Our Day
-  - badges: []
+  - title: Switches
+    badges: []
     cards:
-      - entities:
+      - title: Switch
+        entities:
           - switch.wall_switch_right_158d0001dbe288
           - switch.wall_switch_left_158d0001dbe288
           - switch.wall_switch_left_158d0001dbe17b
@@ -1303,13 +1266,13 @@ views:
           - switch.sonoff_garaz
           - switch.sonoff_gniazdko
           - switch.altana
-          - switch.tv
+          - switch.desktop_stasia
           - switch.pralka
           - binary_sensor.switch_158d00016d7744
           - switch.plug_158d0002330853
-        title: Switch
         type: entities
-      - entities:
+      - title: Sonoff POW i TH16
+        entities:
           - switch.sonoff_przed_domem
           - sensor.sonoff_pow_current
           - sensor.sonoff_pow_power
@@ -1317,13 +1280,13 @@ views:
           - sensor.sonoff_pow_yesterday_energy
           - sensor.sonoff_temperature
         show_header_toggle: false
-        title: Sonoff POW i TH16
         type: entities
     path: switches
-    title: Switches
-  - badges: []
+  - title: Lessons
+    badges: []
     cards:
-      - entities:
+      - title: Plan lekcji na dzisiaj
+        entities:
         - sensor.lesson_1
         - sensor.lesson_2
         - sensor.lesson_3
@@ -1332,9 +1295,9 @@ views:
         - sensor.lesson_6
         - sensor.lesson_7
         - sensor.lesson_8
-        title: Plan lekcji na dzisiaj
         type: entities
-      - entities:
+      - title: Plan lekcji na jutro
+        entities:
         - sensor.lesson_1_tomorrow
         - sensor.lesson_2_tomorrow
         - sensor.lesson_3_tomorrow
@@ -1343,30 +1306,26 @@ views:
         - sensor.lesson_6_tomorrow
         - sensor.lesson_7_tomorrow
         - sensor.lesson_8_tomorrow
-        title: Plan lekcji na jutro
         type: entities
-      - entities:
+      - title: Ogólne
+        entities:
         - sensor.next_homework
-        - sensor.latest_message
+        - sensor.next_exam
+#        - sensor.latest_message
         - sensor.latest_grade
         - sensor.latest_attendance
-        title: Ogólne
         type: entities
     path: lessons
-    title: Lessons
-  - badges: []
+  - title: Settings
+    badges: []
     cards:
-      - type: "custom:transmission-card"
-        hide_type: false
-        default_type: "active"
-#        sensor_name: Transmission
-      - entities:
+      - title: Ustawienia systemu
+        entities:
         - input_boolean.wakacje
-        title: Ustawienia systemu
         type: entities
     path: setting
-    title: Settings
-  - badges: []
+  - title: Temp
+    badges: []
     cards: 
       - type: vertical-stack
         in_card: true
@@ -1379,45 +1338,37 @@ views:
               - sensor.adam_places
               - entity: binary_sensor.motion_sensor_158d00016d5ddd
                 secondary_info: last-changed
-#              - sensor.tv_energy_today
-#              - sensor.tv_energy_total
-#              - sensor.tv_voltage
-#              - sensor.tv_power_factor   
 
-#              - sensor.pralka_energy_today
-#              - sensor.pralka_energy_total
-#              - sensor.pralka_power
-#              - sensor.pralka_voltage
-#              - sensor.pralka_power_factor   
-                           
-#              - sensor.salon_flora_temperature
-#              - sensor.salon_flora_moisture
-#              - sensor.salon_flora_battery
-#              - sensor.salon_flora_light_intensity
-#              - sensor.salon_flora_conductivity
-#              - sensor.ps4_playing_time
-#              - input_datetime.czas_do_liczenia_czasu_gry
-#              - sensor.salon_moisture
-#              - sensor.salon_battery_level
-#              - sensor.salon_illuminance
-#              - sensor.salon_temperature
-#              - sensor.salon_soil_conductivity
+          - type: custom:apexcharts-card
+            series:
+              - entity: sensor.temperatura_ogrod
 
-      - type: "custom:analog-clock"
-        hide_SecondHand: false
-        locale: pl-PL
-        diameter: 200
-        color_HourHand: "#326ba8"
-        color_MinuteHand: "#3273a8"
-        color_DigitalTime: "#CCCCCC"
-        color_FaceDigits: "#a83832"
-        color_Ticks: "Silver"
-        style_hourhand: 3
-        style_minutehand: 3
-        style_secondhand: 3
+          - type: custom:apexcharts-card
+            graph_span: 24h
+            header:
+              title: WAN Bandwidth
+              show: true
+              show_states: true
+              colorize_states: true
+            all_series_config:
+              stroke_width: 2
+              opacity: 0.3
+              type: area
+            color_list: ['red', 'green', 'blue']
+            series:
+              - entity: sensor.speedtest_download
+              - entity: sensor.speedtest_upload
+                invert: true
+
+          - type: custom:gallery-card
+            entities:
+              - 'media-source://media_source/media/Video/'
+            menu_alignment: Responsive
+            maximum_files: 10
+            file_name_format: '%YYY_%m_%d_%H_%M_%S'
+            caption_format: '%m/%d %H:%M %p'  
               
       - type: iframe
         id: graf1
         url: http://192.168.1.133:8123/api/hassio_ingress/fp2s44paqPGdZR2V3M7Sr1vI5K0TQu9jH10omYz4w38/d-solo/AHwE-k5Gz/cezar_ha?orgId=1&from=1602835941663&to=1602922341663&panelId=9
         aspect_ratio: 65%
-    title: Temp

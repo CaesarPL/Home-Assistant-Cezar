@@ -170,7 +170,7 @@
       roomba_power_sensor:
         value_template: '{{ states.switch.plug_158d00016ff1a4.attributes.load_power }}'
         unit_of_measurement: W
-        friendly_name: Subwoofer power sensor
+        friendly_name: TV power sensor
 
 # MQTT Sensors - Sonoff
   - platform: mqtt
@@ -277,12 +277,12 @@
 #      - conductivity
 #      - battery
 
-  - platform: mitemp_bt
+#  - platform: mitemp_bt
 #    period: 60
-    active_scan: true
-    hci_interface: 
-      - 0
-      - 1
+#    active_scan: true
+#    hci_interface: 
+#      - 0
+#      - 1
 #    mac: 'C4:7C:8D:62:A9:57'
 #    name: Salon Flora
 #    force_update: true
@@ -329,7 +329,7 @@
 
   - platform: integration
     source: sensor.tv_power
-    name: "TV Energy"
+    name: "Desktop Stasia Energy"
     unit_prefix: k
     round: 2
 
@@ -426,32 +426,32 @@
       value_template: "{{ state_attr('air_quality.airly', 'particulate_matter_10_percent_of_limit') }}"
 
   - platform: mqtt
-    name: "TV Energy Today"
+    name: "Desktop Stasia Energy Today"
     state_topic: "tele/blitzwolf1/SENSOR"
     value_template: '{{ value_json["ENERGY"]["Today"] }}'
     unit_of_measurement: "kWh"
   - platform: mqtt
-    name: "TV Energy Yesterday"
+    name: "Desktop Stasia Energy Yesterday"
     state_topic: "tele/blitzwolf1/SENSOR"
     value_template: '{{ value_json["ENERGY"]["Yesterday"] }}'
     unit_of_measurement: "kWh"
   - platform: mqtt
-    name: "TV Energy Total"
+    name: "Desktop Stasia Energy Total"
     state_topic: "tele/blitzwolf1/SENSOR"
     value_template: '{{ value_json["ENERGY"]["Total"] }}'
     unit_of_measurement: "kWh"
   - platform: mqtt
-    name: "TV Power"
+    name: "Desktop Stasia Power"
     state_topic: "tele/blitzwolf1/SENSOR"
     value_template: '{{ value_json["ENERGY"]["Power"] }}'
     unit_of_measurement: "W"
   - platform: mqtt
-    name: "TV Voltage"
+    name: "Desktop Stasia Voltage"
     state_topic: "tele/blitzwolf1/SENSOR"
     value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
     unit_of_measurement: "V"
   - platform: mqtt
-    name: "TV Power Factor"
+    name: "Dekstop Stasia Power Factor"
     state_topic: "tele/blitzwolf1/SENSOR"
     value_template: '{{ value_json["ENERGY"]["Factor"] }}'
     
@@ -492,9 +492,9 @@
         value_template: >-
           {% if states('sensor.pralka_power') != ('unavailable' or 'unknown') %}
             {% if states('sensor.pralka_power') | int > 2 %}
-              pranie
+              Pranie
             {% else %}
-              wyłączona
+              Wyłączona
             {% endif %}
           {% else %}
             {{ states('sensor.pralka') }}
@@ -502,17 +502,17 @@
 
   - platform: template
     sensors:
-      tv:
-        friendly_name: "TV"
+      desktop_stasia:
+        friendly_name: "Desktop Stasia"
         value_template: >-
-          {% if states('sensor.tv_power') != ('unavailable' or 'unknown') %}
-            {% if states('sensor.tv_power') | int > 1 %}
+          {% if states('sensor.desktop_stasia_power') != ('unavailable' or 'unknown') %}
+            {% if states('sensor.desktop_stasia_power') | int > 3 %}
               Włączony
             {% else %}
-              wyłączona
+              Wyłączony
             {% endif %}
           {% else %}
-            {{ states('sensor.tv') }}
+            {{ states('sensor.desktop_stasia') }}
           {% endif %}
 
   - platform: mqtt

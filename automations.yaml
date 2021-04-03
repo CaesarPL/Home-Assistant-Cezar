@@ -493,3 +493,15 @@
       name: blue_night
     service: frontend.set_theme
   mode: single
+- id: '1617466840011'
+  alias: Wyłącz komputer Stasia
+  description: ''
+  trigger:
+  - at: '22:00'
+    platform: time
+  condition: []
+  action:
+  - service: hassio.addon_stdin
+    data:
+      addon: core_rpc_shutdown
+  mode: single

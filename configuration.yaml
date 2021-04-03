@@ -91,7 +91,11 @@ lovelace:
     - url: /hacsfiles/analogclock/analogclock.js
       type: js
     - {type: js, url: '/hacsfiles/transmission-card/transmission-card.js'}
-    
+    - url: /hacsfiles/apexcharts-card/apexcharts-card.js?v=1.8.2
+      type: module    
+    - url: /hacsfiles/gallery-card/gallery-card.js
+      type: module
+      
 person:
 
 tts:
@@ -178,8 +182,8 @@ notify:
     recipient:
       - !secret email_dorota
     sender_name: My Home Assistant
-  - platform: alexa_media
-    name: alexa_media
+#  - platform: alexa_media
+#    name: alexa_media
 
 #remote:
 #  - platform: broadlink

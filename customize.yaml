@@ -148,6 +148,10 @@ light.yeelight_color1_34ce008cf7de:
   friendly_name: "Yeelight 3"
 light.yeelight_color_0x00000000036eeb91:
   friendly_name: "Yeelight 3"
+light.yeelight_color_0x00000000035ea378:
+  friendly_name: "Yeelight 2"
+light.yeelight_color_0x000000000456691a:
+  friendly_name: "Yeelight 1"
 script.projector_on:
   icon: mdi:projector
 script.projector_off:
@@ -157,7 +161,7 @@ switch.ledzatv:
 switch.plug_158d0002330853:
   friendly_name: "NAS wtyczka Xiaomi"
 switch.plug_158d00016ff1a4:
-  friendly_name: "Choinka"
+  friendly_name: "TV sypialnia"
 switch.sonoff_gniazdko:
   icon: mdi:speaker
   friendly_name: "Subwoofer"

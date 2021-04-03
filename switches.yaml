@@ -161,7 +161,7 @@
         friendly_name: PlayStation 
         
   - platform: mqtt
-    name: "TV"
+    name: "Desktop Stasia"
     state_topic: "stat/blitzwolf1/POWER"
     command_topic: "cmnd/blitzwolf1/POWER"
     payload_on: "ON"

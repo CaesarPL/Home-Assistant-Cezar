@@ -124,6 +124,9 @@
       value_template: "{{ is_state('device_tracker.SolisInverter', 'home') }}"
       friendly_name: "Inwerter Solis"      
 
+- platform: snowtire
+  weather: weather.dark_sky
+
 # Severe weather conditions warnings
 - platform: burze_dzis_net
   api_key: !secret burze_dzis_net.api_key
